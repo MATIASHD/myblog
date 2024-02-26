@@ -1,0 +1,15 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.container{
+    width: 95%;
+}
+
+.section-style{
+    height: 500px;
+    background-color: aquamarine;
+    margin-bottom: 1rem;
+}
+
+.imagen-redondeada {
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+}
