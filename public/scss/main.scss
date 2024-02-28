@@ -1,5 +1,12 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+body{
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.none{
+    display: none;
+}
 .container{
     width: 95%;
 }
@@ -13,3 +20,9 @@
 .imagen-redondeada {
     border-radius: 50%; /* Esto hace que la imagen sea circular */
 }
+
+.select-share a:hover{
+    background-color: rgba(22,29,111,0.5);
+    border-radius: 80%;
+}
+
