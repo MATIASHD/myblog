@@ -7,110 +7,167 @@
     <title>My blog</title>
 </head>
 <body>
-    <div class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <!--Icon-->
-            <a href="#" class="navbar-brand">My blog</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a href="#" class="navbar-brand "><i class=" fs-5 fa-solid fa-barcode"></i></a>
+            <ul class="nav">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <!--Search-->
+                    <a href="#" class="nav-link fs-5"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <!--Notification-->
+                <li class="nav-item select-share">
+                    <a href="#" class="nav-link fs-5"><i class="fa-regular fa-bell"></i></a>
+                </li>
+                <!--user-->
+                <li class="nav-item select-share">
+                    <a href="#" class="nav-link fs-5"><i class="fa-regular fa-user"></i></a>
                 </li>
             </ul>
         </div>
-        <!--Search-->
-        <!--Notification-->
-        <ul class="dropdown-menu">
-            <a href="#" class="dropdown-item">Home</a>
-            <a href="#" class="dropdown-item">Home</a>
-            <a href="#" class="dropdown-item">Home</a>
-        </ul>
-        <!--user-->
-    </div>
+    </nav>
+        
     <div class="container">
-        <div class="row">
-            <!--Title-->
-            <div class="col-xs-12 my-4">
-                <h1 class="fw-bold">Top 15 Software Development Trends in 2024</h1>
+        <div class="row my-3">
+            <div class="col-lg-3 d-none d-lg-block ">
+                <!--Aside-->
+                <div class="row ">
+                    <div class="col-12">
+                        <h6>CONTENT</h6>
+                        <p><a href="#">Titulo 1</a></p>
+                        <p><a href="#">Titulo 1</a></p>
+                        <p><a href="#">Titulo 1</a></p>
+                        <p><a href="#">Titulo 1</a></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <!--Sustitle-->
-            <div class="col-xs-12">
-                <h2 class="text-secondary-emphasis">Undoubtedly, 2024 will be a year of further development and integration of these technologies, particularly in automating text, coding, and visualization tasks.</h2>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <!--Title-->
+                    <div class="col-xs-12 mb-3">
+                        <h1 class="fw-bold">Top 15 Software Development Trends in 2024</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Sustitle-->
+                    <div class="col-xs-12">
+                        <h2 class="text-secondary-emphasis">Undoubtedly, 2024 will be a year of further development and integration of these technologies, particularly in automating text, coding, and visualization tasks.</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    <ul class="nav fs-3 mini-share-bar">
+                        <li class="select-item"><a class="nav-link select-share  text-body-secondary" href=""><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-instagram"></i></a></li>
+                        <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-regular fa-envelope"></i></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-            <ul class="nav fs-3 mini-share-bar">
-                <li class="select-item"><a class="nav-link select-share  text-body-secondary" href=""><i class="fa-brands fa-x-twitter"></i></a></li>
-                <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-instagram"></i></a></li>
-                <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-regular fa-envelope"></i></a></li>
-            </ul>
-        </div>
-        </div>
-        <div class="row">
-            <!--Contenido multimedia, imagen video, audio, etc-->
-            <div class="col-xs-12">
-                <figure class="figure my-1">
-                    <hr>
-                    <img src="https://miro.medium.com/v2/resize:fit:700/1*z_5sz44FOBGUwhQqplFotw.jpeg" class="figure-img img-fluid" alt="">
-                    <!--data source-->
-                    <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-                    <hr>
-                </figure>
+            <div class="row">
+                <!--Contenido multimedia, imagen video, audio, etc-->
+                <div class="col-xs-12">
+                    <figure class="figure my-1">
+                        <hr>
+                        <img src="https://miro.medium.com/v2/resize:fit:700/1*z_5sz44FOBGUwhQqplFotw.jpeg" class="figure-img img-fluid" alt="">
+                        <!--data source-->
+                        <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
+                        <hr>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="row mb-4 d-flex align-items-center">
-            <!-- Data of author-->
-            <div class="col-2">
-                <img class="img-fluid imagen-redondeada" src="https://miro.medium.com/v2/resize:fill:44:44/1*ChLj4H1bkCLD6RJzzM3iIg.png" alt="">
+            <div class="row mb-4 d-flex align-items-center">
+                <!-- Data of author-->
+                <div class="col-2">
+                    <img class="img-fluid imagen-redondeada" src="https://miro.medium.com/v2/resize:fill:44:44/1*ChLj4H1bkCLD6RJzzM3iIg.png" alt="">
+                </div>
+                <div class="col">
+                    <p class="m-0">Matias Arevalo</p>
+                    <span class="text-secondary">12 min read · Dec 28, 2023</span>
+                </div>
             </div>
-            <div class="col">
-                <p class="m-0">Matias Arevalo</p>
-                <span class="text-secondary">12 min read · Dec 28, 2023</span>
+            <!--Paragraph-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
             </div>
-        </div>
-        <!--Paragraph-->
-        <div class="row">
-            <div class="col-xs-12">
-                <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="mt-3">General principles of software engineering in 2024</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h3 class="mt-3">General principles of software engineering in 2024</h3>
+            <div class="row">
+                <!--Contenido multimedia, imagen video, audio, etc-->
+                <div class="col-xs-12">
+                    <figure class="figure my-1">
+                        <hr>
+                        <img src="https://miro.medium.com/v2/resize:fit:700/1*z_5sz44FOBGUwhQqplFotw.jpeg" class="figure-img img-fluid" alt="">
+                        <!--data source-->
+                        <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
+                        <hr>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <!--Contenido multimedia, imagen video, audio, etc-->
-            <div class="col-xs-12">
-                <figure class="figure my-1">
-                    <hr>
-                    <img src="https://miro.medium.com/v2/resize:fit:700/1*z_5sz44FOBGUwhQqplFotw.jpeg" class="figure-img img-fluid" alt="">
-                    <!--data source-->
-                    <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-                    <hr>
-                </figure>
+            <!--Paragraph-->
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
             </div>
-        </div>
-        <!--Paragraph-->
-        <div class="row">
-            <div class="col-xs-12">
-                <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="mt-3">General principles of software engineering in 2024</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 mb-3">
+                    <p>As we step into 2024, the <a href="#">landscape of software development</a> continues to evolve exponentially, driven by technological innovations and changing market needs. For businesses and developers alike, staying abreast of these trends is not just beneficial-it’s essential for remaining competitive and successful. In this article, we explore the key software development trends expected to make a significant impact in 2024.</p>
+                </div>
+            </div>
+
         </div>
+        
     </div>
     <!--tags-->
-
+    </div>
+    <footer>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Hecho con amor</a>
+              <ul class="nav">
+                <li class="nav-item">
+                    <!--Search-->
+                    <a href="#" class="nav-link text-secondary"><i class="fa-brands fa-linkedin-in"></i></a>
+                </li>
+                <!--user-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-secondary"><i class="fa-brands fa-x-twitter"></i></a>
+                </li>
+            </ul>
+          </nav>
+    </footer>
     <script src="https://kit.fontawesome.com/dbf18ebcca.js" crossorigin="anonymous"></script>
-    
 </body>
 </html>
