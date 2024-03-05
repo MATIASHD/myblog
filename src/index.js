@@ -1,19 +1,22 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const article = require('./router/articleRouter');
-const main = require('./router/mainRouter');
+const morgan = require('morgan');
+const articleRouter = require('./router/articleRouter');
+const mainRouter = require('./router/mainRouter');
+const dashboardRouter = require('./router/dashboardRouter')
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+
+//Morgan
+app.use(morgan('dev'));
 
 //EJS Config
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-//app.get('/', (req, res) => {
-    //res.sendFile(path.join(__dirname, '../public/index.html'));
-//})
-
-app.use(article);
-app.use(main);
+app.use(articleRouter);
+app.use(mainRouter);
+app.use(dashboardRouter);
 
 module.exports = app;

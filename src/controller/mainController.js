@@ -1,5 +1,5 @@
-const main = (req, res) => {
-    res.render(layout);
+const mainController = (req, res) => {
+    res.render('layout');
 }
 
-module.exports = main;
+module.exports = mainController;

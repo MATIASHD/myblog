@@ -1,5 +1,5 @@
-const article = (req, res) => {
-    res.render('layout');
+const articleController = (req, res) => {
+    res.render('article');
 }
 
-module.exports = article;
+module.exports = articleController;
