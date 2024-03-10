@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const articleController = require('../controller/article/articleController');
-const resetPasswordController = require('../controller/article/articleController');
-const registerController = require('../controller/article/articleController');
+const loginController = require('../controller/loginController');
+const resetPasswordController = require('../controller/resetPasswordController');
+const registerController = require('../controller/registerController');
+const postLoginController = require('../controller/postLoginController');
 
 
-router.get('/login', articleController);
+
+router.get('/login', loginController);
+router.post('/login', postLoginController);
 router.get('/resetPassword', resetPasswordController);
 router.get('/register', registerController);
 

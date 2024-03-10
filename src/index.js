@@ -3,14 +3,15 @@ require('dotenv').config();
 const app = express();
 const path = require('path');
 const morgan = require('morgan');
-const articleRouter = require('./router/articleRouter');
-const mainRouter = require('./router/mainRouter');
-const dashboardRouter = require('./router/dashboardRouter')
 const expressLayout = require('express-ejs-layouts');
 
+//Router
+const mainRouter = require('./router/mainRouter');
+const articleRouter = require('./router/articleRouter');
+const dashboardRouter = require('./router/dashboardRouter');
+const accessRouter = require('./router/access');
 
-//Public content
-app.use(express.static('public'));
+
 
 //Morgan
 app.use(morgan('dev'));
@@ -21,8 +22,13 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(articleRouter);
+//Public content
+app.use(express.static('public'));
+
+//Router
 app.use(mainRouter);
 app.use(dashboardRouter);
+app.use(accessRouter);
+app.use(articleRouter);
 
 module.exports = app;

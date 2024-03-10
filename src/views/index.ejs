@@ -50,11 +50,13 @@
             <% for (let i = 0; i < article.length; i++) { %>
                 <div class="row">
                     <div class="col-6">
-                        <h4 class="fs-6"> <%= article[i].title %> </h4>
+                        <a href="/article/<%= article[i].idarticle %>"><h4 class="fs-6"> <%= article[i].title %></h4></a>
                     </div>
                     <div class="col-6">
                         <figure class="figure">
-                            <img src="<%= article[i].image_url %>" class="figure-img img-fluid" alt="">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="<%= article[i].image_url %>" class="figure-img img-fluid" alt="">
+                            </div>
                             <!--data source-->
                             <figcaption class="figure-caption none">Test</figcaption>
                         </figure>
@@ -62,22 +64,6 @@
                     <hr>
                 </div>
             <% } %>
-            
-            
-        
-        <!--<div class="row">
-            <div class="col-6">
-                <h4 class="fs-6">Axel Kicillof cruzó a Javier Milei por la quita del Fondo y apoyó a Ignacio Torres: “Si uno se pone a fantasear, yo también puedo cerrar los accesos y los puertos” </h4>
-            </div>
-            <div class="col-6">
-                <figure class="figure">
-                    <img src="https://miro.medium.com/v2/resize:fit:700/1*z_5sz44FOBGUwhQqplFotw.jpeg" class="figure-img img-fluid" alt="">
-                    <!--data source-->
-                    <!--<figcaption class="figure-caption none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-                </figure>
-            </div>
-            <hr>
-        </div>-->
         </div>
     </div>
 </div>
