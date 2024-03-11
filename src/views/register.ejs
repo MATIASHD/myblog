@@ -1,3 +1,42 @@
 <%- include('./partials/header') %>
-
+<div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+        <div class="col-sm-12 col-md-6">
+            <h1 class="text-center">Registrar</h1>
+            <form action="/register" method="post" id="loginForm" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombres</label>
+                    <input type="name" name="name" class="form-control" id="name" aria-describedby="name">
+                </div>
+                <div class="mb-3">
+                    <label for="surname" class="form-label">Apellidos</label>
+                    <input type="surname" name="surname" class="form-control" id="surname" aria-describedby="surname">
+                </div>
+                <div class="mb-3">
+                    <label for="nick" class="form-label">Nick</label>
+                    <input type="nick" name="nick" class="form-control" id="nick" aria-describedby="nick">
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Bio</label>
+                    <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+                  </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Imagen</label>
+                    <input class="form-control" name="image" type="file" id="image">
+                </div>                  
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" value="Registrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <%- include('./partials/footer') %>

@@ -2,20 +2,22 @@ const db = require('../../database/models');
 const bcryptjs = require('bcryptjs');
 
 const postLoginController = async(req, res, next) => {
+    console.log(req.body);
     let userToLogin = await db.users.findOne({
         where: {
             email: req.body.email
         }
     })
+
     if (userToLogin) {
-        let correctPassword = bcryptjs.compareSync(req.body.password, userToLogin.dataValues.password);
-        if (correctPassword) {
+        //let correctPassword = bcryptjs.compareSync(req.body.password, userToLogin.dataValues.password);
+        if (req.body.password == userToLogin.dataValues.password) {
             delete userToLogin.dataValues.password;
-            req.session.user = userToLogin;
-            if(req.body.remember){
+            //req.session.user = userToLogin;
+           /* if(req.body.remember){
                 res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60})
-            }
-            return res.redirect('/dashboard/');
+            }*/
+            return res.redirect('/dashboard');
         }
         return res.render('login',{
             errors: {

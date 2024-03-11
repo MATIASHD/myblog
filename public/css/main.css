@@ -11923,10 +11923,3 @@ body {
   font-weight: 900;
   font-style: italic;
 }
-
-.img-fluid {
-  max-width: 300px;
-  max-height: 150px;
-  width: auto;
-  height: auto;
-}
