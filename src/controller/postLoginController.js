@@ -2,6 +2,7 @@ const db = require('../../database/models');
 const bcryptjs = require('bcryptjs');
 
 const postLoginController = async(req, res, next) => {
+    const { name, password } = req.body;
     console.log(req.body);
     let userToLogin = await db.users.findOne({
         where: {

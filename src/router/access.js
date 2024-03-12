@@ -5,7 +5,7 @@ const loginController = require('../controller/loginController');
 const resetPasswordController = require('../controller/resetPasswordController');
 const registerController = require('../controller/registerController');
 const postLoginController = require('../controller/postLoginController');
-const postREgisterController = require('../controller/postRegisterController');
+const postRegisterController = require('../controller/postRegisterController');
 
 
 //Login
@@ -14,7 +14,7 @@ router.post('/login', postLoginController);
 
 //Register
 router.get('/register', registerController);
-router.post('/register', postREgisterController);
+router.post('/register', postRegisterController);
 
 //Reset Password
 router.get('/resetPassword', resetPasswordController);

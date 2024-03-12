@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 
 const postRegisterController = (req,res) => {
         console.log(req.body.password);
-        let pass = bcryptjs.hashSync(req.body.password, 10);
+        let pass = bcryptjs.hashSync(req.body.pass, 10);
         
         db.users.create({
             name:req.body.name,
