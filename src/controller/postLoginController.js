@@ -1,18 +1,19 @@
 const db = require('../../database/models');
 const bcryptjs = require('bcryptjs');
 
-const postLoginController = async(req, res, next) => {
-    const { name, password } = req.body;
-    console.log(req.body);
+const postLoginController = async(req, res) => {
+    const { email, password } = req.body;
     let userToLogin = await db.users.findOne({
         where: {
-            email: req.body.email
+            email: email
         }
     })
-
+    
     if (userToLogin) {
         //let correctPassword = bcryptjs.compareSync(req.body.password, userToLogin.dataValues.password);
-        if (req.body.password == userToLogin.dataValues.password) {
+        console.log(userToLogin.dataValues.contrasenia)
+        if (password == userToLogin.dataValues.contrasenia) {
+            console.log('Pase por aqui')
             delete userToLogin.dataValues.password;
             //req.session.user = userToLogin;
            /* if(req.body.remember){

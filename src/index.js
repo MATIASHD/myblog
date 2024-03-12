@@ -11,8 +11,8 @@ const articleRouter = require('./router/articleRouter');
 const dashboardRouter = require('./router/dashboardRouter');
 const accessRouter = require('./router/access');
 
-
-
+//Urlencoded
+app.use(express.urlencoded({ extended: true }));
 //Morgan
 app.use(morgan('dev'));
 
