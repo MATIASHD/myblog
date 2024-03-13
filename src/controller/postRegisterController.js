@@ -10,7 +10,7 @@ const postRegisterController = (req,res) => {
             bio:req.body.bio,
             email:req.body.email,
             contrasenia: pass,
-            image:req.body.image,
+            image:req.file.filename,
             surname:req.body.surname,
         });
         res.redirect('/');
