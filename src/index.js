@@ -11,8 +11,10 @@ const articleRouter = require('./router/articleRouter');
 const dashboardRouter = require('./router/dashboardRouter');
 const accessRouter = require('./router/access');
 
-//Urlencoded
-app.use(express.urlencoded({ extended: true }));
+//Urlencoded - Manejo de datos desde los formularios
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 //Morgan
 app.use(morgan('dev'));
 
