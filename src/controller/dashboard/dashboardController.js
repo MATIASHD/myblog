@@ -1,10 +1,16 @@
+
 const dashboardView = '../views/layouts/dashboard'
-const dashboardController = (req, res) => {
-    const locals = {
-        title: "Dashboard",
-        description: "You can create everything"
+const dashboardController = async (req, res) => {
+    try{
+        const locals = {
+            title: "Dashboard",
+            description: "You can create everything"
+        }
+        res.render('dashboard', {locals, layout: dashboardView});
+    } catch{
+
     }
-    res.render('dashboard', {locals, layout: dashboardView});
+    
 }
 
 module.exports = dashboardController;

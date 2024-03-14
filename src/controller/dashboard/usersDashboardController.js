@@ -1,10 +1,17 @@
+const db = require('../../../database/models');
 const dashboardView = '../views/layouts/dashboard'
-const usersDashboardController = (req, res) => {
-    const locals = {
-        title: "Usuarios",
-        description: "panel de usuarios"
+const usersDashboardController = async (req, res) => {
+    try {
+        const allUsers = await db.users.findAll()
+        const locals = {
+            title: "Usuarios",
+            description: "panel de usuarios"
+        }
+        res.render('dashboardUsers', {locals, layout: dashboardView, users: allUsers});
+    } catch (err){
+        res.send(err)
     }
-    res.render('dashboardUsers', {locals, layout: dashboardView});
+    
 }
 
 module.exports = usersDashboardController;
