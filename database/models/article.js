@@ -14,7 +14,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100)
         },
         contenido:{
-            type: dataTypes.STRING(10000)
+            type: dataTypes.TEXT('long')
         },
         fecha_publicacion:{
             type: dataTypes.DATE,

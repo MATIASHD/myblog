@@ -1,0 +1,59 @@
+
+<div class="container-fluid">
+    <div class="row full-vision">
+        <%- include('./partials/navbarleft') %>
+        <main role="main" class="col-md-10 ml-sm-auto my-5 col-lg-10 px-md-4">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h1>Lista de usuario</h1>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <form action="/register" method="get">
+                            <button type="button" class="btn btn-primary btn-lg">Crear entrada</button>
+                        </form>
+                    </div>
+                </div>
+                <!--form-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% article.forEach(article => { %>
+                                    <tr>
+                                        <th scope="row"><%= article.idarticle %></th>
+                                        <td><%= article.title %></td>
+                                        <td><%= article.fecha_publicacion %></td>
+                                        <td><%= article.author %></td>
+                                        <td>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <form action="" method="get">
+                                                    <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                                                </form>
+                                                <form action="" method="get">
+                                                    <button class="btn btn-danger" type="button">Borrar</button>
+                                                </form> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>   
+            </div>
+        </main>
+    </div>
+</div>
+<%- include('./partials/footer') %>

@@ -1,0 +1,43 @@
+<%- include('./partials/header') %>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-12">
+            <h2 class="text-center">Article</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-md-3">
+            
+                <ul class="list-group">
+                    <% for (let i = 0; i < news.length; i++) {%>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="<%= news[i].urlToImage %>" alt="" style="max-width: 150px;">
+                            </div>
+                            <div class="col-8">
+                                <a target="_blank" href="<%=  news[i].url %>"><%=  news[i].title %></a>
+                                <span class="text-muted"><%=  news[i].author %></span>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+                </ul>
+            
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-6 offset-md-3">
+            <p><%=  news[4].content %></p>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-12">
+            <h2><%= news.length %></h2>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer') %>
+
+
