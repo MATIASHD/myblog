@@ -4,28 +4,61 @@ const { bcryptjs } = require('bcryptjs');
 module.exports = {
     postCreate : async (req, res) => {
         try {
-           /* const {name, surname, nick, email, password, bio, image } = res.body;
-            let passHash = bcryptjs.hashSync(password, 10);
-            db.users.create({
-                name: name,
-                surname: surname,
-                nick: nick,
-                bio: bio,
-                email: email,
-                contrasenia: passHash,
-                image: image
-            }) */
-            res.redirect('/users');
+            const {title, image, contenido, author, category, tags, like } = res.body;
+            await db.article.create({
+                title: title,
+                image_url: image,
+                contenido: contenido,
+                fecha_publicacion: new Date(),
+                author: author,
+                categoty: category,
+                tags: tags,
+                like: like
+            }) 
+            res.redirect('/articles');
         } catch(e) {
             res.render('error', { error: "Hubo un error al crear el post, vuelva a intentarlo mas tarde", code: e })
         }
-        db.users.create()
     },
     getRead : async (req, res) => {
+        const { id } = res.body;
+        try {
+            let article = await db.article.findByPk({
+                where:{
+                    idarticle: id
+                }
+            })
+            res.render('article', { article });
+        } catch (e) {
+            res.render('error', { error: "No se encontró este articulo", code: e })
+        }
     
     },
+    getAllRead : async (req, res) => {
+        try {
+            let article = await db.article.findAll()
+            res.render('article', { article });
+        } catch (e) {
+            res.render('error', { error: "No se encontró este articulo", code: e })
+        }
+    },
     postUpdate : async (req, res) => {
-    
+        try {
+            const {title, image, contenido, author, category, tags, like } = res.body;
+            await db.article.update({
+                title: title,
+                image_url: image,
+                contenido: contenido,
+                fecha_publicacion: new Date(),
+                author: author,
+                categoty: category,
+                tags: tags,
+                like: like
+            }) 
+            res.redirect('/articles');
+        } catch(e) {
+            res.render('error', { error: "Hubo un error al crear el post, vuelva a intentarlo mas tarde", code: e })
+        }
     },
     postDel : async (req, res) => {
         try {
