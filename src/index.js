@@ -5,6 +5,7 @@ const path = require('path');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const expressLayout = require('express-ejs-layouts');
+const bodyParse = require('body-parser')
 
 //Router
 const mainRouter = require('./router/mainRouter');
@@ -13,8 +14,8 @@ const dashboardRouter = require('./router/dashboardRouter');
 const accessRouter = require('./router/access');
 
 //Urlencoded - Manejo de datos desde los formularios
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(bodyParse.urlencoded({ extended: false }));
+app.use(bodyParse.json());
 
 //Morgan
 app.use(morgan('dev'));
@@ -36,6 +37,7 @@ app.use(mainRouter);
 app.use(dashboardRouter);
 app.use(accessRouter);
 app.use(articleRouter);
+
 app.use((req, res, next) => {
     res.status(404).render('errornotfound');
 })

@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const dashboardController = require('../controller/dashboard/dashboardController');
-const usersDashboardController = require('../controller/dashboard/usersDashboardController');
-const articleDashboardController = require('../controller/dashboard/articlesDashboardController');
+const { dashboard } = require('../controller/dashboard/dashboardController');
 
-router.get('/dashboard', dashboardController);
-router.get('/dashboard/users', usersDashboardController);
-router.get('/dashboard/article', articleDashboardController);
+router.get('/dashboard', dashboard);
 
 module.exports = router;

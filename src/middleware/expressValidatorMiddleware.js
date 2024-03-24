@@ -1,16 +1,22 @@
 const { body } = require('express-validator');
 const { path } = require('path');
 
-//Validations
-module.exports  = [
-    body('name').notEmpty().withMessage('Este campo no puede estar vacio'),
-    body('surname').notEmpty().withMessage('Este campo no puede estar vacio'),
-    body('email')
-        .isEmail().withMessage('Debe ingresar un email valido')
+module.exports = [
+    body('name')
+        .escape()
         .notEmpty().withMessage('Este campo no puede estar vacio'),
-    body('password')
+    body('surname')
+        .escape()
+        .notEmpty().withMessage('Este campo no puede estar vacio'),
+    body('email')
+        .escape()
         .notEmpty().withMessage('Este campo no puede estar vacio')
-        .fields({minCount: 8}).withMessage('Debe tener como minimo 8 caracteres'),
+        .isEmail().withMessage('Debe ingresar un email valido'),
+    body('password')
+        .escape()
+        .notEmpty().withMessage('Este campo no puede estar vacio')
+        .isLength({ min: 8 }).withMessage('Debe tener como minimo 8 caracteres')
+        .matches(/^(?=.*[A-Z])(?!.*([0-9])\1{2})(?=.*\d).*$/).withMessage('La contraseña debe contener al menos una mayúscula y no tener números consecutivos'),
     body('image').custom((value, { req }) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg','.jpeg','.png','.gif'];
@@ -22,6 +28,4 @@ module.exports  = [
         }
         return true;
     })
-    
-];
-
+]

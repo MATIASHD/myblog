@@ -6,13 +6,13 @@
             <div class="container">
                 <div class="row mb-3">
                     <div class="col-12">
-                        <h1>Lista de usuario</h1>
+                        <h1>Lista de Publicaciones</h1>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <form action="/register" method="get">
-                            <button type="button" class="btn btn-primary btn-lg">Crear entrada</button>
+                        <form action="/createpost" method="get">
+                            <button type="submit" class="btn btn-primary btn-lg">Crear entrada</button>
                         </form>
                     </div>
                 </div>
@@ -30,19 +30,19 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <% article.forEach(article => { %>
+                                <% articles.forEach(articles => { %>
                                     <tr>
-                                        <th scope="row"><%= article.idarticle %></th>
-                                        <td><%= article.title %></td>
-                                        <td><%= article.fecha_publicacion %></td>
-                                        <td><%= article.author %></td>
+                                        <th scope="row"><%= articles.idarticle %></th>
+                                        <td><%= articles.title %></td>
+                                        <td><%= articles.fecha_publicacion %></td>
+                                        <td><%= articles.author %></td>
                                         <td>
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                <form action="" method="get">
-                                                    <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                                                <form action="/editpost/<%= articles.idarticle %>" method="get">
+                                                    <button class="btn btn-primary me-md-2" type="submit">Editar</button>
                                                 </form>
-                                                <form action="" method="get">
-                                                    <button class="btn btn-danger" type="button">Borrar</button>
+                                                <form action="/deletepost/<%= articles.idarticle %>?_method=DELETE" method="POST">
+                                                    <button class="btn btn-danger" type="submit">Borrar</button>
                                                 </form> 
                                             </div>
                                         </td>
