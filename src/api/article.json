@@ -1,0 +1,27 @@
+{
+    "title" : "El lugar que esperaba te esta esperando",
+    "subtitle" : "Meteté en increible mundo que tengo para ti",
+    "parrafos" : "For the past three weeks, I have been trying to create a React app from scratch to understand the set-up with Webpack. My aim was to set up a simple configuration which can then be grown upon. It’s been a struggle to understand Webpack. But thanks to this tutorial by Valentino Gagliardi, I’m much enlightened.",
+    "image": "",
+    "items" : {
+        "item1":"" 
+    },
+    "code" : "{
+        "name": "react_search",
+        "version": "1.0.0",
+        "description": "Search app using React",
+        "main": "index.js",
+        "scripts": {
+          "start": "webpack --mode development",
+          "build": "webpack --mode production"
+        },
+        "keywords": [],
+        "author": "",
+        "license": "ISC",
+        "devDependencies": {
+          "webpack": "^4.0.1",
+          "webpack-cli": "^2.0.10"
+        }
+      }"
+
+}

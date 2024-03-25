@@ -11,7 +11,8 @@ const articles = {
     postCreate : (req, res) => {
             db.article.create({
                 title: req.body.title,
-                image_url: req.body.image,
+                subtitle: req.body.subtitle,
+                image_url: req.file.filename,
                 contenido: req.body.post,
                 fecha_publicacion: new Date(),
                 author: req.body.author,
@@ -92,11 +93,16 @@ const articles = {
     // 5. Formulario para actualizar articulo
     getEditPost : async (req, res) =>{
         try {
+            const article = await db.article.findOne({
+                where: {
+                    idarticle: req.params.id
+                }
+            })
             const locals = {
                 title: "Nuevo post",
                 description: "Crea increibles entradas"
             }
-            res.render('editPost', { locals });  
+            res.render('editPost', { locals, article });  
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -107,18 +113,24 @@ const articles = {
     },
     putUpdate : async (req, res) => {
         try {
-            const {title, image, post, author} = res.body;
+            const article = await db.article.findByPk(req.params.id);
+            const {title, subtitle, post, author} = req.body;
             await db.article.update({
                 title: title,
-                image_url: image,
+                subtitle: subtitle,
+                image_url: req.file ? req.file.filename : article.image,
                 contenido: post,
                 fecha_publicacion: new Date(),
                 author: author,
                 categoty: 1,
                 tags: 1,
                 like: 1
+            },{
+                where: {
+                    idarticle: req.params.id
+                }
             }) 
-            res.redirect('/articles');
+            res.redirect('/article/'+ req.params.id);
         } catch(e) {
             const locals = {
                 title: "Mensaje de error",
@@ -132,10 +144,10 @@ const articles = {
         try {
             db.article.destroy({
                 where:{
-                    idarticle: res.params.id
+                    idarticle: req.params.id
                 }
             })
-            res.redirect('/articles')
+            res.redirect('/articlespanel')
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",

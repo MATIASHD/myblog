@@ -11,7 +11,7 @@
             <div class="row">
                 <!--Sustitle-->
                 <div class="col-xs-12">
-                    <h2 class="text-secondary-emphasis"> empty</h2>
+                    <h2 class="text-secondary-emphasis"> <%= article.subtitle %></h2>
                 </div>
             </div>
             <div class="row">
@@ -29,7 +29,13 @@
                 <div class="col-xs-12">
                     <figure class="figure my-1">
                         <hr>
-                        <img src="<%= article.image_url %>" class="figure-img img-fluid" alt="">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <% if (article.image_url.startsWith("http://") || article.image_url.startsWith("https://")) { %>
+                                <img src="<%= article.image_url %>" class="figure-img img-fluid" alt="">
+                            <% } else {%>
+                                <img src="../assets/upload/<%= article.image_url %>" class="figure-img img-fluid" alt="">
+                            <% } %>
+                        </div>
                         <!--data source-->
                         <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
                         <hr>
@@ -46,7 +52,13 @@
                     <span class="text-secondary"> <%= article.fecha_publicacion %></span>
                 </div>
             </div>
-            <p><%= article.contenido %></p>
+            <div class="row">
+                <div class="col">
+                    <div class="merriweather-regular">
+                        <p><%- article.contenido %></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

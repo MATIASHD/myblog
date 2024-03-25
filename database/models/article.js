@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize");
+
 module.exports = (sequelize, dataTypes) => {
     let alias = "article";
     let cols = {
@@ -10,14 +12,19 @@ module.exports = (sequelize, dataTypes) => {
         title:{
             type: dataTypes.STRING(200)
         },
+        subtitle:{
+            type: dataTypes.STRING(500)
+        },
         image_url:{
             type: dataTypes.STRING(100)
         },
         contenido:{
-            type: dataTypes.TEXT('long')
+            type: dataTypes.TEXT,
+            allowNull: false
         },
         fecha_publicacion:{
             type: dataTypes.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false
         },
         author:{

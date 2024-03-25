@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const expressLayout = require('express-ejs-layouts');
 const bodyParse = require('body-parser')
+const session = require('express-session');
 
 //Router
 const mainRouter = require('./router/mainRouter');
@@ -16,6 +17,13 @@ const accessRouter = require('./router/access');
 //Urlencoded - Manejo de datos desde los formularios
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(bodyParse.json());
+
+//session
+app.use(session({
+    secret: 'Casa Partida',
+    resave: false,
+    saveUninitialized: false,
+}));
 
 //Morgan
 app.use(morgan('dev'));

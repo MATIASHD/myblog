@@ -1,2 +1,17 @@
-<h1><%= error %> </h1>
-<p><%= code %></p>
+<%- include('./partials/header') %>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-12">
+            <figure class="text-center">
+                <blockquote class="blockquote">
+                    <p><h1><%= error %> </h1></p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                    <cite title="Source Title"><span><p><%= code %></p></span></cite>
+                </figcaption>
+            </figure>
+        </div>
+    </div>     
+</div>
+<%- include('./partials/footer') %>
+

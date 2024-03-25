@@ -1,4 +1,5 @@
 const db = require('../../../database/models');
+const bcryptjs = require('bcryptjs');
 // 1. Fomulario de crear articulo
 // 2. Guardar los datos del usario en la BD
 // 3. Leer un articulo
@@ -26,16 +27,29 @@ const users = {
     // 2. crear un usuario BD
     postCreateUser : async (req, res) => {
         try {
-            await db.users.create({
-                name: req.body.name,
-                surname: req.body.surname,
-                nick: req.body.nick,
-                bio: req.body.bio,
-                email:req.body.email,
-                contrasenia:req.body.password,
-                image: req.body.image
-            })
-            res.render('/users');
+            let userInDB = await db.user.findByField('email', req.body.email)
+            if(!userInDB){
+                let passwordHash = bcryptjs.hashSync(req.body.password, 10);
+                await db.users.create({
+                    name: req.body.name,
+                    surname: req.body.surname,
+                    nick: req.body.nick,
+                    bio: req.body.bio,
+                    email:req.body.email,
+                    contrasenia: passwordHash,
+                    image: req.body.image
+                })
+                res.redirect('/users');
+            } else {
+                return res.render('register', {
+                    errors:{
+                        email:{
+                            msg: "Este email ya esta registrado"
+                        }
+                    },
+                    oldData : req.body
+                })
+            }
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -68,12 +82,12 @@ const users = {
     // 4. Leer todos los usuarios
     getAllUsers : async (req, res) => {
         try {
-            const allusers = await db.users.findAll();
+            const user = await db.users.findAll();
             const locals = {
                 title: "Todos los usuarios",
                 description: "Aquí está todo tu staff"
             }
-            res.render('users', { allusers, locals });
+            res.render('dashboardUsers', { user, locals });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -129,7 +143,7 @@ const users = {
         try {
             const locals = {
                 title: "Iniciar sesión",
-                description: "Ingresa a una zona increible"
+                description: "Ingresaras a una zona increible"
             }
             res.render('login', {locals});
         } catch (e) {
@@ -143,13 +157,32 @@ const users = {
     //8. acceso login
     postLogin : async (req, res) => {
         try {
-            const profile = await db.users.findOne({
-                where: {
-                    email: req.body.email
-                }
-            })
+            const profile = await db.users.findByField('email', req.body.email)
             if(profile){
-                res.redirect('/dashboard');
+                if(bcryptjs.compareSync(req.body.password, profile.contrasenia)){
+                    delete profile.contrasenia;
+                    req.session.userLogged = profile;
+                    res.redirect('/dashboard', {
+                        user: req.session.userLogged
+                    });
+                } else {
+                    return req.render('login', {
+                        errors: {
+                            email:{
+                                msg: "Las credenciales son invalidas"
+                            }
+                        }
+                    })
+                }
+                
+            } else {
+                return req.render('login', {
+                    errors: {
+                        email:{
+                            msg: "Este usuario no se encuetra registrado"
+                        }
+                    }
+                })
             }
         } catch (e) {
             const locals = {

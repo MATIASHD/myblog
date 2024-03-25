@@ -55,7 +55,11 @@
                     <div class="col-6">
                         <figure class="figure">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<%= article[i].image_url %>" class="figure-img img-fluid" alt="">
+                                <% if (article[i].image_url.startsWith("http://") || article[i].image_url.startsWith("https://")) { %>
+                                    <img src="<%= article[i].image_url %>" class="figure-img img-fluid" alt="">
+                                <% } else {%>
+                                    <img src="../assets/upload/<%= article[i].image_url %>" class="figure-img img-fluid" alt="">
+                                <% } %>
                             </div>
                             <!--data source-->
                             <figcaption class="figure-caption d-none">Test</figcaption>
