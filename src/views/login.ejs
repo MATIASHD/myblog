@@ -1,32 +1,34 @@
-<%- include('./partials/header') %>    
-    <div class="container">
-        <div class="row justify-content-center align-items-center mt-5">
-            <div class="col-sm-12 col-md-6">
-                <h1 class="text-center">Iniciar sesion</h1>
-                <form action="/login" method="post">
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                      <% if(errors && errors.email){ %>
-                        <div class="text-dangerous">
-                          <%= errors.email.msg %>
-                        </div>
-                      <% } %>
+<div class="row justify-content-center align-items-center mt-5">
+    <div class="col-sm-12 col-md-4">
+        <h1 class="text-center">Iniciar sesion</h1>
+        <form action="/login" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? ' border-danger' : ''  %>" id="email" aria-describedby="emailHelp">
+                <% if (locals.errors && errors.email) { %>
+                <div class="text-danger">
+                    <%= errors.email.msg %>
                     </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Recordarme</label>
-                    </div>
-                    <div class="mb-3">
-                      <button type="submit" class="btn btn-primary">Primary</button>
-                    </div>
-                </form>
+                <% } %> 
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? ' border-danger' : ''  %>" id="password">
+                <% if (locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %> 
+            </div>
+            
+            <div class="mb-3 form-check">
+                <input type="checkbox" name="saveme" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Inicar sesión</button>
+            </div>
+        </form>
+        
     </div>
-    <!--tags-->
-<%- include('./partials/footer') %>
+</div>

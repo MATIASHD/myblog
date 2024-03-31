@@ -10,4 +10,9 @@
     <meta name="contenido" content="<%= locals.description %>">
 </head>
 <body>
-    <%- body %>
+    <%- include('../partials/header') %>
+    <div class="container-fluid">
+        <%- body %>
+    </div>
+
+<%- include('../partials/footer') %>

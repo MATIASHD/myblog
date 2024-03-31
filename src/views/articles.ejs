@@ -1,0 +1,48 @@
+<div class="row mb-3">
+    <div class="col-12">
+        <h1>Lista de Publicaciones</h1>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-12">
+        <form action="/createpost" method="get">
+            <button type="submit" class="btn btn-primary btn-lg">Crear entrada</button>
+        </form>
+    </div>
+</div>
+<!--form-->
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% articles.forEach(articles => { %>
+                <tr>
+                    <th scope="row"><%= articles.idarticle %></th>
+                    <td><%= articles.title %></td>
+                    <td><%= articles.fecha_publicacion %></td>
+                    <td><%= articles.author %></td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <form action="/dashboard/article/update/<%= articles.idarticle %>" method="GET">
+                                <button class="btn btn-primary me-md-2" type="submit">Editar</button>
+                            </form>
+                            <form action="/dashboard/article/delete/<%= articles.idarticle %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger" type="submit">Borrar</button>
+                            </form> 
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>   

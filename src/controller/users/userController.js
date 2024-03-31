@@ -1,5 +1,7 @@
 const db = require('../../../database/models');
+const dashboardView = '../views/layouts/dashboard'
 const bcryptjs = require('bcryptjs');
+const { validationResult } = require('express-validator');
 // 1. Fomulario de crear articulo
 // 2. Guardar los datos del usario en la BD
 // 3. Leer un articulo
@@ -7,7 +9,7 @@ const bcryptjs = require('bcryptjs');
 // 5. Formulario para actualizar articulo
 // 6. Actualizar los datos del articulo
 // 7. borrar el articulo
-const users = {
+const usersController = {
     // 1. Fomulario de crear usuario
     getCreateUser : async (req, res) => {
         try {
@@ -15,7 +17,8 @@ const users = {
                 title: "Nuevo usuario",
                 description: "Crear un usuario increible"
             }
-            res.render('register', {locals});
+            
+            res.render('register', {locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -27,9 +30,10 @@ const users = {
     // 2. crear un usuario BD
     postCreateUser : async (req, res) => {
         try {
-            let userInDB = await db.user.findByField('email', req.body.email)
-            if(!userInDB){
+            //let userInDB = await db.users.findOne({where: {email: req.body.email}})
+            //if(!userInDB){
                 let passwordHash = bcryptjs.hashSync(req.body.password, 10);
+                
                 await db.users.create({
                     name: req.body.name,
                     surname: req.body.surname,
@@ -40,7 +44,7 @@ const users = {
                     image: req.body.image
                 })
                 res.redirect('/users');
-            } else {
+            /*} else {
                 return res.render('register', {
                     errors:{
                         email:{
@@ -49,7 +53,7 @@ const users = {
                     },
                     oldData : req.body
                 })
-            }
+            }*/
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -61,16 +65,12 @@ const users = {
     // 3. Leer profile
     getProfile : async (req, res) => {
         try {
-            const profile = await db.users.findByPk({
-                where: {
-                    id: req.params.id
-                }
-            })
+            const profile = await db.users.findByPk(req.params.id);
             const locals = {
                 title: profile.name,
                 description: "Perfil del usuario"
             }
-            res.render('profile', { profile, locals });
+            res.render('profile', { profile, locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -87,7 +87,23 @@ const users = {
                 title: "Todos los usuarios",
                 description: "Aquí está todo tu staff"
             }
-            res.render('dashboardUsers', { user, locals });
+            res.render('dashboardUsers', { user, locals, layout: dashboardView });
+        } catch (e) {
+            const locals = {
+                title: "Mensaje de error",
+                description: "Lo sentimos ha surgido un error"
+            }
+            res.render('error', { error: "No se encontró este articulo", code: e, locals })
+        }
+    },
+    getEditUser : async (req, res) => {
+        try {
+            const profile = await db.users.findByPk(req.params.id);
+            const locals = {
+                title: profile.name,
+                description: "Perfil del usuario"
+            }
+            res.render('profile', { profile, locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -157,41 +173,59 @@ const users = {
     //8. acceso login
     postLogin : async (req, res) => {
         try {
-            const profile = await db.users.findByField('email', req.body.email)
+            let error = validationResult(req);
+            const profile = await db.users.findOne({ where: { email: req.body.email}})
+            
             if(profile){
+                console.log( "Estoy acá: " + req.body.password);
+                if (req.body.password == '') {
+                    return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
+                }
                 if(bcryptjs.compareSync(req.body.password, profile.contrasenia)){
                     delete profile.contrasenia;
                     req.session.userLogged = profile;
-                    res.redirect('/dashboard', {
-                        user: req.session.userLogged
-                    });
-                } else {
-                    return req.render('login', {
-                        errors: {
-                            email:{
-                                msg: "Las credenciales son invalidas"
-                            }
-                        }
-                    })
-                }
-                
-            } else {
-                return req.render('login', {
-                    errors: {
-                        email:{
-                            msg: "Este usuario no se encuetra registrado"
-                        }
+                    if (req.body.saveme) {
+                        res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
                     }
-                })
+                    res.redirect('/dashboard');
+                } else {
+                    return res.render('login', { errors: { email:{ msg: "Las credenciales son invalidas"}}})
+                }
             }
-        } catch (e) {
+                
+            else {
+                return res.render('login', {errors: { email:{ msg: "Este email no se encuetra registrado" }}})
+            }
+        }    
+        catch (e) {
             const locals = {
-                title: "Mensaje de error",
+                title: "Problema en el iniciar de sesión",
                 description: "Lo sentimos ha surgido un error"
             }
-            res.render('error', { error: "No se encontró este articulo", code: e, locals })
+            res.render('error', { error: "hubo un problema al iniciar sesión contacte al soporte técnico", code: e, locals })
         }
-    } 
+    },
+    getResetPassword: async (req, res) => {
+        res.render('resetpassword');
+
+    },
+    putResetPassword: async (req, res) => {
+        res.render('resetpassword');
+
+    },
+    getLogout : async (req, res) => {
+        try {
+            req.session.destroy()
+            res.clearCookie('userEmail');
+            return res.redirect('/');
+        } catch (e) {
+            const locals = {
+                title: "Cerrar sesión",
+                description: "Lo sentimos ha surgido un error"
+            }
+            res.render('error', { error: "No pudimos avanzar con tu petición", code: e, locals })
+        }
+    }
 
 }
-module.exports = users;
+module.exports = usersController;

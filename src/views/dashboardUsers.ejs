@@ -1,60 +1,50 @@
-
-<div class="container-fluid">
-    <div class="row full-vision">
-        <%- include('./partials/navbarleft') %>
-        <main role="main" class="col-md-10 ml-sm-auto my-5 col-lg-10 px-md-4">
-            <div class="container">
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <h1>Lista de usuario</h1>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <form action="/register" method="get">
-                            <button type="submit" class="btn btn-primary btn-lg">Agregar usuario</button>
-                        </form>
-                    </div>
-                </div>
-              
-                <!--form-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Acciones</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    <% user.forEach(user => { %>
-                                        <tr>
-                                            <td><%= user.name %></td>
-                                            <td><%= user.surname %></td>
-                                            <td><%= user.email %></td>
-                                            <td>
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                    <form action="" method="get">
-                                                        <button class="btn btn-primary me-md-2" type="button">Editar</button>
-                                                    </form>
-                                                    <form action="" method="get">
-                                                        <button class="btn btn-danger" type="button">Borrar</button>
-                                                    </form> 
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <% }) %>
-                                  
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
-            
+<main role="main" class="col-md-11">
+    <div class="container-fluid">
+        <div class="row mb-3">
+            <div class="col-12">
+                <h1>Lista de usuario</h1>
             </div>
-        </main>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <form action="/register" method="get">
+                    <button type="submit" class="btn btn-primary btn-lg">Agregar usuario</button>
+                </form>
+            </div>
+        </div>             
+        <!--form-->
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% user.forEach(user => { %>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.surname %></td>
+                            <td><%= user.email %></td>
+                            <td>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <form action="" method="get">
+                                        <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                                    </form>
+                                    <form action="" method="get">
+                                        <button class="btn btn-danger" type="button">Borrar</button>
+                                    </form> 
+                                </div>
+                            </td>
+                        </tr>
+                    <% }) %>                          
+                    </tbody>
+                </table>
+            </div>
+        </div>           
     </div>
-</div>
-<%- include('./partials/footer') %>
+</main>

@@ -3,8 +3,9 @@ const router = express.Router();
 
 //multer
 const uploadImg = require('../middleware/imageUploadMiddleware');
-const { getCreateUser, postCreateUser, getProfile, getAllUsers, getUpdateUser, putUpdateUser, deleteUser, getLogin, postLogin } = require('../controller/users/userController');
-
+const { getCreateUser, postCreateUser, getProfile, getAllUsers, getLogout, putUpdateUser, deleteUser, getLogin, postLogin } = require('../controller/users/userController');
+const { guestMiddleware } = require('../middleware/guestMiddleware');
+const { authMiddleware } = require('../middleware/authMiddleware');
 
 //Login
 router.get('/login', getLogin);
@@ -16,9 +17,12 @@ router.post('/register', uploadImg.single('image'), postCreateUser);
 
 //profile
 router.get('/users', getAllUsers);
-router.get('/user/:id', getProfile)
+router.get('/user/:id',getProfile)
+
+//loguot
+router.get('/logout', getLogout);
 //update profile
-router.put('/user/:id', putUpdateUser);
+router.put('/user/:id', uploadImg.single('image'), putUpdateUser);
 
 //delete profile
 router.delete('user/:id', deleteUser);

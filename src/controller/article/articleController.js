@@ -1,4 +1,5 @@
 const db = require('../../../database/models');
+const dashboardView = '../views/layouts/dashboard'
 // 1. Fomulario de crear articulo
 // 2. Guardar los datos del usario en la BD
 // 3. Leer un articulo
@@ -20,7 +21,7 @@ const articles = {
                 tags: 1,
                 like: 1
             }) 
-            res.redirect('/articles');
+            res.redirect('/dashboard/articles');
     },
     // 1. Fomulario de crear articulo
     getCreate: async (req, res) => {
@@ -29,7 +30,7 @@ const articles = {
                 title: "Nuevo post",
                 description: "Crea increibles entradas"
             }
-            res.render('newPost', { locals });  
+            res.render('newPost', { locals, layout: dashboardView });  
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -46,7 +47,7 @@ const articles = {
                 title: article.title,
                 description: "Crea increibles entradas"
             }
-            res.render('article', { article, locals });
+            res.render('news', { article, locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -64,24 +65,7 @@ const articles = {
                 title: "Lista de articulos",
                 description: "Las increibles entradas estan aquí"
             }
-
-            res.render('allArticle', { articles, locals });
-        } catch (e) {
-            const locals = {
-                title: "Mensaje de error",
-                description: "Lo sentimos ha surgido un error"
-            }
-            res.render('error', { error: "No se encontró este articulo", code: e, locals })
-        }
-    },
-    getAllReadPanel : async (req, res) => {
-        try {
-            let articles = await db.article.findAll()
-            const locals = {
-                title: "Lista de articulos",
-                description: "Las increibles entradas estan aquí"
-            }
-            res.render('dashboardArticle', { articles, locals });
+            res.render('articles', { articles, locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -93,16 +77,12 @@ const articles = {
     // 5. Formulario para actualizar articulo
     getEditPost : async (req, res) =>{
         try {
-            const article = await db.article.findOne({
-                where: {
-                    idarticle: req.params.id
-                }
-            })
+            let article = await db.article.findByPk(req.params.id)
             const locals = {
                 title: "Nuevo post",
                 description: "Crea increibles entradas"
             }
-            res.render('editPost', { locals, article });  
+            res.render('editPost', { locals, article, layout:  dashboardView});  
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",

@@ -7,12 +7,12 @@ const methodOverride = require('method-override');
 const expressLayout = require('express-ejs-layouts');
 const bodyParse = require('body-parser')
 const session = require('express-session');
+const cookies = require('cookie-parser');
 
 //Router
 const mainRouter = require('./router/mainRouter');
-const articleRouter = require('./router/articleRouter');
 const dashboardRouter = require('./router/dashboardRouter');
-const accessRouter = require('./router/access');
+const userLoggedMiddleware = require('./middleware/userLoggedmiddelware');
 
 //Urlencoded - Manejo de datos desde los formularios
 app.use(bodyParse.urlencoded({ extended: false }));
@@ -23,7 +23,14 @@ app.use(session({
     secret: 'Casa Partida',
     resave: false,
     saveUninitialized: false,
+    cookie: {secure: true}
 }));
+
+//Cookie
+app.use(cookies());
+
+//Middle de aplicación
+app.use(userLoggedMiddleware);
 
 //Morgan
 app.use(morgan('dev'));
@@ -41,10 +48,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 
 //Router
-app.use(mainRouter);
-app.use(dashboardRouter);
-app.use(accessRouter);
-app.use(articleRouter);
+app.use('/',mainRouter);
+app.use('/dashboard',dashboardRouter);
 
 app.use((req, res, next) => {
     res.status(404).render('errornotfound');
@@ -63,8 +68,4 @@ app.use((req, res, next) => {
  *      }
  * })
  */
-
-
-
-
 module.exports = app;
