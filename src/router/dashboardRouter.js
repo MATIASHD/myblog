@@ -3,34 +3,35 @@ const router = express.Router();
 //users
 const { getCreateUser, postCreateUser, getProfile, getAllUsers, getLogout, putUpdateUser, deleteUser, getEditUser, getResetPassword, putResetPassword } = require('../controller/users/userController');
 const { getCreate, postCreate, getRead, getAllRead, putUpdate, postDel, getEditPost }  = require('../controller/article/articleController');
-const { dashboard, getError } = require('../controller/dashboard/dashboardController');
+const { dashboard } = require('../controller/dashboard/dashboardController');
 //Middleware
-const { authMiddleware } = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
+const userLogged = require('../middleware/userLoggedmiddelware');
 //Multer
 const uploadImg = require('../middleware/imageUploadMiddleware');
 
 //main dashboard
-router.get('/',authMiddleware, dashboard);
-router.get('/users',authMiddleware, getAllUsers);
-router.get('/user/register',authMiddleware, getCreateUser);
-router.post('/user/register',uploadImg.single('image'), authMiddleware, postCreateUser);
-router.get('/user/profile/', authMiddleware, getProfile);
-router.get('/user/update/:id', authMiddleware, getEditUser);
-router.put('/user/update/:id', authMiddleware, uploadImg.single('image'), putUpdateUser);
-router.delete('/user/delete/:id', authMiddleware, deleteUser);
-router.get('/user/resetpassword', authMiddleware, getResetPassword );
-router.put('/user/resetpassword', authMiddleware, putResetPassword);
-router.get('/user/logout', authMiddleware, getLogout);
+router.get('/dashboard', userLogged, authMiddleware, dashboard);
+router.get('/dashboard/users', userLogged, authMiddleware, getAllUsers);
+router.get('/dashboard/user/register', userLogged, authMiddleware, getCreateUser);
+router.post('/dashboard/user/register', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
+router.get('/dashboard/user/profile/:id', userLogged, authMiddleware, getProfile);
+router.get('/dashboard/user/update/:id', userLogged, authMiddleware, getEditUser);
+router.put('/dashboard/user/update/:id', userLogged, authMiddleware, uploadImg.single('image'), putUpdateUser);
+router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUser);
+router.get('/dashboard/user/resetpassword', userLogged, authMiddleware, getResetPassword );
+router.put('/dashboard/user/resetpassword', userLogged, authMiddleware, putResetPassword);
+router.get('/dashboard/user/logout', userLogged, authMiddleware, getLogout);
 
 //articles
-router.get('/articles', authMiddleware, getAllRead);
-router.get('/article/create', authMiddleware, getCreate);
-router.post('/article/create', authMiddleware,uploadImg.single('image'), postCreate);
+router.get('/dashboard/posts', authMiddleware, getAllRead);
+router.get('/dashboard/post/create', authMiddleware, getCreate);
+router.post('/dashboard/post/create', authMiddleware,uploadImg.single('image'), postCreate);
 
-router.get('/article/:id', authMiddleware, getRead);
-router.get('/article/update/:id', authMiddleware, getEditPost);
-router.put('/article/update/:id', authMiddleware, uploadImg.single('image'), putUpdate);
-router.delete('/article/delete/:id', authMiddleware, postDel);
+router.get('/dashboard/post/:id', authMiddleware, getRead);
+router.get('/dashboard/post/update/:id', authMiddleware, getEditPost);
+router.put('/dashboard/post/update/:id', authMiddleware, uploadImg.single('image'), putUpdate);
+router.delete('/dashboard/post/delete/:id', authMiddleware, postDel);
 
 
 module.exports = router;

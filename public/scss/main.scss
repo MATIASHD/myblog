@@ -1,34 +1,36 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-body{
+  body{
     font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-.container{
+  .content {
+    flex: 1;
+  }
+
+  .container{
     width: 95%;
-}
+  }
 
-.section-style{
+  .section-style{
     height: 500px;
     background-color: aquamarine;
     margin-bottom: 1rem;
-}
+  }
 
-.imagen-redondeada {
+  .imagen-redondeada {
     border-radius: 50%; /* Esto hace que la imagen sea circular */
-}
+  }
 
-.select-share a:hover{
-    background-color: rgba(22,29,111,0.5);
-    border-radius: 80%;
-}
-
-.merriweather-light {
+  .merriweather-light {
     font-family: "Merriweather", serif;
     font-weight: 300;
     font-style: normal;
   }
-  
+
   .merriweather-regular {
     font-family: "Merriweather", serif;
     font-weight: 400;
@@ -36,44 +38,53 @@ body{
     font-style: normal;
   }
   .merriweather-regular-line-height{
-    line-height: 2.2rem;
+    line-height: 2rem;
   }
-
-  
   .merriweather-bold {
     font-family: "Merriweather", serif;
     font-weight: 700;
     font-style: normal;
   }
-  
+
   .merriweather-black {
     font-family: "Merriweather", serif;
     font-weight: 900;
     font-style: normal;
   }
-  
+
   .merriweather-light-italic {
     font-family: "Merriweather", serif;
     font-weight: 300;
     font-style: italic;
   }
-  
+
   .merriweather-regular-italic {
     font-family: "Merriweather", serif;
     font-weight: 400;
     font-style: italic;
   }
-  
+
   .merriweather-bold-italic {
     font-family: "Merriweather", serif;
     font-weight: 700;
     font-style: italic;
   }
-  
+
   .merriweather-black-italic {
     font-family: "Merriweather", serif;
     font-weight: 900;
     font-style: italic;
   }
-  
+
+  .article-subtitle{
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-style: bold;
+    color: #000;
+  }
+
+  .img-card {
+    width: 250px;
+    height: 150px;
+  }
+
 

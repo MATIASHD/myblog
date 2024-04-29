@@ -1,36 +1,47 @@
-<h1>Profile</h1>
 <div class="row justify-content-center align-items-center mt-5">
     <div class="col-sm-12 col-md-6">
         <h1 class="text-center">Perfil</h1>
-        <figure>
-            <figcaption>
-                <img src="" alt="">
-            </figcaption>
-        </figure>
         <div class="mb-3">
-            <label for="name" class="form-label">Nombres:</label>
+            <div class="col-xs-12 col-md-5">
+                <picture> 
+                    <img src="/assets/upload/<%= user.image %>" class="img-fluid" alt="Foto de perfil de <%= user.name %> <%= user.surname %>">
+                </picture>
+            </div>
+            
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label text-opacity-75">Nombres:</label>
             <p><%= user.name %></p>
         </div>
         <div class="mb-3">
-            <label for="surname" class="form-label">Nombres:</label>
+            <label for="surname" class="form-label bg-tertiary text-opacity-75">Apellido:</label>
             <p><%= user.surname %></p>
         </div> 
         <div class="mb-3">
-            <label for="nick" class="form-label">Nombres:</label>
+            <label for="nick" class="form-label">Nick:</label>
             <p><%= user.nick %></p>
         </div> 
         <div class="mb-3">
-            <label for="email" class="form-label">Nombres:</label>
-            <p><%= user.email %></p>
-        </div> 
-        <div class="mb-3">
-            <label for="bio" class="form-label">Nombres:</label>
+            <label for="nick" class="form-label">Bio:</label>
             <p><%= user.bio %></p>
         </div> 
         <div class="mb-3">
-            <form action="/dashboard/user/update/<%= user.id %>" method="post" enctype="multipart/form-data">
-                <button type="submit" class="btn btn-primary">Editar</button>
-            </form>
+            <label for="email" class="form-label">Email:</label>
+            <p><%= user.email %></p>
+        </div> 
+        <div class="mb-3">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="/dashboard/user/update/<%= user.id %>" method="get" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form action="/dashboard/user/delete/<%= user.id %>?_method=DELETE" method="post" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>   
         </div>
    </div>
 </div>

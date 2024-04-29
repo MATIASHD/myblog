@@ -1,0 +1,9 @@
+root =  true
+
+[*]
+charset = utf-8 #Codificacion 
+end_of_line = lf #Pone \n fin de la linea
+indent_size = 2 #Cantidad de espacio
+indent_style = space #La forma en lo cual deja espacio
+insert_final_newline = true # Dejar una ultima linea cuando guardo el proyecto
+trim_trailing_whitespace = true #Se elimina los espacios cuando guardo el proyecto

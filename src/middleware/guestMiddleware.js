@@ -1,8 +1,7 @@
-const db = require('../../database/models');
 function guestMiddleware(req, res, next) {
-    if (req.session.userLogged) {
-        res.redirect('/dashboard/user/profile/');
-    }
-    next();
+  if(req.session.user) {
+    res.redirect('/dashboard');
+  }
+  next();
 }
 module.exports = guestMiddleware;

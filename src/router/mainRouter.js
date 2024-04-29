@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-const { guestMiddleware } = require('../middleware/guestMiddleware');
 const { getLogin, postLogin } = require('../controller/users/userController');
 const { getMain, getArticle, getArticles, getResetPassword, getError } = require('../controller/main/main');
-const  loginValidator  = require('../middleware/validator/loginValidator');
+const loginValidator  = require('../middleware/validator/loginValidator');
+const guestMiddleware = require('../middleware/guestMiddleware');
+const { poly } = require('../models/polygon')
 router.get('/', getMain);
 //article
 router.get('/article/:id', getArticle);
@@ -18,8 +19,9 @@ router.get('/resetpassword', getResetPassword);
 router.get('/error', getError);
 //contacto
 //Iniciar sesion
-router.get('/login', getLogin);
+router.get('/login', guestMiddleware, getLogin);
 router.post('/login', loginValidator, postLogin);
+router.get('/polygon', poly)
 
 
 //galeria

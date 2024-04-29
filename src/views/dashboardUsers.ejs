@@ -1,5 +1,5 @@
-<main role="main" class="col-md-11">
-    <div class="container-fluid">
+<div class="row d-flex justify-content-center mt-4">
+    <div class="col-md-11">
         <div class="row mb-3">
             <div class="col-12">
                 <h1>Lista de usuario</h1>
@@ -7,7 +7,7 @@
         </div>
         <div class="row mb-3">
             <div class="col-12">
-                <form action="/register" method="get">
+                <form action="/dashboard/user/register" method="get">
                     <button type="submit" class="btn btn-primary btn-lg">Agregar usuario</button>
                 </form>
             </div>
@@ -32,12 +32,12 @@
                             <td><%= user.email %></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <form action="" method="get">
-                                        <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                                    <form action="/dashboard/user/profile/<%= user.id %>" method="get">
+                                        <button class="btn btn-primary me-md-2" type="submit">Perfil</button>
                                     </form>
-                                    <form action="" method="get">
+                                    <!--<form action="" method="get">
                                         <button class="btn btn-danger" type="button">Borrar</button>
-                                    </form> 
+                                    </form>-->
                                 </div>
                             </td>
                         </tr>
@@ -45,6 +45,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>           
-    </div>
-</main>
+        </div>
+    </div>          
+</div>

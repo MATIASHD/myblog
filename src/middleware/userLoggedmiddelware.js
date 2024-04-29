@@ -1,21 +1,20 @@
-const db = require('../../database/models')
-const userLoggedMiddleware = async (req,res,next) => {
-    res.locals.isLogged = false;
+const db = require('../../database/models');
 
-    //Cookie
-   /* let emailInCookie = req.cookies.userEmail;
-       let userFromCookie = await db.users.findOne({where: { email: emailInCookie }})
-    if(userFromCookie){
-        req.session.userLogged = userFromCookie
-    }*/
+const userLoggedMiddleware = async (req, res, next) => {
+  res.locals.isLogged = false;
 
-    //Session
-    if (req.session && req.session.userLogged) {
-        res.locals.isLogged = true;
-        res.locals.user = req.session.userLogged;
-    }
-    next();
+  let emailInCookie = req.cookies.userEmail;
+  let userFromCookie = await db.users.findOne({ where: { email: emailInCookie || null}});
+
+  if(userFromCookie){
+    req.session.user = userFromCookie;
+  }
+
+  if (req.session && req.session.user) {
+    res.locals.isLogged = true;
+    res.locals.userLogged = req.session.user;
+  }
+
+  next();
 }
 module.exports = userLoggedMiddleware;
-
-//middleware de aplicación

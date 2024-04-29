@@ -7,7 +7,8 @@ const dashboard = {
                 title: "Dashboard",
                 description: "You can create everything"
             }
-            res.render('dashboard', {locals, layout: dashboardView});
+            const user = req.session.user
+            res.render('dashboard', {locals, layout: dashboardView, user});
         } catch{
             const locals = {
                 title: "Mensaje de error",
@@ -15,8 +16,9 @@ const dashboard = {
             }
             res.render('error', { error: "No se encontró este articulo", code: e, locals })
         }
-       
+
     },
+    //VER MAS TARDE
     getError : async (req, res) => {
         try{
             const locals = {
@@ -31,9 +33,9 @@ const dashboard = {
             }
             res.render('error', { error: "No se encontró este articulo", code: e, locals })
         }
-       
+
     }
-    
+
 }
 
 module.exports = dashboard;

@@ -21,7 +21,7 @@ const articles = {
                 tags: 1,
                 like: 1
             }) 
-            res.redirect('/dashboard/articles');
+            res.redirect('/dashboard/posts');
     },
     // 1. Fomulario de crear articulo
     getCreate: async (req, res) => {
@@ -110,7 +110,7 @@ const articles = {
                     idarticle: req.params.id
                 }
             }) 
-            res.redirect('/article/'+ req.params.id);
+            res.redirect('/dashboard/post/'+ req.params.id);
         } catch(e) {
             const locals = {
                 title: "Mensaje de error",
@@ -127,7 +127,7 @@ const articles = {
                     idarticle: req.params.id
                 }
             })
-            res.redirect('/articlespanel')
+            res.redirect('/dashboard/users')
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",

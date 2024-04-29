@@ -11,14 +11,14 @@
 </head>
 <body>
     <%- include('../partials/header_dashboard.ejs') %>
-    <div class="container-fluid">
+    <div class="content container-fluid">
         <div class="row">
-            <%- include('../partials/navbarleft') %>
-            <main role="main" class="col-md-11">
-                <div class="container-fluid">
-                    <%- body %>
-                </div>
-            </main>
+            <div class="col-md-1">
+                <%- include('../partials/navbarleft') %>
+            </div>
+            <div class="col-md-11">
+                <%- body %>
+            </div>
         </div>
     </div>
     <%- include('../partials/footer.ejs') %>
