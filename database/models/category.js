@@ -1,14 +1,14 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = "category";
     let cols = {
-        idcategory:{
+        id:{
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        category_name:{
-            type: dataTypes.STRING(100),
+        nombre:{
+            type: dataTypes.STRING(255),
             allowNull: false
         },
     };

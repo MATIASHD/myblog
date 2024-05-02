@@ -180,12 +180,13 @@ const usersController = {
   postLogin : async (req, res) => {
     try {
       const profile = await db.users.findOne({ where: { email: req.body.email}});
+      console.log(profile);
       if(profile){
         if (req.body.password == '') {
           return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
         }
-        if(bcryptjs.compareSync(req.body.password, profile.contrasenia)){
-          delete profile.contrasenia;
+        if(bcryptjs.compareSync(req.body.password, profile.userpassword)){
+          delete profile.userpassword;
           req.session.user = profile;
 
           if (req.body.saveme) {
