@@ -7,10 +7,6 @@
       </div>
     </div>
     <div class="row">
-      <!--Sustitle-->
-      <div class="col-xs-12">
-        <h2 class="text-secondary-emphasis"> <%= article.subtitle %></h2>
-      </div>
     </div>
       <div class="row">
         <div class="col-12">
@@ -28,10 +24,10 @@
                 <figure class="figure my-1">
                     <hr>
                     <div class="d-flex justify-content-center align-items-center">
-                    <% if (article.image_url.startsWith("http://") || article.image_url.startsWith("https://")) { %>
+                    <% if (article.img.startsWith("http://") || article.img.startsWith("https://")) { %>
                         <img src="<%= article.image_url %>" class="figure-img img-fluid" alt="">
                     <% } else {%>
-                        <img src="../assets/upload/<%= article.image_url %>" class="figure-img img-fluid" alt="">
+                        <img src="../assets/upload/<%= article.img %>" class="figure-img img-fluid" alt="">
                     <% } %>
                     </div>
                     <!--data source-->
@@ -46,14 +42,14 @@
                 <img class="img-fluid imagen-redondeada" src="https://miro.medium.com/v2/resize:fill:44:44/1*ChLj4H1bkCLD6RJzzM3iIg.png" alt="">
             </div>
             <div class="col">
-                <p class="m-0"><%= article.author %></p>
-                <span class="text-secondary"> <%= article.fecha_publicacion %></span>
+                <p class="m-0"><%= article.author_id %></p>
+                <span class="text-secondary"> <%= article.create_at %></span>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="merriweather-regular">
-                    <p><%- article.contenido %></p>
+                    <p><%- article.content %></p>
                 </div>
             </div>
         </div>

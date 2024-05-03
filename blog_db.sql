@@ -37,8 +37,9 @@ CREATE TABLE IF NOT EXISTS article (
     created_at TIMESTAMP NOT NULL DEFAULT (NOW()),
     FOREIGN KEY (author_id) REFERENCES users(id)
 );
+
 INSERT INTO article(title, content, estract, author_id, draft, img ) VALUES
-('You’re Wasting Your Time Posting Daily on LinkedIn','Holaarticle', 'Blind consistency vs intentional branding on LinkedIn','1712006084350_user.jpeg', 1, 0 );
+('You’re Wasting Your Time Posting Daily on LinkedIn','Holaarticle', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
 
 
 -- Comentarios

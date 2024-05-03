@@ -28,10 +28,10 @@
                     <tbody>
                     <% articles.forEach(articles => { %>
                         <tr>
-                            <th scope="row"><%= articles.idarticle %></th>
+                            <th scope="row"><%= articles.id %></th>
                             <td><%= articles.title %></td>
-                            <td><%= articles.fecha_publicacion %></td>
-                            <td><%= articles.author %></td>
+                            <td><%= articles.created_at %></td>
+                            <td><%= articles.author_id %></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <form action="/dashboard/post/update/<%= articles.idarticle %>" method="GET">

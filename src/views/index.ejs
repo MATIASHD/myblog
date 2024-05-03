@@ -11,7 +11,7 @@
       <div class="col-md-9 col-xs-12">
         <h1 class="fs-3">Matias Arevalo</h1>
           <p class="">Soy desarrollador full stack web Jr, Me gusta crear productos accesibles para todos. Pensado a la persona como centro de nuestras propuestas, abarcando un gran espectro de la misma.</p>
-          <a href="/aboutme">hey@matiasarevalo.com</a>
+          <a href="#">hey@matiasarevalo.com</a>
       </div>
     </div>
     <div class="row">
@@ -24,17 +24,17 @@
         <div class="d-flex">
           <div class="col">
             <h5 class="mt-0"><%= article[i].title %></h5>
-            <p><%= article[i].subtitle %></p>
-            <a class="icon-link" href="/article/<%= article[i].idarticle %>">
+            <p><%= article[i].estract %></p>
+            <a class="icon-link" href="/article/<%= article[i].id %>">
               Leer más
               <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
           <div class="justify-content-end">
-          <% if (article[i].image_url.startsWith("http://") || article[i].image_url.startsWith("https://")) { %>
-            <img src="<%= article[i].image_url %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
+          <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
+            <img src="<%= article[i].img %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
           <% } else {%>
-            <img src="../assets/upload/<%= article[i].image_url %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
+            <img src="../assets/upload/<%= article[i].img %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
           <% } %>
           </div>
         </div>

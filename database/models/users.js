@@ -1,37 +1,37 @@
-module.exports = (sequelize, dataTypes) => {
-  let alias = "users";
-  let cols = {
+const { DataTypes } = require('sequelize');
+const Sequelize = require('sequelize');
+const article = require('./article');
+const users = Sequelize.define('users',{
     id:{
-      type: dataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
     username:{
-      type: dataTypes.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     lastname:{
-      type: dataTypes.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     email:{
-      type: dataTypes.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     userpassword:{
-      type: dataTypes.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     userimg:{
-      type: dataTypes.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false
     }
-  };
-  let config = {
+  },{
     tableName: "users",
     timestamps: false
-  }
-  const users = sequelize.define(alias, cols, config);
-  return users;
-}
+  });
+
+  users.hasOne(article, { foreignKey: 'author_id', as: 'article' });
+  module.exports = users;
