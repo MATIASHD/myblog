@@ -20,7 +20,7 @@ const articles = {
                 categoty: 1,
                 tags: 1,
                 like: 1
-            }) 
+            })
             res.redirect('/dashboard/posts');
     },
     // 1. Fomulario de crear articulo
@@ -30,7 +30,7 @@ const articles = {
                 title: "Nuevo post",
                 description: "Crea increibles entradas"
             }
-            res.render('newPost', { locals, layout: dashboardView });  
+            res.render('newPost', { locals, layout: dashboardView });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -42,7 +42,7 @@ const articles = {
     // 3. Leer un articulo
     getRead : async (req, res) => {
         try {
-            let article = await db.article.findByPk(req.params.id)
+            let article = await db.article.findByPk(req.params.id,{include: ["author"]})
             const locals = {
                 title: article.title,
                 description: "Crea increibles entradas"
@@ -55,12 +55,12 @@ const articles = {
             }
             res.render('error', { error: "No se encontró este articulo", code: e, locals })
         }
-    
+
     },
     // 4. Leer todos los articulos
     getAllRead : async (req, res) => {
         try {
-            let articles = await db.article.findAll()
+            let articles = await db.article.findAll({include: ["author"]})
             const locals = {
                 title: "Lista de articulos",
                 description: "Las increibles entradas estan aquí"
@@ -78,11 +78,12 @@ const articles = {
     getEditPost : async (req, res) =>{
         try {
             let article = await db.article.findByPk(req.params.id)
+            let author = await db.users.findAll()
             const locals = {
                 title: "Nuevo post",
                 description: "Crea increibles entradas"
             }
-            res.render('editPost', { locals, article, layout:  dashboardView});  
+            res.render('editPost', { locals, author, article, layout:  dashboardView});
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -93,23 +94,21 @@ const articles = {
     },
     putUpdate : async (req, res) => {
         try {
-            const article = await db.article.findByPk(req.params.id);
-            const {title, subtitle, post, author} = req.body;
+            const article = await db.article.findByPk(req.params.id, {include: ["author"]});
+            const {title, estracto, post, author, post_status} = req.body;
             await db.article.update({
                 title: title,
-                subtitle: subtitle,
-                image_url: req.file ? req.file.filename : article.image,
-                contenido: post,
-                fecha_publicacion: new Date(),
-                author: author,
-                categoty: 1,
-                tags: 1,
-                like: 1
+                content: post,
+                estract: estracto,
+                author_id: author,
+                draft: post_status,
+                created_at: new Date(),
+                img: req.file ? req.file.filename : article.image,
             },{
                 where: {
-                    idarticle: req.params.id
+                    id: req.params.id
                 }
-            }) 
+            })
             res.redirect('/dashboard/post/'+ req.params.id);
         } catch(e) {
             const locals = {
@@ -134,7 +133,7 @@ const articles = {
                 description: "Lo sentimos ha surgido un error"
             }
             res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e, locals })
-            
+
         }
     }
 }

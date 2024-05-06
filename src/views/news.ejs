@@ -1,58 +1,72 @@
 <div class="row my-5">
   <div class="col-md-5 col-lg-5 offset-md-3 offset-lg-3">
+
     <div class="row">
       <!--Title-->
       <div class="col-xs-12 mb-3">
-        <h1 class="fw-bold"> <%= article.title %></h1>
+        <h1 class="fw-bold fs-1"> <%= article.title %></h1>
+      </div>
+      <div class="col-xs-12 mb-3">
+        <h2 class="fw-normal fs-4"> <%= article.subtitle %></h2>
       </div>
     </div>
+
     <div class="row">
+      <div class="col-12">
+        <ul class="nav fs-3 mini-share-bar">
+          <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-x-twitter"></i></a></li>
+          <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+          <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-instagram"></i></a></li>
+          <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-regular fa-envelope"></i></a></li>
+        </ul>
+      </div>
     </div>
-      <div class="row">
-        <div class="col-12">
-          <ul class="nav fs-3 mini-share-bar">
-            <li class="select-item"><a class="nav-link select-share  text-body-secondary" href=""><i class="fa-brands fa-x-twitter"></i></a></li>
-            <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-            <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-brands fa-instagram"></i></a></li>
-            <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-regular fa-envelope"></i></a></li>
-          </ul>
+
+    <div class="row">
+    <!--Contenido multimedia, imagen video, audio, etc-->
+      <div class="col-xs-12">
+        <figure class="figure my-1">
+          <hr>
+          <div class="d-flex justify-content-center align-items-center">
+            <% if (article.img.startsWith("http://") || article.img.startsWith("https://")) { %>
+              <img src="<%= article.img %>" class="figure-img img-fluid" alt="">
+            <% } else {%>
+              <img src="../assets/upload/<%= article.img %>" class="figure-img img-fluid" alt="">
+            <% } %>
+          </div>
+          <!--data source-->
+          <figcaption class="figure-caption fs-6 fw-light">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
+          <hr>
+        </figure>
+      </div>
+    </div>
+
+    <div class="row d-flex align-items-center">
+      <!-- Data of author-->
+      <div class="col-2 text-center">
+        <figure class="figure my-1">
+            <% if (article.author.userimg.startsWith("http://") || article.author.userimg.startsWith("https://")) { %>
+              <img src="<%= article.author.userimg %>" class="img-fluid imagen-redondeada" alt="">
+            <% } else {%>
+              <img src="../assets/upload/<%= article.author.userimg %>" class="img-fluid imagen-redondeada" alt="">
+            <% } %>
+          <!--data source-->
+          <figcaption class="figure-caption d-none">perfil de usuario</figcaption>
+        </figure>
+      </div>
+      <div class="col">
+        <p class="m-0"><%= article.created_at %></p>
+        <span class="text-secondary"><%= article.author.username %> <%= article.author.lastname %></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col lh-base">
+        <div class="merriweather-regular">
+          <p><%- article.content %></p>
         </div>
       </div>
-      <div class="row">
-            <!--Contenido multimedia, imagen video, audio, etc-->
-            <div class="col-xs-12">
-                <figure class="figure my-1">
-                    <hr>
-                    <div class="d-flex justify-content-center align-items-center">
-                    <% if (article.img.startsWith("http://") || article.img.startsWith("https://")) { %>
-                        <img src="<%= article.image_url %>" class="figure-img img-fluid" alt="">
-                    <% } else {%>
-                        <img src="../assets/upload/<%= article.img %>" class="figure-img img-fluid" alt="">
-                    <% } %>
-                    </div>
-                    <!--data source-->
-                    <figcaption class="figure-caption">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-                    <hr>
-                </figure>
-            </div>
-        </div>
-        <div class="row mb-4 d-flex align-items-center">
-            <!-- Data of author-->
-            <div class="col-2">
-                <img class="img-fluid imagen-redondeada" src="https://miro.medium.com/v2/resize:fill:44:44/1*ChLj4H1bkCLD6RJzzM3iIg.png" alt="">
-            </div>
-            <div class="col">
-                <p class="m-0"><%= article.author_id %></p>
-                <span class="text-secondary"> <%= article.create_at %></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="merriweather-regular">
-                    <p><%- article.content %></p>
-                </div>
-            </div>
-        </div>
     </div>
+  </div>
 </div>
 

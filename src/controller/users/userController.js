@@ -36,13 +36,11 @@ const usersController = {
       if(!userInDB){
         let passwordHash = bcryptjs.hashSync(req.body.password, 10);
         await db.users.create({
-          name: req.body.name,
-          surname: req.body.surname,
-          nick: req.body.nick,
-          bio: req.body.bio,
+          username: req.body.name,
+          lastname: req.body.surname,
           email:req.body.email,
-          contrasenia: passwordHash,
-          image: req.file.filename
+          userpassword: passwordHash,
+          userimg: req.file.filename
         })
         res.redirect('/dashboard/users');
       } else {
@@ -123,12 +121,9 @@ const usersController = {
   putUpdateUser  : async (req, res) => {
     try {
       await db.users.update({
-        name: req.body.name,
-        surname: req.body.surname,
-        nick: req.body.nick,
-        bio: req.body.bio,
+        username: req.body.name,
+        lastname: req.body.surname,
         email:req.body.email,
-        contrasenia:req.body.password,
         image: req.file.filename
       },{
         where: {

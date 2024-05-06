@@ -1,28 +1,44 @@
 <div class="col-sm-12 offset-md-3 col-md-6">
-    <h1 class="text-center">Editar Post</h1>
-    <form action="/dashboard/post/update/<%- article.idarticle %>?_method=PUT" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="title" class="form-label">Titulo</label>
-            <input type="text" value="<%- article.title %>" name="title" class="form-control" id="title" aria-describedby="title">
-        </div>
-        <div class="mb-3">
-            <label for="subtitle" class="form-label">Subtitulo</label>
-            <input type="text" value="<%- article.subtitle %>" name="subtitle" class="form-control" id="subtitle" aria-describedby="subtitle">
-        </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Imagen</label>
-            <input class="form-control" value="<%- article.image %>" name="image" accept="image/*" type="file" id="image">
-        </div>
-        <div class="mb-3">
-            <label for="floatingTextarea">Post</label>
-            <textarea class="form-control" name="post" rows="10" cols="700" placeholder="Leave a comment here" id="floatingTextarea"><%- article.contenido %></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="author" class="form-label">Autor</label>
-            <input type="text" value="<%- article.author %>" name="author" class="form-control" id="author" aria-describedby="author">
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Publicar</button>
-        </div>
-    </form>            
+  <h1 class="text-center">Editar Post</h1>
+  <form action="/dashboard/post/update/<%= article.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titulo</label>
+      <input type="text" value="<%- article.title %>" name="title" class="form-control" id="title" aria-describedby="title">
+    </div>
+    <div class="mb-3">
+      <label for="estracto" class="form-label">introducción</label>
+      <input type="text" value="<%- article.estract %>" name="estracto" class="form-control" id="estracto" aria-describedby="estracto">
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Imagen</label>
+      <input class="form-control" value="<%- article.image %>" name="image" accept="image/*" type="file" id="image">
+    </div>
+    <div class="mb-3">
+      <label for="floatingTextarea">Post</label>
+      <textarea class="form-control" name="post" rows="10" cols="700" placeholder="Leave a comment here" id="floatingTextarea"><%- article.content %></textarea>
+    </div>
+    <div class="mb-3">
+      <div class="form-floating">
+        <select class="form-select" name="author" id="floatingSelect" aria-label="Floating label select example">
+          <option selected>Editorial</option>
+          <% for (let i = 0; i < author.length; i++) { %>
+          <option value="<%= author[i].id %>"><%= author[i].username %> <%= author[i].lastname %></option>
+          <% } %>
+        </select>
+        <label for="floatingSelect">Autor</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="form-floating">
+        <select class="form-select" name="post_status" id="floatingSelect" aria-label="Floating label select example">
+          <option value="1" selected>Borrador</option>
+          <option value="0">Publicar</option>
+        </select>
+        <label for="floatingSelect">Estado del post</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Publicar</button>
+    </div>
+  </form>
 </div>

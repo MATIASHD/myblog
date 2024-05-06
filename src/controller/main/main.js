@@ -7,7 +7,7 @@ const main = {
                 title: "main",
                 description: "Todo lo que necesitas, está aquí"
             }
-            res.render('index', { locals, article });  
+            res.render('index', { locals, article });
         } catch (e) {
             const locals = {
                 title: "Mensaje de error",
@@ -18,7 +18,9 @@ const main = {
     },
     getArticle : async (req, res) => {
         try {
-            let article = await db.article.findByPk(req.params.id)
+            let article = await db.article.findByPk(req.params.id,{
+              include: ["author"]
+            })
             const locals = {
                 title: article.title,
                 description: "Crea increibles entradas"
@@ -55,6 +57,6 @@ const main = {
     getError : async (req, res) => {
         res.send("Lo sentimos")
 
-    },   
+    },
 }
 module.exports = main;

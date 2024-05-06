@@ -9,7 +9,6 @@ const bodyParse = require('body-parser')
 const session = require('express-session');
 const cookies = require('cookie-parser');
 const helmet = require('helmet');
-const fetch = require('node-fetch');
 
 //Router
 const userLoggedMiddleware = require('./middleware/userLoggedmiddelware');

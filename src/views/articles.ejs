@@ -15,12 +15,12 @@
         <!--form-->
         <div class="row">
             <div class="col-md-12">
-                <table class="table">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Fecha</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -28,18 +28,24 @@
                     <tbody>
                     <% articles.forEach(articles => { %>
                         <tr>
-                            <th scope="row"><%= articles.id %></th>
                             <td><%= articles.title %></td>
                             <td><%= articles.created_at %></td>
-                            <td><%= articles.author_id %></td>
+                            <td>
+                              <% if(articles.draft == 0) { %>
+                                <span class="badge text-bg-primary">Publicado</span>
+                              <% } else { %>
+                                <span class="badge text-bg-secondary">Borrador</span>
+                              <%  } %>
+                              </td>
+                            <td><%= articles.author.username %> <%= articles.author.lastname %></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <form action="/dashboard/post/update/<%= articles.idarticle %>" method="GET">
+                                    <form action="/dashboard/post/update/<%= articles.id %>" method="GET">
                                         <button class="btn btn-primary me-md-2" type="submit">Editar</button>
                                     </form>
-                                    <form action="/dashboard/post/delete/<%= articles.idarticle %>?_method=DELETE" method="POST">
+                                    <form action="/dashboard/post/delete/<%= articles.id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-danger" type="submit">Borrar</button>
-                                    </form> 
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -49,4 +55,4 @@
             </div>
         </div>
     </div>
-</div>   
+</div>
