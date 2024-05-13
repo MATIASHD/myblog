@@ -11844,30 +11844,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
+body, .roboto-font {
   font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.content {
-  flex: 1;
-}
-
-.container {
-  width: 95%;
-}
-
-.section-style {
-  height: 500px;
-  background-color: aquamarine;
-  margin-bottom: 1rem;
-}
-
-.imagen-redondeada {
-  border-radius: 50%; /* Esto hace que la imagen sea circular */
-  max-width: 5rem;
 }
 
 .merriweather-light {
@@ -11923,13 +11901,8 @@ body {
   font-style: italic;
 }
 
-.article-subtitle {
-  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-style: bold;
-  color: #000;
-}
-
-.img-card {
-  width: 250px;
-  height: 150px;
+.article-font {
+  font-family: "Gentium Plus", serif;
+  font-weight: 400;
+  font-style: normal;
 }

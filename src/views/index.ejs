@@ -1,50 +1,53 @@
-<div class="row my-5">
-  <div class="col-lg-4 offset-lg-4">
-    <div class="row d-flex align-items-center">
-      <div class="col-md-3 col-xs-12 ">
-        <figure class="figure my-1">
-          <img src="../assets/img/WhatsApp Image 2024-02-01 at 19.30.26.jpeg" style="width: 150px;" class="figure-img img-fluid imagen-redondeada" alt="">
-            <!--data source-->
-          <figcaption class="figure-caption d-none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-        </figure>
-      </div>
-      <div class="col-md-9 col-xs-12">
-        <h1 class="fs-3">Matias Arevalo</h1>
-          <p class="">Soy desarrollador full stack web Jr, Me gusta crear productos accesibles para todos. Pensado a la persona como centro de nuestras propuestas, abarcando un gran espectro de la misma.</p>
-          <a href="#">hey@matiasarevalo.com</a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <hr>
-      </div>
-    </div>
-      <% for (let i = 0; i < article.length; i++) { %>
-      <div class="row">
-        <div class="d-flex">
-          <div class="col">
-            <h5 class="mt-0"><%= article[i].title %></h5>
-            <p><%= article[i].estract %></p>
-            <a class="icon-link" href="/article/<%= article[i].id %>">
-              Leer más
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="justify-content-end">
-          <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
-            <img src="<%= article[i].img %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
-          <% } else {%>
-            <img src="../assets/upload/<%= article[i].img %>" class="flex-shrink-0 figure-img img-card object-fit-cover img-fluid" alt="">
-          <% } %>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-ms-12 col-md-11 col-lg-8 mx-auto  mb-4">
+        <div class="row">
+            <div class="col-3">
+                <div class="text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Foto_De_Perfil_2022.jpg" style="width: 150px;" class="img-fluid rounded-circle" alt="...">
+                </div>
+            </div>
+            <div class="col-9">
+                <h1 class="fw-bold mb-1">Matias Arevalo</h1>
+                <h3 class="fw-medium mb-1">About</h3>
+                <p class="fw-normal fst-normal lh-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo eos totam natus eligendi magnam et, mollitia nostrum quas beatae rem corrupti libero laborum expedita nulla deleniti esse molestiae nesciunt consequuntur.</p>
+                <h6 class="text-primary">hey@matiasarevalo.com</h6>
+            </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <hr>
-        </div>
-      </div>
-    <% } %>
+    </div>
   </div>
+</div>
+
+<div class="container">
+<div class="row">
+  <% for (let i = 0; i < article.length; i++) { %>
+  <div class="col-ms-12 col-md-6 col-lg-4 mb-4">
+    <div class="row">
+      <div class="col-12 mb-2">
+        <div class="card border-0 mb-2">
+          <figure>
+              <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
+                <img src="<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+              <% } else {%>
+                <img src="../assets/upload/<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+              <% } %>
+            <!--data source-->
+            <figcaption class="figure-caption d-none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="row">
+          <div class="col-1">
+            <span class="badge text-bg-secondary">Light</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <a href="/article/<%= article[i].id %>"><h5><%= article[i].title %></h5></a>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
 </div>
