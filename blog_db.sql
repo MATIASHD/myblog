@@ -29,6 +29,7 @@ INSERT INTO category(nombre) VALUES ("Programación");
 CREATE TABLE IF NOT EXISTS article (
 	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     title VARCHAR(255) NOT NULL,
+    subtitle VARCHAR(300) NOT NULL,
     content TEXT NOT NULL,
     estract VARCHAR(300),
     author_id INT,
@@ -38,8 +39,8 @@ CREATE TABLE IF NOT EXISTS article (
     FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
-INSERT INTO article(title, content, estract, author_id, draft, img ) VALUES
-('You’re Wasting Your Time Posting Daily on LinkedIn','Holaarticle', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
+INSERT INTO article(title, subtitle, content, estract, author_id, draft, img ) VALUES
+('You’re Wasting Your Time Posting Daily on LinkedIn', 'Blind consistency vs intentional branding on LinkedIn','Holaarticle', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
 
 
 -- Comentarios
