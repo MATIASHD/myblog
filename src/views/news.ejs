@@ -36,24 +36,27 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+      <div class="row">
       <div class="col-2">
         <figure class="mx-auto">
           <% if (article.author.userimg.startsWith("http://") || article.author.userimg.startsWith("https://")) { %>
-          <img src="<%= article.author.userimg %>" class="img-fluid imagen-redondeada" alt="">
+          <img src="<%= article.author.userimg %>" class="img-fluid rounded-circle m-0" alt="">
           <% } else {%>
-          <img src="../assets/upload/<%= article.author.userimg %>" class="img-fluid imagen-redondeada" alt="">
+          <img src="../assets/upload/<%= article.author.userimg %>" class="img-fluid rounded-circle m-0" alt="">
           <% } %>
           <figcaption>
-            <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+            <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
           </figcaption>
         </figure>
       </div>
-      <div class="col">
-        <p class="m-0"><%= article.author.username article.author.lastname %></p>
+      <div class="col fs-6">
+        <p class="m-0"><%= article.author.username %> <%= article.author.lastname %></p>
         <span class="text-secondary"> <%= article.created_at %></span>
       </div>
+    </div>
     </div>
   </div>
   <%- article.content %>
