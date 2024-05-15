@@ -1,3 +1,4 @@
+const { reset } = require('nodemon');
 const db = require('../../../database/models')
 const main = {
     getMain : async (req, res) => {
@@ -52,7 +53,19 @@ const main = {
 
     },
     getResetPassword : async (req, res) => {
-        res.send("reseteo esta aqui")
+      try {
+        const locals = {
+          title: "Resetear usuario",
+          description: "Vamos a verificar que todo este en orden"
+        }
+        res.render('passwordOnestep',{ locals })
+      } catch (e) {
+        const locals = {
+            title: "Mensaje de error",
+            description: "Lo sentimos ha surgido un error"
+        }
+        res.render('error', { error: "No se encontró este articulo", code: e, locals })
+    }
     },
     getError : async (req, res) => {
         res.send("Lo sentimos")

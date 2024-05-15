@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+
 const { getLogin, postLogin } = require('../controller/users/userController');
-const { getMain, 
-    getArticle, 
-    getArticles, 
-    getResetPassword, 
+const { getMain,
+    getArticle,
+    getArticles,
+    getResetPassword,
     getError } = require('../controller/main/main');
 const loginValidator  = require('../middleware/validator/loginValidator');
 const guestMiddleware = require('../middleware/guestMiddleware');

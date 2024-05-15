@@ -13,19 +13,16 @@ const helmet = require('helmet');
 //Router
 const userLoggedMiddleware = require('./middleware/userLoggedmiddelware');
 
-//session
-app.use(session({
-  secret: "casa_partida",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {secure: true}
-}));
-
 //Urlencoded - Manejo de datos desde los formularios
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(bodyParse.json());
 
-//
+//session
+app.use(session({
+  secret: "casa-partida",
+  resave: false,
+  saveUninitialized: false,
+}));
 
 //Cookie
 app.use(cookies());

@@ -174,22 +174,20 @@ const usersController = {
   //8. acceso login
   postLogin : async (req, res) => {
     try {
+      if(req.body.password == '') {
+        return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
+      }
       const profile = await db.users.findOne({ where: { email: req.body.email}});
-      console.log(profile);
-      if(profile){
-        if (req.body.password == '') {
-          return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
-        }
-        if(bcryptjs.compareSync(req.body.password, profile.userpassword)){
-          delete profile.userpassword;
-          req.session.user = profile;
 
+      if(profile){
+         let passAccepted = bcryptjs.compareSync(req.body.password, profile.dataValues.userpassword)
+        if(passAccepted){
+          delete profile.dataValues.userpassword;
+          req.session.user = profile;
           if (req.body.saveme) {
             res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
           }
-          userLogged(req, res, () => {
-            res.redirect('/dashboard');
-          })
+          return res.redirect('/dashboard');
 
         } else {
           return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})

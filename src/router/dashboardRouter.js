@@ -1,22 +1,23 @@
 const express = require('express');
 const router = express.Router();
+
 //users
-const { getCreateUser, 
-        postCreateUser, 
-        getProfile, 
-        getAllUsers, 
-        getLogout, 
-        putUpdateUser, 
-        deleteUser, 
-        getEditUser, 
-        getResetPassword, 
+const { getCreateUser,
+        postCreateUser,
+        getProfile,
+        getAllUsers,
+        getLogout,
+        putUpdateUser,
+        deleteUser,
+        getEditUser,
+        getResetPassword,
         putResetPassword } = require('../controller/users/userController');
-const { getCreate, 
-        postCreate, 
-        getRead, 
-        getAllRead, 
-        putUpdate, 
-        postDel, 
+const { getCreate,
+        postCreate,
+        getRead,
+        getAllRead,
+        putUpdate,
+        postDel,
         getEditPost }  = require('../controller/article/articleController');
 const { allmedia, createMedia, postCreateMedia, readMedia, updateMedia, putupdateMedia, deleteMedia} = require('../controller/galery/galeryController')
 const { dashboard } = require('../controller/dashboard/dashboardController');
@@ -33,7 +34,7 @@ router.get('/dashboard/user/register', userLogged, authMiddleware, getCreateUser
 router.post('/dashboard/user/register', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
 router.get('/dashboard/user/profile/:id', userLogged, authMiddleware, getProfile); //READ USER
 router.get('/dashboard/user/update/:id', userLogged, authMiddleware, getEditUser); //EDIT USER
-router.put('/dashboard/user/update/:id', userLogged, authMiddleware, uploadImg.single('image'), putUpdateUser); 
+router.put('/dashboard/user/update/:id', userLogged, authMiddleware, uploadImg.single('image'), putUpdateUser);
 router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUser); //DELETE USER
 router.get('/dashboard/user/resetpassword', userLogged, authMiddleware, getResetPassword );
 router.put('/dashboard/user/resetpassword', userLogged, authMiddleware, putResetPassword);
@@ -49,7 +50,7 @@ router.get('/dashboard/post/update/:id', authMiddleware, getEditPost); //EDIT PO
 router.put('/dashboard/post/update/:id', authMiddleware, uploadImg.single('image'), putUpdate);
 router.delete('/dashboard/post/delete/:id', authMiddleware, postDel); //DELETE POST
 
-//GALERY 
+//GALERY
 router.get('/dashboard/galery/', allmedia); //GALERY
 router.get('/dashboard/galery/create', createMedia); //CREATE
 router.post('/dashboard/galery/create', uploadImg.single('image'), postCreateMedia); //CREATE

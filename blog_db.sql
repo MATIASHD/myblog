@@ -40,8 +40,369 @@ CREATE TABLE IF NOT EXISTS article (
 );
 
 INSERT INTO article(title, subtitle, content, estract, author_id, draft, img ) VALUES
-('You’re Wasting Your Time Posting Daily on LinkedIn', 'Blind consistency vs intentional branding on LinkedIn','Holaarticle', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
-
+('You’re Wasting Your Time Posting Daily on LinkedIn', 'Blind consistency vs intentional branding on LinkedIn','<div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="fw-bold roboto-font fs-4 my-4">¡Hola, Glòria! Para aquellos que no te conocen, ¿puedes contarme un poco sobre ti y qué te llevó al diseño?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>¡Hola Cris! Pues empecé por carambolas de la vida a trabajar en diseño digital en 1999 –la imagen transiciona al blanco y negro y
+                    suena un Charleston–, estaba a punto de terminar el instituto, y mi padre se enteró de que en un estudio de publicidad necesitaban a alguien
+                    que pasara de pesetas a euros un catálogo online que tenía los precios escritos en cientos de tablas de HTML distribuidas en unos cuantos
+                    miles de páginas hechas en Dreamweaver. El primer día me pusieron delante de un ordenador con calculadora en mano, para cambiar todos los precios.
+                    Al cabo de un par de días estaba segura de que tenía que haber una forma más eficiente de hacer eso, así que me puse a investigar y descubrí ASP y
+                    Microsoft Access, así que unos cuantos export a csv, excel y varios find and replace, y monté la web dinámica con los precios en una base de datos y
+                    automaticé todo. El problema es que en unas semanas había terminado y mi contrato era de 4 meses. Así que me quedé.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Mis compañeros me sacaban todos 25-30 años y habían vivido la época dorada del diseño y la publicidad en Barcelona. Sabían muchísimo. Allí me
+                    enseñaron todo lo que sé de diseño gráfico, tipografía, fotografía, composición. Yo, a cambio, traje el ‘multimedia’ (¡se llamaba así en esa época! ¡no me mires así!).
+                    Terminé quedándome como 6 años allí. Mientras, decidí no estudiar Bioquímica y cursé Ingeniería Multimedia en la UPC, luego Gráfica Publicitaria en Elisava,
+                    y luego decidí irme a Inglaterra a hacer un proyecto de fotografía, con una beca ridícula y el banco vacío. Aguanté apenas 6 meses y comí mucho arroz y pasta.
+                    Cuando volví de allí empecé a trabajar en El Mundo Deportivo, un periódico deportivo que apenas iniciaba su andadura en el mundo digital, y cuando me fui,
+                    a los 3 años, era una de las mayores fuentes de ingreso del Grupo. Creo que el punto de inflexión en mi carrera fue trabajar en Tuenti (RIP). No creo que
+                    fuéramos muy conscientes en ese momento, pero el equipo de Diseño que se formó ahí tenía un nivel increíble. Además, hice grandes amistades de por
+                    vida y no es raro que me cruce con gente que curró ahí en otras empresas en las que he estado. Me fui de Tuenti a XING después de un gran rediseño
+                    por el que casi nos aniquilan, pero que lo miro a día de hoy y me sigue pareciendo increíble a pesar de tener 10+ años. Pero claro, entre que la
+                    gente no está acostumbrada a grandes cambios, la nueva estrategia con la teleoperadora y que la generación Tuenti ya era más trenti que otra cosa; pues no cuajó.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>XING era otra red social alemana, que aún existe, de hecho. Y allí estuve bastante tiempo, liderando el equipo de UX B2B, donde desarrollábamos herramientas
+                    para recruiters, y tuve dos hijas muy bonicas. De ahí salté a Sketch, la herramienta de diseño, donde lideré el proyecto de Collaborative Editing, y luego el squad
+                    de Design Systems, donde por raro que suene, no hacíamos nuestro design system (Prism) sino las herramientas para que otros los construyeran: símbolos, variables, librerías,
+                    documentación… Creo que ha sido el equipo más increíble en el que he estado jamás. Seguimos siendo grandes amigos y espero cruzarme con ellos en algún momento de nuevo.
+                    Al cabo de 3 años llegué a GitHub, como Directora de Diseño, donde llevo un año y medio. Al principio entré en Communities (Open Source, Sponsors, Discussions, Education,
+                    Dev Rels…), pero una reorg hizo que también me encargara de Growth y Enterprise & Billing. O sea: los dos extremos. Desde el onboarding básico y las comunidades open
+                    source y educación, con cero revenue inmediato, hasta hacer crecer a nuestros usuarios y adoptar las features de las tier más altas. La verdad es que me flipa poder ver
+                    todo el recorrido y ayudar a la gente a crecer en la plataforma.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 fw-bold my-4">¿Puedes compartir más sobre tu rol de directora de diseño en GitHub y tus responsabilidades habituales?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Sí, claro. En mi equipo cubrimos, como decía, desde el zero user, hasta los clientes en las tiers más altas del producto. Trabajamos esencialmente
+                    mejorando la plataforma en todos los sentidos (desde onboarding, a empty states, checkouts, learning paths a muchísimas experiencias self-served…),
+                    para que los propios usuarios puedan sacar el máximo partido a la plataforma y al producto sin necesidad de hablar con alguien en ventas. ¿Sabías
+                    que el 93% de los compradores ya no quieren pedir una demo, o contactar con ventas para tener un trato personalizado y quieren que todo sea self-served
+                    sin tener ninguna interacción con humanos en todo el proceso? Es brutal, porque la única manera de hacer eso es haciendo hablar al producto por sí solo,
+                    acortar el time-to-value, mostrar eficazmente cuáles son los puntos fuertes, y hacerles tener éxito rápidamente. Lo que es maravilloso, porque esencialmente
+                    pone al UX en la punta de lanza. ¡al fin! Es lo que se llama ‘Product Led Growth’.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 my-4 fw-bold">¿A qué desafíos de diseño te enfrentas en GitHub?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Es la primera vez que trabajo en una empresa de estas dimensiones, y creo que la comunicación y conseguir que todo el mundo entienda lo mismo usando
+                    los mismos conceptos es un verdadero reto. Cosas como ‘calidad’, o ‘experimento’. Cada persona entiende lo que le da la gana, o lo que puede, o lo que
+                    sus propios sesgos le dicen ¿Cómo hacer para que hablemos todos el mismo idioma?
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Otro de los retos derivados del tamaño de la empresa es alinear el trabajo, no pisarse, no ir en direcciones opuestas, y hacer eso ¡en asíncrono! resulta
+                    complicadísimo. En mi equipo hay gente en todas las zonas horarias, así que no se puede resolver algo en una llamada en dos segundos, pero a veces sería lo
+                    más rápido. Yo personalmente vengo de un entorno anti-llamadas. En Sketch poco menos que estaban prohibidas. De hecho, hasta mis entrevistas para entrar
+                    fueron por escrito en Slack. (¡esto da para otra conversación!).
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="fw-bold fs-4 fw-bold roboto-font">¿Cómo es un día típico para ti?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Cuando empecé a trabajar en GitHub pensé en hacer un horario de 9 a 5 clásico, me ponía a trabajar por la mañana, hacía trabajo
+                    síncrono con gente en China e India, y me ponía al día con el resto, pero resulta que a las 15 se despiertan en East Coast, y a las 17 en
+                    West Coast, y de repente te encuentras a las 21 en el ordenador y llevas 12 horas trabajando sin parar. Al poco tiempo estaba verdaderamente
+                    agotada y no entendía dónde se me iban las horas. También me agobiaba dar un ejemplo horroroso a la gente del equipo. Si tu manager está todo el día
+                    online ¿tu también deberías? Así que corté por lo bruto.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Estuve hablando con bastantes compañeras en Europa y pidiendo tips y cosas que habían aprendido para gestionar mejor mi tiempo, y decidí empezar a
+                    trabajar al mediodía y alargar hasta tarde unos días a la semana, y hacer al revés otros días. Pronto me di cuenta que no pasaba nada si no iba a
+                    determinadas reuniones o design reviews, porque está todo grabado. Así que podía verlas al día siguiente, ¡con el beneficio de poder verlas a x2!
+                    No sabes lo raro que es acostumbrarte a escuchar a alguien siempre a x2 y de repente escucharles en su velocidad normal ¡qué ansiedad!. El caso es
+                    que funciona. Puedo dejar comentarios al día siguiente, más reposadamente, y no hay ni un problema. Así que mis semanas van cambiando.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Decidí también reservar cuatro horas a la semana para mi, y me apunté a clases de dibujo dos días a la semana, y no me las salto bajo ningún concepto
+                    aunque arda Troya. También comparto mis avances en clase con la gente de mi equipo en nuestro canal de watercooler en Slack, o digo abiertamente que
+                    no voy a ir a X porque tengo clase de dibujo, para que vean que está bien hacer cosas para ti y que no sean cancelables.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2  class="roboto-font fs-4 fw-bold">¿Puedes describir el proceso de diseño que sigues?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>En el trabajo no estoy tan centrada en la parte de ejecución (pixeles), sino más en la de estrategia, necesidades de usuario, de negocio, dependencias,
+                   visión, consistencia, y tratar de alinearlas en múltiples líneas de ejecución.  Creo que la pregunta que hago más veces es ‘qué estamos intentando
+                   solucionar aquí’, o ‘estamos realmente solucionando el problema’ o ‘qué podría salir mal’. Generalmente trato de hacer un ‘walk the shop floor’,
+                   antes de mirar ningún dato cuantitativo o cualitativo, es decir, ir por los flujos clave de cierta tarea y tratar de ejecutarla con una cuenta desde
+                   cero, con una burner account en producción. Es la única manera de ver claramente cuáles son los problemas que alguien puede llegar a encontrar cuando
+                   trata de hacer algo. Normalmente lo grabo en video y voy comentando lo que encuentro (para mi), o saco pantallazos y los anoto en un Figjam o similar.
+                   Muchas veces nos centramos en los datos de una pantalla en concreto y tratamos de sacar conclusiones, cuando es muchísimo más obvio si simplemente vamos
+                   por los flujos clave de vez en cuando como si no supiéramos nada.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Ahora mismo diseño bien poco, y me da bastante pena. De hecho, me cuesta muchísimo estar al día de todas las nuevas funcionalidades
+                    de las herramientas de diseño al no estar en contacto con ellas de forma diaria, y suelo intentar no meterme en archivos de gente, porque ¡suelo romperlos!
+                     En serio, algún día entenderé los auto layouts. O quizás no. A veces me da la sensación que estamos intentando automatizar tantísimo los archivos que nos
+                     limitamos en cuanto a exploraciones diversas. Hay archivos de Figma que son como un Jenga, intentas mover un icono y se desata el caos más absoluto.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Soy súper fan de los design system y la consistencia, y todo lo que sea ahorrar tiempo en generar cosas básicas y repetitivas me llena el alma, de veras;
+                    pero me da la sensación de que vamos perdiendo libertad y creatividad cuanto más encorsetados y automatizados son los archivos en fases iniciales. En general
+                    me cuesta esta manera de trabajar (probablemente es algo muy boomer, aunque no lo soy, soy una proud millenial –¡Hey, Britney!–) y pueda resultar polémico, pero
+                    echo muchísimo de menos los tiempos en los que se partía de una exploración más libre, con trozos de pantallazos, pensamientos medio formados, con el contenido
+                    y las palabras perfectas, y solo cuando estaban las cosas claras se trataba de hacer abstracciones que pudieran ser utilizadas en diferentes ámbitos, o buscar
+                    componentes existentes que pudieran hacer el trabajo.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Muchas veces encuentro diseños preciosos y precisos, pero el contenido no tiene sentido, o las palabras, o el flujo. Una antigua compañera que
+                    tenía en India, usaba una expresión que me chifla: Figmatize, como algo diferente a diseñar. Figmatizar es, en mi cabeza, ésta componentización y
+                     automatización que poco tiene que ver con la Experiencia de Usuario o el Diseño de Interfaces.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Yo creo que Real-Time Collaboration en Sketch es uno de los más satisfactorios en cuanto a impacto. Nos pilló la pandemia de por medio, yo era
+                    nueva, y me lanzaron en medio de un proyecto que era puramente técnico. Se trataba de cambiar la manera en la que funcionaba la aplicación por
+                     completo, y en lugar de mandar el archivo entero a la nube, mandar los cambios incrementalmente operación por operación, y que otro cliente
+                     pudiera recibirlos, que se recibieran en el orden adecuado en ambos lados y que no hubiera pérdidas. Estuvimos muchísimo tiempo diseñando ese
+                     sistema, y cuando vimos por primera vez una estrella gris deformada apareciendo en un cliente remoto en tiempo real casi lloro. El diseño de todo
+                     esto era básicamente invisible, la UI era muy mínima, pero el UX de debajo era complejísimo. Me lo pasé pipa.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 fw-bold my-4">Si echas un vistazo a tus últimos proyectos, ¿de cuál te sientes más orgulloso/a? ¿Por qué?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 fw-bold my-4">Si revisamos tu experiencia profesional, podemos ver que has trabajado en varias empresas internacionales, como Sketch y XING. ¿Qué consejos
+                    darías a quienes quieren dar el salto al mercado laboral en inglés/internacional?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Sin duda hablar inglés abre muchísimas puertas, obviamente. También te hace parecer un poco imbécil cuando llevas muchos años trabajando en inglés y
+                    una de cada 10 palabras que usas es un anglicismo (como se puede ver aquí), pero imagino que eso es un mal menor. En general se me dan fatal los consejos
+                    genéricos, y supongo que por eso no escribo nada en LinkedIn. Creo que una gran manera de meter el pie cuando se está empezando es trabajar en proyectos Open Source,
+                    donde estás obligada a relacionarte con gente de todo el mundo, que en general es muy profesional, diversa, inclusiva y didáctica. Tener un par de proyectos Open Source
+                    colgados del cinturón es como pasar un tiempo de entrenamiento en la Máquina de la Gravedad de Dragon Ball, como dice mi profesor de arte cuando me hace dibujar del natural.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Un truco que se puede usar es fijarse en empresas internacionales que te hacen tilín y mirar en LinkedIn si tienen trabajadoras en España, si es así, es posible que
+                    puedas entrar como freelance (contractor, que le llaman allí), o que tengan una sucursal o una rama en España.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Algo que me ha funcionado a mi, es hacer las entrevistas como si no fueras a perder nada en el camino, que de hecho, no lo harás. En el peor de los casos te habrás
+                    llevado conversaciones con gente interesante, y habrás ganado experiencia. Hacer entrevistas es un skill en sí mismo. Sé que es complicado cuando empiezas a buscar
+                     tus primeros trabajos, pero es importante tener clarísimo que las entrevistas de trabajo van en dos direcciones: la persona que te está entrevistando también está
+                     tratando de convencerte, y tú también tienes que hacerle preguntas a ella. Que está bien responder ‘no lo sé’ o ‘tendría que pensarlo un rato’, o ‘no conozco esta
+                     palabra en inglés, ¿puedes explicarmelo de otro modo?’, o activar los subtítulos en la llamada, que para eso están. Probablemente hables al menos un idioma más que
+                     la persona que te está entrevistando en su idioma nativo y como dice Sofía Vergara, you have no idea how smart I am in Spanish.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font my-4 fs-4 fw-bold">¿Cómo es tu espacio de trabajo?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>Trabajo en mi casa desde hace muchos años, compartiendo espacio con mi pareja, mis dos hijas, dos gatos, y millones de libros y plantas.
+                    Aborrezco los espacios minimalistas, monocromos y las casas con las estanterías vacías con dos libros de la Bauhaus en horizontal que no se han abierto jamás.
+                    Me gustan los espacios coloridos, con vida, y que guardan recuerdos de todo tipo.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 fw-bold my-4">
+                    ¿Dónde vas en busca de inspiración?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>La verdad es que mis fuentes de inspiración son totalmente aleatorias y absurdas. Para cosas de ilustración voy sacando fotos horribles y desenfocadas
+                    por el mundo, en tiendas de segunda mano, paredes, baldosas, edificios, gente, logos… Para cosas de diseño digital o UX saco capturas de pantalla o
+                    videos de absolutamente todo lo que encuentro, soy como una ardilla, y tengo un repositorio privado en GitHub que se llama ‘benchmark’ donde voy
+                    tirando todo en archivos de markdown.
+               </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>El otro día vi en Twitter que una chica se había comprado una cacerola antigua LeCreuset (que son carísimas) en una tienda de segunda mano por 5
+                    dólares, y le faltaba el asa. Como tienen servicio post-venta les escribió para comprar el asa, y ¡le mandaron una cacerola nueva! Imagínate, una clienta
+                    de por vida. El caso es que entré en la web y vi que tienen garantía de por vida y una trial de 30 días también. Como en los Business Plan de muchos SaaS.
+                    Pues me puse a mirar como funciona, porque oye, llevan más de 100 años vendiendo cacerolas y les funciona, algo deben estar haciendo bien.
+                     Así que la inspiración puede venir de cualquier lado.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+                <div class="card border-0 mt-4 ">
+                    <figure class="mx-auto">
+                        <img class="img-fluid rounded shadow-sm" src="https://www.uifrommars.com/wp-content/uploads/2024/01/entrevista-gloria-langreo-portada-700x450.jpg" alt="">
+                        <figcaption>
+                           <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <h2 class="roboto-font fs-4 fw-bold my-4"> ¿Qué producto que has visto recientemente te hizo pensar que “este es un gran diseño”?
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+                <p>La verdad es que uno de los productos digitales que me hacen disfrutar más al usarlas desde hace años es Procreate.
+                    Siempre elijo la misma,
+                    porque no he experimentado este nivel de maridaje con ningún producto antes. Procreate es una herramienta de dibujo
+                    digital, para el iPad, y lo que me parece más interesante de esta aplicación es que la mayoría de sus interacciones
+                    no tienen ningún tipo de UI, son gestos, movimientos e interacciones que resultan super naturales y muy poco intrusivas.
+                    Son tan naturales que a veces intento usarlas en una hoja de papel (es tremendo, esto). Lo realmente asombroso es que es una
+                    aplicación complejísima, pero que la curva de aprendizaje es verdaderamente baja. No había visto algo así antes. Recuerdo que
+                    Snapchat, por ejemplo, fue una de las pioneras en las interacciones invisibles, pero era complicadísimo de entender en su momento:
+                    utilizaba gestos que no eran muy conocidos en su momento (como los swipes para aplicar filtros por ejemplo), tuvieron que romper
+                    el molde para que otras pudieran venir detrás. Procreate, sin embargo, usa gestos e interacciones que son únicos de su aplicación y
+                    se entienden a la primera, lo que es curioso, porque tienen que tener una complejidad muy mínima ya que estás sosteniendo el lápiz
+                    con la misma mano. Por poner un ejemplo, en la lista de capas, puedes simplemente hacer pinch con los dedos y hacer merge de todas
+                    las capas que queden enmedio.
+                </p>
+            </div>
+        </div>', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
 
 -- Comentarios
 CREATE TABLE IF NOT EXISTS comentarios (
@@ -53,7 +414,16 @@ CREATE TABLE IF NOT EXISTS comentarios (
     FOREIGN KEY (article_id) REFERENCES article(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
+-- Galeria
+CREATE TABLE IF NOT EXISTS galery (
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    media VARCHAR(255) NOT NULL,
+    alt VARCHAR(300) NOT NULL,
+    figcaption VARCHAR(300),
+    mediatype VARCHAR(300)
+);
+INSERT INTO galery(media, alt, figcaption, mediatype) VALUES
+('1712006084350_user.jpeg','You’re Wasting Your Time Posting Daily on LinkedIn', 'Blind consistency vs intentional branding on LinkedIn',' image/jpeg' );
 
 -- Articulo y categorias - MUCHOS A MUCHOS
 DROP TABLE IF EXISTS articulotags;
