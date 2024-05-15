@@ -5,6 +5,7 @@ const galeryController = {
   allmedia: async (req, res) => {
     try {
       const galeria = await db.galery.findAll()
+      console.log( galeria.alt);
       const locals = {
         title: "Galeria",
         description: "Caja de recuerdo"

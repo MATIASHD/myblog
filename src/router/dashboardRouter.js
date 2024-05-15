@@ -19,7 +19,13 @@ const { getCreate,
         putUpdate,
         postDel,
         getEditPost }  = require('../controller/article/articleController');
-const { allmedia, createMedia, postCreateMedia, readMedia, updateMedia, putupdateMedia, deleteMedia} = require('../controller/galery/galeryController')
+const { allmedia,
+        createMedia,
+        postCreateMedia,
+        readMedia,
+        updateMedia,
+        putupdateMedia,
+        deleteMedia} = require('../controller/galery/galeryController')
 const { dashboard } = require('../controller/dashboard/dashboardController');
 //Middleware
 const authMiddleware = require('../middleware/authMiddleware');
