@@ -4,12 +4,25 @@
     <% if(locals.userLogged) { %>
     <a class="navbar-brand" href="/dashboard"><i class="fa-solid fa-bolt"></i></a>
     <ul class="navbar-nav col-1">
-      <li class="nav-item">
-        <span><%= locals.userLogged.username %></span>
-        <div class="text-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Foto_De_Perfil_2022.jpg" class="rounded-circle m-0" style="max-width: 39px;" alt="...">
-        </div>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= locals.userLogged.username %>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/dashboard/users/">Usuario</a></li>
+          <li><a class="dropdown-item" href="/dashboard/posts/">Posts</a></li>
+          <li><a class="dropdown-item" href="/dashboard/galery/">Galeria</a></li>
+          <li><a class="dropdown-item" href="/dashboard/user/logout">Cerrar sesion</a></li>
+        </ul>
       </li>
+      <li class="nav-item">
+        <!--<div class="row">
+          
+          <div class="text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Foto_De_Perfil_2022.jpg" class="rounded-circle m-0" style="max-width: 39px;" alt="...">
+          </div>
+        </div>
+      </li>-->
     </ul>
     <% } else {%>
       <a class="navbar-brand" href="/"><i class="fa-solid fa-bolt"></i></a>

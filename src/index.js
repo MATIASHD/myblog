@@ -12,6 +12,8 @@ const helmet = require('helmet');
 
 //Router
 const userLoggedMiddleware = require('./middleware/userLoggedmiddelware');
+const navbar = require('./controller/header/header');
+
 
 //Urlencoded - Manejo de datos desde los formularios
 app.use(bodyParse.urlencoded({ extended: false }));
@@ -29,6 +31,7 @@ app.use(cookies());
 
 //Middle de aplicación
 app.use(userLoggedMiddleware);
+//app.use(navbar);
 
 //Morgan
 app.use(morgan('dev'));

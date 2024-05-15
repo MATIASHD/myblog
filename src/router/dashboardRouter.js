@@ -28,22 +28,22 @@ const userLogged = require('../middleware/userLoggedmiddelware');
 const uploadImg = require('../middleware/imageUploadMiddleware');
 
 //main dashboard
-router.get('/dashboard', userLogged, authMiddleware, dashboard); //DASHBOARD
-router.get('/dashboard/users', userLogged, authMiddleware, getAllUsers); //USERS LIST
-router.get('/dashboard/user/register', userLogged, authMiddleware, getCreateUser); // CREATE USER
-router.post('/dashboard/user/register', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
+router.get('/dashboard/', userLogged, authMiddleware, dashboard); //DASHBOARD
+router.get('/dashboard/users/', userLogged, authMiddleware, getAllUsers); //USERS LIST
+router.get('/dashboard/user/register/', userLogged, authMiddleware, getCreateUser); // CREATE USER
+router.post('/dashboard/user/register/', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
 router.get('/dashboard/user/profile/:id', userLogged, authMiddleware, getProfile); //READ USER
 router.get('/dashboard/user/update/:id', userLogged, authMiddleware, getEditUser); //EDIT USER
 router.put('/dashboard/user/update/:id', userLogged, authMiddleware, uploadImg.single('image'), putUpdateUser);
 router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUser); //DELETE USER
-router.get('/dashboard/user/resetpassword', userLogged, authMiddleware, getResetPassword );
-router.put('/dashboard/user/resetpassword', userLogged, authMiddleware, putResetPassword);
-router.get('/dashboard/user/logout', userLogged, authMiddleware, getLogout);
+router.get('/dashboard/user/resetpassword/', userLogged, authMiddleware, getResetPassword );
+router.put('/dashboard/user/resetpassword/', userLogged, authMiddleware, putResetPassword);
+router.get('/dashboard/user/logout/', userLogged, authMiddleware, getLogout);
 
 //articles
-router.get('/dashboard/posts', authMiddleware, getAllRead); //POSTS LIST
-router.get('/dashboard/post/create', authMiddleware, getCreate); //CREATE POST
-router.post('/dashboard/post/create', authMiddleware,uploadImg.single('image'), postCreate);
+router.get('/dashboard/posts/', authMiddleware, getAllRead); //POSTS LIST
+router.get('/dashboard/post/create/', authMiddleware, getCreate); //CREATE POST
+router.post('/dashboard/post/create/', authMiddleware,uploadImg.single('image'), postCreate);
 
 router.get('/dashboard/post/:id', authMiddleware, getRead); //READ POST
 router.get('/dashboard/post/update/:id', authMiddleware, getEditPost); //EDIT POST
