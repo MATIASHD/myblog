@@ -3,7 +3,6 @@ const main = {
   getMain : async (req, res) => {
     try {
       const article = await db.article.findAll()
-      console.log(article);
       const locals = {
         title: "main",
         description: "Todo lo que necesitas, está aquí"

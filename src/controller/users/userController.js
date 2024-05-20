@@ -167,20 +167,15 @@ const usersController = {
   //8. acceso login
   postLogin : async (req, res) => {
     try {
-      db.users.findOne({
-        where: {
-          email: req.body.email
-        }
-      }).then((user) => {
-        if(req.body.password == '') {
-          return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
-        }
-        if(user){
+      if(req.body.password == '') {
+        return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
+      }
+      const user = await db.users.findOne({ where: { email: req.body.email }})
+      if(user){
           let passAccepted = bcryptjs.compareSync(req.body.password, user.userpassword)
           if(passAccepted){
-            delete user.userpassword;
+            delete user.dataValues.userpassword
             req.session.user = user;
-            console.log(user);
             if (req.body.saveme) {
               res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
             }
@@ -188,8 +183,8 @@ const usersController = {
           } else {
             return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})
           }
-        }
-      })
+        
+      }
     } catch(e) {
       const locals = {
         title: "Problema en el iniciar de sesión",

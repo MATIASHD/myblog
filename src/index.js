@@ -18,22 +18,17 @@ app.disable('x-powered-by');
 //Urlencoded - Manejo de datos desde los formularios
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(bodyParse.json());
-
-
 //session
 app.set('trust proxy', 1);
 app.use(session({
   secret: "casa-partida",
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: true
 }));
 //Cookie
 app.use(cookies());
-
 //Middle de aplicación
 app.use(userLoggedMiddleware);
-
 //Morgan
 app.use(morgan('dev'));
 //reconocer put y delete
@@ -43,13 +38,11 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayout);
 app.set('layout', './layouts/main');
-
 //Public content
 app.use(express.static('public'));
 //Router
 const mainRouter = require('./router/mainRouter');
 const dashboardRouter = require('./router/dashboardRouter');
-
 app.use(mainRouter);
 app.use(dashboardRouter);
 app.use((req, res, next) => {
