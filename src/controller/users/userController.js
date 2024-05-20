@@ -1,5 +1,4 @@
 const db = require('../../../database/models');
-const {users} = require('../../../database/models');
 const bcryptjs = require('bcryptjs');
 // 1. Fomulario de crear articulo
 // 2. Guardar los datos del usario en la BD
@@ -168,32 +167,30 @@ const usersController = {
   //8. acceso login
   postLogin : async (req, res) => {
     try {
-      let userLog = await users.findOne({
+      db.users.findOne({
         where: {
           email: req.body.email
         }
-      })
-
-      if(req.body.password == '') {
-        return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
-      }
-      if(userLog){
-         let passAccepted = bcryptjs.compareSync(req.body.password, userLog.dataValues.userpassword)
-        if(passAccepted){
-          delete userLog.dataValues.userpassword;
-          req.session.user = userLog;
-          console.log("EN LOGIN: " + userLog);
-          if (req.body.saveme) {
-            res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
-          }
-          return res.redirect('/dashboard');
-        } else {
-          return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})
+      }).then((user) => {
+        if(req.body.password == '') {
+          return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
         }
-      } else {
-        return res.render('login', { errors: { email: { msg: "Este email no se encuetra registrado" }}})
-      }
-    } catch (e) {
+        if(user){
+          let passAccepted = bcryptjs.compareSync(req.body.password, user.userpassword)
+          if(passAccepted){
+            delete user.userpassword;
+            req.session.user = user;
+            console.log(user);
+            if (req.body.saveme) {
+              res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
+            }
+            return res.redirect('/dashboard');
+          } else {
+            return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})
+          }
+        }
+      })
+    } catch(e) {
       const locals = {
         title: "Problema en el iniciar de sesión",
         description: "Lo sentimos ha surgido un error"
