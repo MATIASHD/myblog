@@ -1,7 +1,6 @@
 <nav class="navbar border-bottom navbar-expand-sm shadow-sm" style="background-color: #ffffff;">
   <div class="container">
-    <% console.log(locals.userLogged) %>
-    <% if(locals.userLogged) { %>
+    <% if(locals.isLogged) { %>
     <a class="navbar-brand" href="/dashboard"><i class="fa-solid fa-bolt"></i></a>
     <ul class="navbar-nav col-1">
       <li class="nav-item dropdown">
@@ -16,13 +15,6 @@
         </ul>
       </li>
       <li class="nav-item">
-        <!--<div class="row">
-          
-          <div class="text-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Foto_De_Perfil_2022.jpg" class="rounded-circle m-0" style="max-width: 39px;" alt="...">
-          </div>
-        </div>
-      </li>-->
     </ul>
     <% } else {%>
       <a class="navbar-brand" href="/"><i class="fa-solid fa-bolt"></i></a>

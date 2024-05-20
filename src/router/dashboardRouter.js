@@ -29,7 +29,7 @@ const { allmedia,
 const { dashboard } = require('../controller/dashboard/dashboardController');
 //Middleware
 const authMiddleware = require('../middleware/authMiddleware');
-const userLogged = require('../middleware/userLoggedmiddelware');
+const userLogged = require('../middleware/userLoggedMiddleware');
 //Multer
 const uploadImg = require('../middleware/imageUploadMiddleware');
 

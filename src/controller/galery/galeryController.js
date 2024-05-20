@@ -1,11 +1,9 @@
 const db = require('../../../database/models');
-const { dashboard } = require('../dashboard/dashboardController');
 
 const galeryController = {
   allmedia: async (req, res) => {
     try {
       const galeria = await db.galery.findAll()
-      console.log( galeria.alt);
       const locals = {
         title: "Galeria",
         description: "Caja de recuerdo"
@@ -25,7 +23,7 @@ const galeryController = {
         title: "Subir soporte",
         description: "Sube tus mejores creaciones aquí"
       }
-      res.render('mediaupload', {locals, layout: dashboardView});
+      res.render('mediaupload', {locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -58,7 +56,7 @@ const galeryController = {
         title: "Vista de archivo multimedia",
         description: "Crea vea todo su contenido"
       }
-      res.render('mediaView', { media, locals, layout: dashboardView});
+      res.render('mediaView', { media, locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -73,7 +71,7 @@ const galeryController = {
         title: "Subir archivos",
         description: "subir contenido al mundo"
       }
-      res.render('subircontenido', { locals, layout: dashboardView });
+      res.render('subircontenido', { locals });
     } catch (e) {
       const locals = {
         title: "Mensaje de error",

@@ -30,7 +30,7 @@ const articles = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-        res.render('newPost', { locals, layout: dashboardView });
+        res.render('newPost', { locals });
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -47,7 +47,7 @@ const articles = {
         title: article.title,
         description: "Crea increibles entradas"
       }
-      res.render('news', { article, locals, layout: dashboardView });
+      res.render('news', { article, locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -64,7 +64,7 @@ const articles = {
         title: "Lista de articulos",
         description: "Las increibles entradas estan aquí"
       }
-      res.render('articles', { articles, locals, layout: dashboardView });
+      res.render('articles', { articles, locals });
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -82,7 +82,7 @@ const articles = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-      res.render('editPost', { locals, author, article, layout:  dashboardView});
+      res.render('editPost', { locals, author, article});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",

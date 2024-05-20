@@ -1,7 +1,6 @@
 const db = require('../../../database/models');
-const dashboardView = '../views/layouts/dashboard'
+const {users} = require('../../../database/models');
 const bcryptjs = require('bcryptjs');
-const userLogged = require('../../middleware/userLoggedmiddelware');
 // 1. Fomulario de crear articulo
 // 2. Guardar los datos del usario en la BD
 // 3. Leer un articulo
@@ -10,7 +9,6 @@ const userLogged = require('../../middleware/userLoggedmiddelware');
 // 6. Actualizar los datos del articulo
 // 7. borrar el articulo
 const usersController = {
-
   // 1. Fomulario de crear usuario
   getCreateUser : async (req, res) => {
     try {
@@ -18,8 +16,7 @@ const usersController = {
         title: "Nuevo usuario",
         description: "Crear un usuario increible"
       }
-      const userLogged = req.session.user || null;
-      res.render('register', {locals, layout: dashboardView, userLogged });
+      res.render('register', {locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -69,8 +66,7 @@ const usersController = {
         title: profile.name,
         description: "Perfil del usuario"
       }
-      const userLogged = req.session.user || null;
-      res.render('profile', { user: profile, locals, layout: dashboardView, userLogged });
+      res.render('profile', { user: profile, locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -88,8 +84,7 @@ const usersController = {
         title: "Todos los usuarios",
         description: "Aquí está todo tu staff"
       }
-      const userLogged = req.session.user || null;
-      res.render('dashboardUsers', { user, locals, layout: dashboardView, userLogged });
+      res.render('dashboardUsers', { user, locals });
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -106,8 +101,7 @@ const usersController = {
         title: profile.name,
         description: "Perfil del usuario"
       }
-      const userLogged = req.session.user || null;
-      res.render('edituser', { profile, locals, layout: dashboardView, userLogged });
+      res.render('edituser', { profile, locals});
     } catch (e) {
       const locals = {
         title: "Mensaje de error",
@@ -174,21 +168,25 @@ const usersController = {
   //8. acceso login
   postLogin : async (req, res) => {
     try {
+      let userLog = await users.findOne({
+        where: {
+          email: req.body.email
+        }
+      })
+
       if(req.body.password == '') {
         return res.render('login', {errors: { password:{ msg: "El campo de la contraseña no puede estar vacio" }}})
       }
-      const profile = await db.users.findOne({ where: { email: req.body.email}});
-
-      if(profile){
-         let passAccepted = bcryptjs.compareSync(req.body.password, profile.dataValues.userpassword)
+      if(userLog){
+         let passAccepted = bcryptjs.compareSync(req.body.password, userLog.dataValues.userpassword)
         if(passAccepted){
-          delete profile.dataValues.userpassword;
-          req.session.user = profile;
+          delete userLog.dataValues.userpassword;
+          req.session.user = userLog;
+          console.log("EN LOGIN: " + userLog);
           if (req.body.saveme) {
             res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
           }
           return res.redirect('/dashboard');
-
         } else {
           return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})
         }
