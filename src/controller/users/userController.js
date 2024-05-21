@@ -62,8 +62,8 @@ const usersController = {
     try {
       const profile = await db.users.findByPk(req.params.id);
       res.locals.cabecera = {
-        title: profile.name + " "+ profile.lastname,
-        description: "Bienvenido " + profile.name + " "+ profile.lastname
+        title: profile.username + " "+ profile.lastname,
+        description: "Bienvenido " + profile.username + " "+ profile.lastname
       }
       res.render('profile', { user: profile });
     } catch (e) {
