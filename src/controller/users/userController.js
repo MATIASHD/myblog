@@ -97,7 +97,7 @@ const usersController = {
     try {
       const profile = await db.users.findByPk(req.params.id);
       res.locals.cabecera = {
-        title: profile.name + " "+ profile.lastname,
+        title: profile.username + " "+ profile.lastname,
         description: "Bienvenido " + profile.name + " "+ profile.lastname
       }
       res.render('edituser', { profile });
@@ -113,11 +113,12 @@ const usersController = {
   // 5. Actualizar los datos del articulo
   putUpdateUser  : async (req, res) => {
     try {
+      const user = await db.users.findByPk(req.params.id)
       await db.users.update({
         username: req.body.name,
         lastname: req.body.surname,
         email:req.body.email,
-        image: req.file.filename
+        image: req.file.filename == null ? image = user.userimg : req.file.filename
       },{
         where: {
           id: req.params.id
