@@ -45,6 +45,7 @@ const mainRouter = require('./router/mainRouter');
 const dashboardRouter = require('./router/dashboardRouter');
 app.use(mainRouter);
 app.use(dashboardRouter);
+
 app.use((req, res, next) => {
     res.status(404).render('errornotfound');
 })

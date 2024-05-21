@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
-//users
 const { getCreateUser,
         postCreateUser,
         getProfile,
@@ -25,16 +23,15 @@ const { allmedia,
         readMedia,
         updateMedia,
         putupdateMedia,
-        deleteMedia} = require('../controller/galery/galeryController')
+        deleteMedia } = require('../controller/galery/galeryController')
 const { dashboard } = require('../controller/dashboard/dashboardController');
 //Middleware
 const authMiddleware = require('../middleware/authMiddleware');
 const userLogged = require('../middleware/userLoggedMiddleware');
 //Multer
 const uploadImg = require('../middleware/imageUploadMiddleware');
-
 //main dashboard
-router.get('/dashboard/', userLogged, authMiddleware, dashboard); //DASHBOARD
+router.get('/dashboard/',userLogged, authMiddleware, dashboard); //DASHBOARD
 router.get('/dashboard/users/', userLogged, authMiddleware, getAllUsers); //USERS LIST
 router.get('/dashboard/user/register/', userLogged, authMiddleware, getCreateUser); // CREATE USER
 router.post('/dashboard/user/register/', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
@@ -45,25 +42,20 @@ router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUs
 router.get('/dashboard/user/resetpassword/', userLogged, authMiddleware, getResetPassword );
 router.put('/dashboard/user/resetpassword/', userLogged, authMiddleware, putResetPassword);
 router.get('/dashboard/user/logout/', userLogged, authMiddleware, getLogout);
-
-//articles
+//post
 router.get('/dashboard/posts/', authMiddleware, getAllRead); //POSTS LIST
 router.get('/dashboard/post/create/', authMiddleware, getCreate); //CREATE POST
 router.post('/dashboard/post/create/', authMiddleware,uploadImg.single('image'), postCreate);
-
 router.get('/dashboard/post/:id', authMiddleware, getRead); //READ POST
 router.get('/dashboard/post/update/:id', authMiddleware, getEditPost); //EDIT POST
 router.put('/dashboard/post/update/:id', authMiddleware, uploadImg.single('image'), putUpdate);
 router.delete('/dashboard/post/delete/:id', authMiddleware, postDel); //DELETE POST
-
 //GALERY
-router.get('/dashboard/galery/', allmedia); //GALERY
-router.get('/dashboard/galery/create', createMedia); //CREATE
-router.post('/dashboard/galery/create', uploadImg.single('image'), postCreateMedia); //CREATE
-router.get('/dashboard/galery/read/:id', readMedia); //READ
-router.get('/dashboard/galery/update/:id', updateMedia); //UPDATE
-router.put('/dashboard/galery/update/:id', uploadImg.single('image'), putupdateMedia); //UPDATE
-router.delete('/dashboard/galery/delete/:id', deleteMedia); //DELETE
-
-
+router.get('/dashboard/galery/',authMiddleware, allmedia); //GALERY
+router.get('/dashboard/galery/create',authMiddleware, createMedia); //CREATE
+router.post('/dashboard/galery/create',authMiddleware, uploadImg.single('image'), postCreateMedia); //CREATE
+router.get('/dashboard/galery/read/:id',authMiddleware, readMedia); //READ
+router.get('/dashboard/galery/update/:id',authMiddleware, updateMedia); //UPDATE
+router.put('/dashboard/galery/update/:id',authMiddleware, uploadImg.single('image'), putupdateMedia); //UPDATE
+router.delete('/dashboard/galery/delete/:id',authMiddleware, deleteMedia); //DELETE
 module.exports = router;

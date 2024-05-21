@@ -17,8 +17,16 @@
                     <p class="card-text m-0"><span class="text-body-tertiary">Figcaption:</span> <%= galeria[i].figcaption %></p>
                     <p class="card-text"><span class="text-body-tertiary">Ruta:</span> <%= galeria[i].media %> </p>
                     <p>
-                      <a class="btn btn-primary" href="/dashboard/galery/update/<%= galeria[i].id %>" role="button">Editar</a>
-                      <a role="button"  href="/dashboard/galery/delete/<%= galeria[i].id %>" class="btn btn-outline-danger">Eliminar</a>
+                      <div class="row">
+                        <div class="d-grid gap-2 d-md-flex mt-2 justify-content-md-end">
+                        <form method="get" enctype="multipart/form-data">
+                          <button class="btn btn-primary" href="/dashboard/galery/update/<%= galeria[i].id %>" role="button">Editar</button>
+                        </form>
+                        <form action="/dashboard/galery/delete/<%= galeria[i].id %>?_method=DELETE" method="POST">
+                          <button class="btn btn-outline-danger" type="submit">Borrar</button>
+                        </form>
+                        </div>
+                      </div>
                     </p>
                   </div>
               </div>

@@ -1,35 +1,34 @@
 const db = require('../../../database/models');
-
 const galeryController = {
   allmedia: async (req, res) => {
     try {
       const galeria = await db.galery.findAll()
-      const locals = {
+      res.locals.cabecera = {
         title: "Galeria",
-        description: "Caja de recuerdo"
+        description: "Caja de recuerdos"
       }
-      res.render('galeria', { locals, galeria });
+      res.render('galeria', { galeria });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   createMedia : async (req, res) => {
     try {
-      const locals = {
+      res.locals.cabecera = {
         title: "Subir soporte",
         description: "Sube tus mejores creaciones aquí"
       }
       res.render('mediaupload', {locals});
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   postCreateMedia : async (req, res) => {
@@ -42,48 +41,48 @@ const galeryController = {
       })
       res.redirect('/dashboard/galery');
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   readMedia : async (req, res) => {
     try {
       let media = await db.galery.findByPk(req.params.id)
-      const locals = {
+      res.locals.cabecera = {
         title: "Vista de archivo multimedia",
         description: "Crea vea todo su contenido"
       }
-      res.render('mediaView', { media, locals});
+      res.render('mediaView', { media });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   updateMedia : async (req, res) => {
     try {
-      const locals = {
+      let media = await db.galery.findByPk(req.params.id)
+      res.locals.cabecera = {
         title: "Subir archivos",
         description: "subir contenido al mundo"
       }
-      res.render('subircontenido', { locals });
+      res.render('editMedios', { media });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   putupdateMedia : async (req, res) => {
     try {
       db.galery.update({
-        media: req.file ? req.file.filename : galery.media,
         alt: req.body.alt,
         figcaption: req.body.figcaption,
         mediatype: req.body.mediatype
@@ -94,27 +93,27 @@ const galeryController = {
       })
       res.redirect('/dashboard/view/' + req.params.id);
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   deleteMedia : async (req, res) => {
     try {
-      db.galery.destroy({
+      await db.galery.destroy({
         where:{
           id: req.params.id
         }
       })
-      res.redirect('/dashboard/galery')
+      res.redirect('/dashboard/galery/')
   } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
-      }
-      res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e, locals })
+    res.locals.cabecera = {
+      title: "Hubo un error",
+      description: "Tuvimos un problema con su petición"
+    }
+      res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e })
     }
   },
 }

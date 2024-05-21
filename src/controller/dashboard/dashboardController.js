@@ -1,35 +1,19 @@
-
-const dashboardView = '../views/layouts/dashboard'
+const db = require('../../../database/models');
 const dashboard = {
   dashboard : async (req, res) => {
     try{
-      const locals = {
-        title: "Dashboard",
-        description: "You can create everything"
+      const articleCount = await db.article.count();
+      res.locals.cabecera = {
+        title: "Nuevo post",
+        description: "Crea increibles entradas"
       }
-      res.render('dashboard', {locals});
+      res.render('dashboard', {articleCount});
     } catch{
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
-    }
-  },
-  //VER MAS TARDE     <!---------------------VER MAS TARDE----------------------------->
-  getError : async (req, res) => {
-    try{
-      const locals = {
-        title: "Dashboard",
-        description: "You can create everything"
-      }
-      res.res("Aquí va un error")
-    } catch{
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
-      }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e })
     }
   }
 }

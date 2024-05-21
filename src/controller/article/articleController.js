@@ -26,51 +26,51 @@ const articles = {
   // 1. Fomulario de crear articulo
   getCreate: async (req, res) => {
     try {
-      const locals = {
+      res.locals.cabecera = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-        res.render('newPost', { locals });
+        res.render('newPost');
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   // 3. Leer un articulo
   getRead : async (req, res) => {
     try {
       let article = await db.article.findByPk(req.params.id,{include: ["author"]})
-      const locals = {
+      res.locals.cabecera = {
         title: article.title,
         description: "Crea increibles entradas"
       }
-      res.render('news', { article, locals});
+      res.render('news', { article });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
   // 4. Leer todos los articulos
   getAllRead : async (req, res) => {
     try {
       let articles = await db.article.findAll({include: ["author"]})
-      const locals = {
+      res.locals.cabecera = {
         title: "Lista de articulos",
         description: "Las increibles entradas estan aquí"
       }
-      res.render('articles', { articles, locals });
+      res.render('articles', { articles });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
   // 5. Formulario para actualizar articulo
@@ -78,17 +78,17 @@ const articles = {
     try {
       let article = await db.article.findByPk(req.params.id)
       let author = await db.users.findAll()
-      const locals = {
+      res.locals.cabecera = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-      res.render('editPost', { locals, author, article});
+      res.render('editPost', { author, article});
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
   putUpdate : async (req, res) => {
@@ -110,11 +110,11 @@ const articles = {
       })
       res.redirect('/dashboard/post/'+ req.params.id);
     } catch(e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "Hubo un error al crear el post, vuelva a intentarlo mas tarde", code: e, locals })
+      res.render('error', { error: "Hubo un error al crear el post, vuelva a intentarlo mas tarde", code: e })
     }
   },
   // 7. borrar el articulo
@@ -122,16 +122,16 @@ const articles = {
     try {
       db.article.destroy({
         where:{
-          idarticle: req.params.id
+          id: req.params.id
         }
       })
-      res.redirect('/dashboard/users')
+      res.redirect('/dashboard/posts')
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e, locals })
+      res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e })
     }
   }
 }

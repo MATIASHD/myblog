@@ -3,65 +3,64 @@ const main = {
   getMain : async (req, res) => {
     try {
       const article = await db.article.findAll()
-      const locals = {
-        title: "main",
-        description: "Todo lo que necesitas, está aquí"
+      res.locals.cabecera = {
+        title: "Bienvenidos",
+        description: "Todo el contenido de tecnologia está en esta web"
       }
-      res.render('index', { locals, article });
+      res.render('index', { article });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e })
     }
   },
   getArticle : async (req, res) => {
     try {
       let article = await db.article.findByPk(req.params.id,{include: ["author"]})
-      const locals = {
+      res.locals.cabecera = {
         title: article.title,
-        description: "Crea increibles entradas"
+        description: article.estract
       }
-      res.render('news', { article, locals});
+      res.render('news', { article });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
   getArticles : async (req, res) => {
     try {
       let articles = await db.article.findAll()
-
-      const locals = {
+      res.locals.cabecera = {
         title: "Lista de articulos",
         description: "Las increibles entradas estan aquí"
       }
-      res.render('allArticle', { articles, locals});
+      res.render('allArticle', { articles });
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
   getResetPassword : async (req, res) => {
     try {
-      const locals = {
+      res.locals.cabecera = {
         title: "Resetear usuario",
         description: "Vamos a verificar que todo este en orden"
       }
-      res.render('passwordOnestep',{ locals })
+      res.render('passwordOnestep')
     } catch (e) {
-      const locals = {
-        title: "Mensaje de error",
-        description: "Lo sentimos ha surgido un error"
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "Hubo un error", code: e })
     }
   },
   getError : async (req, res) => {

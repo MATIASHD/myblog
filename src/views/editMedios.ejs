@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+      <div class="row">
+        <div class="col-ms-12 col-md-12 col-lg-12">
+          <h1 class="text-center">Editar Contenido</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+          <figure class="mx-auto my-4">
+            <% if (media.media.startsWith("http://") || media.media.startsWith("https://")) { %>
+            <img src="<%= media.media %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+            <% } else {%>
+            <img src="../../../assets/upload/<%= media.media %>" class=" img-fluid" alt="<%= media.alt %>">
+            <% } %>
+            <figcaption>
+              <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small><%= media.alt %></small></p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-ms-12 col-md-12 col-lg-12">
+          <form action="/dashboard/galery/update/<%= media.id %>?_method=PUT" method="post" id="loginForm">
+            <div class="mb-3">
+              <label for="alt" class="form-label">Descripción alternativa</label>
+              <input type="text" class="form-control" value="<%= media.alt %>" id="alt" aria-describedby="alt">
+            </div>
+            <div class="mb-3">
+              <label for="figcaption" class="form-label">Figure caption</label>
+              <input type="text" class="form-control" value="<%= media.figcaption %>" id="figcaption" aria-describedby="figcaption">
+            </div>
+            <div class="mb-3">
+              <label for="mediatype" class="form-label">Formato</label>
+              <input type="text" class="form-control" value="<%= media.mediatype %>" id="mediatype" aria-describedby="mediatype">
+            </div>
+            <a type="submit" class="btn btn-primary">Actualizar</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

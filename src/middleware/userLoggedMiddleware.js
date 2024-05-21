@@ -13,12 +13,11 @@ const userLoggedMiddleware = async(req, res, next) => {
     }
     next();
   } catch (e) {
-    const locals = {
-      title: "Mensaje de error",
-      description: "Lo sentimos ha surgido un error"
+    res.locals.cabecera = {
+      title: "Error en el acceso",
+      description: "Parece que tuvimos un problemas, lo sentimos"
     }
-    res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e, locals})
+    res.render('error', {error: "Hubo un problema con la autenticación", code: e})
   }
-  
 }
 module.exports = userLoggedMiddleware;
