@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <title><% if (locals.cabecera) { %><%= locals.cabecera.title %><% } %></title>
     <meta name="contenido" content="<% if (locals.cabecera) { %><%= locals.cabecera.description %><% } %>">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
+  <div class="d-flex flex-column min-vh-100">
     <%- include('../partials/header.ejs') %>
-    <div class="content container-fluid my-4">
+    <div class="content container-fluid flex-fill my-4">
       <%- body %>
     </div>
     <%- include('../partials/footer.ejs') %>
+  </div>
 </body>
 </html>

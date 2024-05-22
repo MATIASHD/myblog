@@ -1,36 +1,26 @@
 const db = require('../../../database/models');
-const dashboardView = '../views/layouts/dashboard'
-// 1. Fomulario de crear articulo
-// 2. Guardar los datos del usario en la BD
-// 3. Leer un articulo
-// 4. Leer todos los articulos
-// 5. Formulario para actualizar articulo
-// 6. Actualizar los datos del articulo
-// 7. borrar el articulo
 const articles = {
-  // 2. Guardar los datos del usario en la BD
   postCreate : (req, res) => {
     db.article.create({
       title: req.body.title,
       subtitle: req.body.subtitle,
-      image_url: req.file.filename,
-      contenido: req.body.post,
-      fecha_publicacion: new Date(),
-      author: req.body.author,
-      categoty: 1,
-      tags: 1,
-      like: 1
+      content: req.body.post,
+      estract: req.body.estract,
+      author_id: req.body.author,
+      draft: req.body.draft,
+      img: req.file.filename,
+      created_at: new Date()
     })
     res.redirect('/dashboard/posts');
   },
-  // 1. Fomulario de crear articulo
   getCreate: async (req, res) => {
     try {
+      const user = await db.users.findAll();
       res.locals.cabecera = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-        res.render('newPost');
+        res.render('newPost', { user});
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -39,7 +29,6 @@ const articles = {
       res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
-  // 3. Leer un articulo
   getRead : async (req, res) => {
     try {
       let article = await db.article.findByPk(req.params.id,{include: ["author"]})
@@ -56,7 +45,6 @@ const articles = {
       res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
-  // 4. Leer todos los articulos
   getAllRead : async (req, res) => {
     try {
       let articles = await db.article.findAll({include: ["author"]})
@@ -73,16 +61,16 @@ const articles = {
       res.render('error', { error: "No se encontró este articulo", code: e })
     }
   },
-  // 5. Formulario para actualizar articulo
   getEditPost : async (req, res) =>{
     try {
       let article = await db.article.findByPk(req.params.id)
       let author = await db.users.findAll()
+      let draftitem = [{ "nombre": "Publicar"},{ "nombre" : "Borrador"}]
       res.locals.cabecera = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-      res.render('editPost', { author, article});
+      res.render('editpost', { author, article, draftitem });
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -94,21 +82,22 @@ const articles = {
   putUpdate : async (req, res) => {
     try {
       const article = await db.article.findByPk(req.params.id, {include: ["author"]});
-      const {title, estracto, post, author, post_status} = req.body;
+      const {title, post, subtitle, estract, author, post_status} = req.body;
       await db.article.update({
         title: title,
+        subtitle: subtitle,
         content: post,
-        estract: estracto,
+        estract: estract,
         author_id: author,
         draft: post_status,
+        img: req.file ? req.file.filename : article.img,
         created_at: new Date(),
-        img: req.file ? req.file.filename : article.image,
       },{
         where: {
           id: req.params.id
         }
       })
-      res.redirect('/dashboard/post/'+ req.params.id);
+      res.redirect('/dashboard/posts');
     } catch(e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -117,7 +106,6 @@ const articles = {
       res.render('error', { error: "Hubo un error al crear el post, vuelva a intentarlo mas tarde", code: e })
     }
   },
-  // 7. borrar el articulo
   postDel : async (req, res) => {
     try {
       db.article.destroy({

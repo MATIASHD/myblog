@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
+        <div class="col-sm-12 col-md-4 col-lg-4 mx-auto d-block">
             <div class="card border-0 mt-4 ">
                 <figure class="mx-auto">
                     <% if (user.userimg.startsWith("http://") || user.userimg.startsWith("https://")) { %>
@@ -14,24 +14,24 @@
                     <img src="/assets/upload/<%= user.userimg %>" class="figure-img rounded shadow-sm img-fluid" alt="">
                     <% } %>
                     <figcaption>
-                        <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
                     </figcaption>
                 </figure>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
-            <div class="mb-3">
-                <label for="name" class="form-label">Nombres: <span><%= user.username %></span></label>
+        <div class="col-sm-12 col-md-4 col-lg-4 mx-auto text-body-tertiary roboto-font">
+            <div class="mb-0">
+                <label for="name" class="form-label fs-6">Nombres: <span class="text-dark fw-bold"><%= user.username %></span></label>
             </div>
-            <div class="mb-3">
-                <label for="surname" class="form-label">Apellido: <span><%= user.surname %></span></label>
+            <div class="mb-0">
+                <label for="surname" class="form-label fs-6">Apellido: <span class="text-dark fw-bold"><%= user.lastname %></span></label>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email: <span><%= user.email %></span></label>
-            </div> 
-            <div class="mb-3">
+            <div class="mb-0">
+                <label for="email" class="form-label fs-6">Email: <span class="text-dark fw-bold"><%= user.email %></span></label>
+            </div>
+            <div class="mb-0">
                 <div class="row">
                     <div class="d-grid gap-2 d-md-flex mt-2 justify-content-md-end">
                         <form action="/dashboard/user/update/<%= user.id %>" method="get" enctype="multipart/form-data">
@@ -41,7 +41,7 @@
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>

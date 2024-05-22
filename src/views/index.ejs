@@ -1,53 +1,58 @@
 <div class="container">
   <div class="row">
     <div class="col-ms-12 col-md-11 col-lg-8 mx-auto  mb-4">
-        <div class="row">
+      <% for (let i = 0; i < user.length; i++) { %>
+        <% if (user[i].perfil_activo == 1) { %>
+          <div class="row">
             <div class="col-3">
                 <div class="text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Foto_De_Perfil_2022.jpg" style="width: 150px;" class="img-fluid rounded-circle" alt="...">
+                    <img src="../assets/upload/<%= user[i].userimg %>" style="width: 150px;" class="img-fluid rounded-circle" alt="...">
                 </div>
             </div>
             <div class="col-9">
-                <h1 class="fw-bold mb-1">Matias Arevalo</h1>
-                <h3 class="fw-medium mb-1">About</h3>
-                <p class="fw-normal fst-normal lh-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo eos totam natus eligendi magnam et, mollitia nostrum quas beatae rem corrupti libero laborum expedita nulla deleniti esse molestiae nesciunt consequuntur.</p>
-                <h6 class="text-primary">hey@matiasarevalo.com</h6>
+                <h1 class="fw-bold mb-1"><%= user[i].username %> <%= user[i].lastname %></h1>
+                <h3 class="fw-light mb-2"><%= user[i].ocupacion %></h3>
+                <p class="fw-normal fst-normal lh-sm"><%= user[i].bio %></p>
+                <h6 class="text-primary"><%= user[i].email %></h6>
             </div>
         </div>
+        <% } %>
+      <% } %>
     </div>
   </div>
 </div>
-
 <div class="container">
 <div class="row">
   <% for (let i = 0; i < article.length; i++) { %>
-  <div class="col-ms-12 col-md-6 col-lg-4 mb-4">
-    <div class="row">
-      <div class="col-12 mb-2">
-        <div class="card border-0 mb-2">
-          <figure>
-              <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
-                <img src="<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
-              <% } else {%>
-                <img src="../assets/upload/<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
-              <% } %>
-            <!--data source-->
-            <figcaption class="figure-caption d-none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="col-12 mb-2">
+    <% if (article[i].draft == 0) { %>
+      <div class="col-ms-12 col-md-6 col-lg-4 mb-4">
         <div class="row">
-          <div class="col-1">
-            <span class="badge text-bg-secondary">Light</span>
+          <div class="col-12 mb-2">
+            <div class="card border-0 mb-2">
+              <figure>
+                  <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
+                    <img src="<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+                  <% } else {%>
+                    <img src="../assets/upload/<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+                  <% } %>
+                <!--data source-->
+                <figcaption class="figure-caption d-none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="col-12 mb-2">
+            <div class="row">
+              <div class="col-1">
+                <span class="badge text-bg-secondary">Light</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <a href="/article/<%= article[i].id %>"><h5><%= article[i].title %></h5></a>
           </div>
         </div>
       </div>
-      <div class="col-12">
-        <a href="/article/<%= article[i].id %>"><h5><%= article[i].title %></h5></a>
-      </div>
-    </div>
-  </div>
+    <% } %>
   <% } %>
 </div>
 </div>

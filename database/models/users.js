@@ -26,6 +26,15 @@ module.exports = (sequelize, dataTypes) => {
     userimg:{
       type: dataTypes.STRING(255),
       allowNull: false
+    },
+    ocupacion:{
+      type: dataTypes.STRING(255),
+    },
+    bio:{
+      type: dataTypes.STRING(700),
+    },
+    perfil_activo:{
+      type: dataTypes.INTEGER,
     }
   }
   let config = {

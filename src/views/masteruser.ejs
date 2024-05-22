@@ -1,0 +1,29 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+      <h1 class="text-center">Elegí tu perfil</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+        <form action="/dashboard/perfil/<%= profile.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <div class="form-floating">
+              <select class="form-select" name="perfil" id="floatingSelect" aria-label="Floating label select example">
+              <% for (let i = 0; i < autor.length; i++) { %>
+                <% if (autor[i].perfil_activo == 1) { %>
+                <option value="<%= autor[i].id %>" selected><%= autor[i].username %> <%= autor[i].lastname %></option>
+                <% } %>
+                <option value="<%= autor[i].id %>"><%= autor[i].username %> <%= autor[i].lastname %></option>
+              <% } %>
+              </select>
+              <label for="floatingSelect">Autor</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Publicar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

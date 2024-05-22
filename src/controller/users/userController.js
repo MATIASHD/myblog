@@ -1,14 +1,6 @@
 const db = require('../../../database/models');
 const bcryptjs = require('bcryptjs');
-// 1. Fomulario de crear articulo
-// 2. Guardar los datos del usario en la BD
-// 3. Leer un articulo
-// 4. Leer todos los articulos
-// 5. Formulario para actualizar articulo
-// 6. Actualizar los datos del articulo
-// 7. borrar el articulo
 const usersController = {
-  // 1. Fomulario de crear usuario
   getCreateUser : async (req, res) => {
     try {
       res.locals.cabecera = {
@@ -24,8 +16,6 @@ const usersController = {
       res.render('error', { error: "No se pudo crear el usuario", code: e })
     }
   },
-
-  // 2. crear un usuario BD
   postCreateUser : async (req, res) => {
     try {
       let userInDB = await db.users.findOne({where: {email: req.body.email}})
@@ -56,8 +46,6 @@ const usersController = {
       res.render('error', { error: "No se pudo crear este usuario", code: e })
     }
   },
-
-  // 3. Leer profile
   getProfile : async (req, res) => {
     try {
       const profile = await db.users.findByPk(req.params.id);
@@ -74,8 +62,6 @@ const usersController = {
       res.render('error', { error: "No se encontró el usuario", code: e })
     }
   },
-
-  // 4. Leer todos los usuarios
   getAllUsers : async (req, res) => {
     try {
       const user = await db.users.findAll();
@@ -92,7 +78,6 @@ const usersController = {
       res.render('error', { error: "No se encontró la lista de usuario", code: e })
     }
   },
-
   getEditUser : async (req, res) => {
     try {
       const profile = await db.users.findByPk(req.params.id);
@@ -109,8 +94,6 @@ const usersController = {
       res.render('error', { error: "No se encontró el usuario", code: e })
     }
   },
-
-  // 5. Actualizar los datos del articulo
   putUpdateUser  : async (req, res) => {
     try {
       const user = await db.users.findByPk(req.params.id)
@@ -118,7 +101,7 @@ const usersController = {
         username: req.body.name,
         lastname: req.body.surname,
         email:req.body.email,
-        image: req.file.filename == null ? image = user.userimg : req.file.filename
+        userimg: req.file ? req.file.filename : user.userimg
       },{
         where: {
           id: req.params.id
@@ -133,8 +116,6 @@ const usersController = {
       res.render('error', { error: "No se encontró este articulo", code: e})
     }
   },
-
-  // 6. borrar el articulo
   deleteUser : async (req, res) => {
     try {
       await db.users.destroy({ where: { id: req.params.id } })
@@ -147,8 +128,6 @@ const usersController = {
       res.render('error', { error: "No se encontró este articulo", code: e, locals })
     }
   },
-
-  //7. Login
   getLogin : async (req, res) => {
     try {
       res.locals.cabecera = {
@@ -164,8 +143,6 @@ const usersController = {
       res.render('error', { error: "No se encontró este articulo", code: e, locals })
     }
   },
-
-  //8. acceso login
   postLogin : async (req, res) => {
     try {
       if(req.body.password == '') {
@@ -198,15 +175,12 @@ const usersController = {
       res.render('error', { error: "hubo un problema al iniciar sesión contacte al soporte técnico", code: e})
     }
   },
-
   getResetPassword: async (req, res) => {
     res.render('resetpassword');
   },
-
   putResetPassword: async (req, res) => {
     res.render('resetpassword');
   },
-
   getLogout : async (req, res) => {
     try {
       req.session.destroy()

@@ -6,12 +6,16 @@
       <input type="text" value="<%- article.title %>" name="title" class="form-control" id="title" aria-describedby="title">
     </div>
     <div class="mb-3">
+      <label for="subtitle" class="form-label">Subtitulo</label>
+      <input type="text" value="<%- article.subtitle %>" name="subtitle" class="form-control" id="subtitle" aria-describedby="subtitle">
+    </div>
+    <div class="mb-3">
       <label for="estracto" class="form-label">introducción</label>
-      <input type="text" value="<%- article.estract %>" name="estracto" class="form-control" id="estracto" aria-describedby="estracto">
+      <input type="text" value="<%- article.estract %>" name="estract" class="form-control" id="estracto" aria-describedby="estracto">
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Imagen</label>
-      <input class="form-control" value="<%- article.image %>" name="image" accept="image/*" type="file" id="image">
+      <input class="form-control" name="image" accept="image/*" type="file" id="image">
     </div>
     <div class="mb-3">
       <label for="floatingTextarea">Post</label>
@@ -20,9 +24,12 @@
     <div class="mb-3">
       <div class="form-floating">
         <select class="form-select" name="author" id="floatingSelect" aria-label="Floating label select example">
-          <option selected>Editorial</option>
           <% for (let i = 0; i < author.length; i++) { %>
-          <option value="<%= author[i].id %>"><%= author[i].username %> <%= author[i].lastname %></option>
+            <% if (i == author.author_id) { %>
+              <option value="<%= author[i].id %>" selected ><%= author[i].username %> <%= author[i].lastname %></option>
+            <% } else {%>
+              <option value="<%= author[i].id %>"><%= author[i].username %> <%= author[i].lastname %></option>
+            <% } %>
           <% } %>
         </select>
         <label for="floatingSelect">Autor</label>
@@ -31,14 +38,21 @@
     <div class="mb-3">
       <div class="form-floating">
         <select class="form-select" name="post_status" id="floatingSelect" aria-label="Floating label select example">
-          <option value="1" selected>Borrador</option>
-          <option value="0">Publicar</option>
+          <% for (let i = 0; i < draftitem.length; i++) { %>
+            <% console.log(draftitem.length); %>
+            <% if (i == article.draft) { %>
+              <option value="<%= i %>" selected><%= draftitem[i].nombre %></option>
+            <% } else { %>
+              <option value="<%= i %>"><%= draftitem[i].nombre %></option>
+            <% } %>
+          <% } %>
         </select>
         <label for="floatingSelect">Estado del post</label>
       </div>
     </div>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary">Publicar</button>
+      <button type="submit" class="btn btn-primary">Actualizar</button>
     </div>
   </form>
 </div>
+

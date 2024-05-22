@@ -1,33 +1,48 @@
-<div class="row mb-5 justify-content-center">
-  <div class="col-md-7">
-    <h1 class="text-center">Nuevo Posteo</h1>
-    <form action="/dashboard/article/create" method="post" enctype="multipart/form-data">
-      <div class="mb-3">
-        <label for="title" class="form-label">Titulo</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="title">
+<div class="col-sm-12 offset-md-3 col-md-6">
+  <h1 class="text-center">Crear post</h1>
+  <form action="/dashboard/post/create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titulo</label>
+      <input type="text" name="title" class="form-control" id="title" aria-describedby="title">
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Subtitulo</label>
+      <input type="text" name="subtitle" class="form-control" id="title" aria-describedby="title">
+    </div>
+    <div class="mb-3">
+      <label for="estracto" class="form-label">introducción</label>
+      <input type="text" name="estract" class="form-control" id="estracto" aria-describedby="estracto">
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Imagen</label>
+      <input class="form-control" name="image" accept="image/*" type="file" id="image">
+    </div>
+    <div class="mb-3">
+      <label for="floatingTextarea">Post</label>
+      <textarea class="form-control" name="post" rows="10" cols="700" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    </div>
+    <div class="mb-3">
+      <div class="form-floating">
+        <select class="form-select" name="author" id="floatingSelect" aria-label="Floating label select example">
+          <option selected>Editorial</option>
+          <% for (let i = 0; i < user.length; i++) { %>
+          <option value="<%= user[i].id %>"><%= user[i].username %> <%= user[i].lastname %></option>
+          <% } %>
+        </select>
+        <label for="floatingSelect">Autor</label>
       </div>
-      <div class="mb-3">
-        <label for="subtitle" class="form-label">Estracto</label>
-        <input type="text" name="subtitle" class="form-control" id="subtitle" aria-describedby="subtitle">
+    </div>
+    <div class="mb-3">
+      <div class="form-floating">
+        <select class="form-select" name="post_status" id="floatingSelect" aria-label="Floating label select example">
+          <option value="1" selected>Borrador</option>
+          <option value="0">Publicar</option>
+        </select>
+        <label for="floatingSelect">Estado del post</label>
       </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">Imagen</label>
-        <input class="form-control" name="image" accept="image/*" type="file" id="image">
-      </div>
-      <div class="mb-3">
-        <label for="floatingTextarea">Post</label>
-        <textarea class="form-control" name="post" rows="10" cols="700" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="author" class="form-label">Autor</label>
-        <input type="text" name="author" class="form-control" id="author" aria-describedby="author">
-      </div>
-      <div class="row">
-        <div class="col-12 mb-3">
-          <button type="submit" class="btn btn-primary">Publicar</button>
-          <button type="submit" class="btn btn-primary">Guardar en borrador</button>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Publicar</button>
+    </div>
+  </form>
 </div>

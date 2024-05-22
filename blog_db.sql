@@ -11,11 +11,14 @@ CREATE TABLE IF NOT EXISTS users (
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     userpassword VARCHAR(255) NOT NULL,
-    userimg VARCHAR(255) NOT NULL
+    userimg VARCHAR(255) NOT NULL,
+    ocupacion VARCHAR(255),
+    bio VARCHAR(300),
+    perfil_activo INT,
 );
 
-INSERT INTO users(username, lastname, email, userpassword, userimg) VALUES
-('Matias', 'Arevalo', 'matt@matt.com', '$2a$10$ENDkIzGyPtMQduSw.GCxxO7armlaPwcekPMGM7TCsP8hPJdAGm5..', '1712006084350_user.jpeg');
+INSERT INTO users(username, lastname, email, userpassword, userimg, ocupacion, bio, perfil_activo) VALUES
+('Matias', 'Arevalo', 'matt@matt.com', '$2a$10$ENDkIzGyPtMQduSw.GCxxO7armlaPwcekPMGM7TCsP8hPJdAGm5..', '1712006084350_user.jpeg', "Desarrollador web full stack", "¡Hola! Soy Matías, desarrollador con entusiasmo de aprender y profesionalizarme en el mundo de desarrollo. Mi capacidad analítica me permite entender código, analizar errores, aportar soluciones y diseñar ideas creativas e innovadoras.", 1);
 
 -- Categorias
 CREATE TABLE IF NOT EXISTS category (

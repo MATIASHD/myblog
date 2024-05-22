@@ -3,11 +3,12 @@ const main = {
   getMain : async (req, res) => {
     try {
       const article = await db.article.findAll()
+      const user = await db.users.findAll()
       res.locals.cabecera = {
         title: "Bienvenidos",
         description: "Todo el contenido de tecnologia está en esta web"
       }
-      res.render('index', { article });
+      res.render('index', { article, user });
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",

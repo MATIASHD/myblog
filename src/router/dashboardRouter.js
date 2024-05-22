@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { perfil, perfilupdate } = require('../controller/users/perfil');
 const { getCreateUser,
         postCreateUser,
         getProfile,
@@ -30,6 +31,9 @@ const authMiddleware = require('../middleware/authMiddleware');
 const userLogged = require('../middleware/userLoggedMiddleware');
 //Multer
 const uploadImg = require('../middleware/imageUploadMiddleware');
+//Pefil
+router.get('/dashboard/perfil',userLogged, authMiddleware, perfil);
+router.put('/dashboard/perfil',userLogged, authMiddleware, perfilupdate);
 //main dashboard
 router.get('/dashboard/',userLogged, authMiddleware, dashboard); //DASHBOARD
 router.get('/dashboard/users/', userLogged, authMiddleware, getAllUsers); //USERS LIST
