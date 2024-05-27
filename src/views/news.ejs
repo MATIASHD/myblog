@@ -24,10 +24,10 @@
     <div class="col-sm-12 col-md-11 col-lg-7 mx-auto d-block">
       <div class="card border-0 mt-4 ">
         <figure class="mx-auto">
-          <% if (article.img.startsWith("http://") || article.img.startsWith("https://")) { %>
-          <img src="<%= article.img %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+          <% if (article.media[0].media.startsWith("http://") || article.media[0].media.startsWith("https://")) { %>
+          <img src="<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="">
           <% } else {%>
-          <img src="../assets/upload/<%= article.img %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+          <img src="../assets/upload/<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="">
           <% } %>
           <figcaption>
             <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
@@ -41,12 +41,13 @@
     <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
       <div class="row">
       <div class="col-1">
+        <%= article.author.media %>
         <figure class="mx-auto">
-          <% if (article.author.userimg.startsWith("http://") || article.author.userimg.startsWith("https://")) { %>
+          <% //if (article.author.perfil.media.startsWith("http://") || article.author.perfil.media.startsWith("https://")) { %>
           <img src="<%= article.author.userimg %>" style="max-width: 62px;" class="img-fluid rounded-circle m-0" alt="">
-          <% } else {%>
-          <img src="../assets/upload/<%= article.author.userimg %>" style="max-width: 62px;" class="img-fluid rounded-circle m-0" alt="">
-          <% } %>
+          <% //} else {%>
+          <img src="../assets/upload/<%= article %>" style="max-width: 62px;" class="img-fluid rounded-circle m-0" alt="">
+          <% //} %>
           <figcaption>
             <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
           </figcaption>
@@ -62,6 +63,18 @@
     </div>
   </div>
   <%- article.content %>
+  <div class="row">
+    <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
+      <% for (let i = 0; i < article.tags.length; i++) { %>
+        <span class="badge text-bg-secondary roboto-font"><%= article.tags[i].nombre %></span>
+      <% } %>
+    </div>
+  </div>
 </div>
 
 

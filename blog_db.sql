@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS users (
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     userpassword VARCHAR(255) NOT NULL,
-    userimg VARCHAR(255) NOT NULL,
+    userimg INT,
     ocupacion VARCHAR(255),
     bio VARCHAR(300),
     perfil_activo INT,
 );
 
 INSERT INTO users(username, lastname, email, userpassword, userimg, ocupacion, bio, perfil_activo) VALUES
-('Matias', 'Arevalo', 'matt@matt.com', '$2a$10$ENDkIzGyPtMQduSw.GCxxO7armlaPwcekPMGM7TCsP8hPJdAGm5..', '1712006084350_user.jpeg', "Desarrollador web full stack", "¡Hola! Soy Matías, desarrollador con entusiasmo de aprender y profesionalizarme en el mundo de desarrollo. Mi capacidad analítica me permite entender código, analizar errores, aportar soluciones y diseñar ideas creativas e innovadoras.", 1);
+('Matias', 'Arevalo', 'matt@matt.com', '$2a$10$ENDkIzGyPtMQduSw.GCxxO7armlaPwcekPMGM7TCsP8hPJdAGm5..', 1, "Desarrollador web full stack", "¡Hola! Soy Matías, desarrollador con entusiasmo de aprender y profesionalizarme en el mundo de desarrollo. Mi capacidad analítica me permite entender código, analizar errores, aportar soluciones y diseñar ideas creativas e innovadoras.", 1);
 
 -- Categorias
 CREATE TABLE IF NOT EXISTS category (
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS article (
     estract VARCHAR(300),
     author_id INT,
     draft INT,
-    img VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT (NOW()),
+    img INT,
+    created_at NOW(),
     FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
@@ -405,7 +405,7 @@ INSERT INTO article(title, subtitle, content, estract, author_id, draft, img ) V
                     las capas que queden enmedio.
                 </p>
             </div>
-        </div>', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,'1712006084350_user.jpeg' );
+        </div>', 'Blind consistency vs intentional branding on LinkedIn', 1, 0,1 );
 
 -- Comentarios
 CREATE TABLE IF NOT EXISTS comentarios (
@@ -439,4 +439,13 @@ CREATE TABLE IF NOT EXISTS articulotags (
   PRIMARY KEY(tags_id, article_id)
 );
 
-INSERT INTO articulotags (tags_id, article_id) VALUES (1,1);
+INSERT INTO articulomedia (tags_id, article_id) VALUES (1,1);
+
+--GaleryArticulo
+CREATE TABLE IF NOT EXISTS articulomedia (
+  media_id INT NOT NULL,
+  article_id INT NOT NULL,
+  FOREIGN KEY(media_id) REFERENCES galery(id),
+  FOREIGN KEY(article_id) REFERENCES article(id),
+  PRIMARY KEY(media_id, article_id)
+);

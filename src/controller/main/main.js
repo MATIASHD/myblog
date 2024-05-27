@@ -2,7 +2,7 @@ const db = require('../../../database/models')
 const main = {
   getMain : async (req, res) => {
     try {
-      const article = await db.article.findAll()
+      const article = await db.article.findAll({include: ["tags", "media"]})
       const user = await db.users.findAll()
       res.locals.cabecera = {
         title: "Bienvenidos",
@@ -19,7 +19,7 @@ const main = {
   },
   getArticle : async (req, res) => {
     try {
-      let article = await db.article.findByPk(req.params.id,{include: ["author"]})
+      let article = await db.article.findByPk(req.params.id,{include: ["author", "tags", "media"]})
       res.locals.cabecera = {
         title: article.title,
         description: article.estract

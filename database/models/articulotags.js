@@ -15,5 +15,15 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: false
   }
   const articulotags = sequelize.define(alias, cols, config);
+
+  articulotags.associate = function(models){
+  articulotags.belongsTo(models.category,{
+    foreignKey: "tags_id"
+  })
+
+  articulotags.belongsTo(models.article,{
+    foreignKey: "article_id"
+  })
+}
   return articulotags;
 }

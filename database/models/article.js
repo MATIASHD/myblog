@@ -42,9 +42,25 @@ module.exports = (sequelize, dataTypes) => {
   }
   const article = sequelize.define(alias, cols, config);
   article.associate = function(models){
+    article.belongsToMany(models.category,{
+      as: "tags",
+      through: "articulotags",
+      foreignKey: "article_id",
+      otherKey: "tags_id",
+      timestamps: false
+    })
+
     article.belongsTo(models.users,{
       as: "author",
       foreignKey: "author_id"
+    })
+
+    article.belongsToMany(models.galery,{
+      as: "media",
+      through: "articulomedia",
+      foreignKey: "article_id",
+      otherKey: "media_id",
+      timestamps: false
     })
   }
   return article;

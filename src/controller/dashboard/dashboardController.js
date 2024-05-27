@@ -3,11 +3,12 @@ const dashboard = {
   dashboard : async (req, res) => {
     try{
       const articleCount = await db.article.count();
+      const allpost = await db.article.findAll({ limit: 10 });
       res.locals.cabecera = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-      res.render('dashboard', {articleCount});
+      res.render('dashboard', {articleCount, post: allpost });
     } catch{
       res.locals.cabecera = {
         title: "Hubo un error",

@@ -66,30 +66,25 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Subtitulo</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Tiempo</th>
                             </tr>
                         </thead>
                             <tbody>
+                              <% for (let i = 0; i < post.length; i++) { %>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <th scope="row"><%= post[i].title %></th>
+                                    <td><%= post[i].subtitle %></td>
+                                    <td><% if (post[i].draft == 1) { %>
+                                      <span class="badge text-bg-secondary">Borrador</span>
+                                    <% } else { %>
+                                      <span class="badge text-bg-primary">Publicado</span>
+                                    <% } %></td>
+                                    <td><%= post[i].created_at %></td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                              <% } %>
                             </tbody>
                     </table>
                 </div>

@@ -1,4 +1,6 @@
 const db = require('../../../database/models');
+const fs = require('fs');
+const path = require('path');
 const galeryController = {
   allmedia: async (req, res) => {
     try {
@@ -102,9 +104,21 @@ const galeryController = {
   },
   deleteMedia : async (req, res) => {
     try {
+      const mediafile = await db.galery.findByPk(req.params.id);
       await db.galery.destroy({
         where:{
           id: req.params.id
+        }
+      })
+      const filePath = path.join(__dirname,'../../../public/assets/upload', path.basename(mediafile.media));
+      console.log(filePath);
+      fs.unlink(filePath, (e) => {
+        if(e){
+          res.locals.cabecera = {
+            title: "Hubo un error",
+            description: "Tuvimos un problema con su petición"
+          }
+            res.render('error', { error: "Hubo un error al eliminar al usuario, vuelva a intentarlo mas tarde", code: e })
         }
       })
       res.redirect('/dashboard/galery/')

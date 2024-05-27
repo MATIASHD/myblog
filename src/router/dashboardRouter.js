@@ -26,6 +26,10 @@ const { allmedia,
         putupdateMedia,
         deleteMedia } = require('../controller/galery/galeryController')
 const { dashboard } = require('../controller/dashboard/dashboardController');
+const { alltags,
+        postCreateTags,
+        deleteTags } = require('../controller/tags/tagsController');
+
 //Middleware
 const authMiddleware = require('../middleware/authMiddleware');
 const userLogged = require('../middleware/userLoggedMiddleware');
@@ -33,7 +37,7 @@ const userLogged = require('../middleware/userLoggedMiddleware');
 const uploadImg = require('../middleware/imageUploadMiddleware');
 //Pefil
 router.get('/dashboard/perfil',userLogged, authMiddleware, perfil);
-router.put('/dashboard/perfil',userLogged, authMiddleware, perfilupdate);
+router.post('/dashboard/perfil',userLogged, authMiddleware, perfilupdate);
 //main dashboard
 router.get('/dashboard/',userLogged, authMiddleware, dashboard); //DASHBOARD
 router.get('/dashboard/users/', userLogged, authMiddleware, getAllUsers); //USERS LIST
@@ -62,4 +66,9 @@ router.get('/dashboard/galery/read/:id',authMiddleware, readMedia); //READ
 router.get('/dashboard/galery/update/:id',authMiddleware, updateMedia); //UPDATE
 router.put('/dashboard/galery/update/:id',authMiddleware, uploadImg.single('image'), putupdateMedia); //UPDATE
 router.delete('/dashboard/galery/delete/:id',authMiddleware, deleteMedia); //DELETE
+//Tags
+router.get('/dashboard/tags/',authMiddleware, alltags); //tags
+router.post('/dashboard/tags/create',authMiddleware, postCreateTags); //CREATE
+router.delete('/dashboard/tags/delete/:id',authMiddleware, deleteTags); //DELETE
+
 module.exports = router;

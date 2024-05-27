@@ -18,18 +18,25 @@ const perfil = {
   },
   perfilupdate : async (req, res) => {
     try {
-      await db.galery.update({
-        perfil_activo: 1,
-      }, {
-        where: {
-          id: perfilupdate,
-        }
+      await db.users.sequelize.transaction(async (t) => {
+        await db.users.update(
+          { perfil_activo : 0}, { where: {}}
+        );
+        await db.users.update(
+          { perfil_activo : 1 }, { where: { id: req.body.autor }}
+        );
       })
       res.locals.cabecera = {
         title: "Selecionar tu perfil",
         description: "Apoderate de todo"
       }
-      res.redirect('/dashboard/perfil');
+      if (res.status === 200) {
+        let msj = "Se guardó con éxito";
+        res.redirect('/dashboard/perfil');
+      } else {
+        let msj = null;
+        res.redirect('/dashboard/perfil');
+      }
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -38,6 +45,5 @@ const perfil = {
       res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e })
     }
   },
-
 }
 module.exports = perfil;

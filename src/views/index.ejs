@@ -30,10 +30,10 @@
           <div class="col-12 mb-2">
             <div class="card border-0 mb-2">
               <figure>
-                  <% if (article[i].img.startsWith("http://") || article[i].img.startsWith("https://")) { %>
-                    <img src="<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+                  <% if (article[i].media[0].media.startsWith("http://") || article[i].media[0].media.startsWith("https://")) { %>
+                    <img src="<%= article[i].media[0].media %>" style="height: 280px; width: 415px;" class="rounded object-fit-cover img-fluid shadow-sm"  alt="">
                   <% } else {%>
-                    <img src="../assets/upload/<%= article[i].img %>" class="rounded img-fluid shadow-sm"  alt="">
+                    <img src="../assets/upload/<%= article[i].media[0].media %>" style="height: 280px; width: 415px;" class="rounded object-fit-cover img-fluid shadow-sm"  alt="">
                   <% } %>
                 <!--data source-->
                 <figcaption class="figure-caption d-none">El edificio de la Bolsa de Comercio, pionero entre los "gigantes" del Bajo porteño. Foto: Guillermo Rodríguez Adami</figcaption>
@@ -43,7 +43,9 @@
           <div class="col-12 mb-2">
             <div class="row">
               <div class="col-1">
-                <span class="badge text-bg-secondary">Light</span>
+                <% for (let j = 0; j < article[i].tags.length; j++) { %>
+                  <span class="badge text-bg-secondary"><%= article[i].tags[j].nombre %></span>
+                <% } %>
               </div>
             </div>
           </div>

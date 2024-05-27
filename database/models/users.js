@@ -23,10 +23,6 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.STRING(255),
       allowNull: false
     },
-    userimg:{
-      type: dataTypes.STRING(255),
-      allowNull: false
-    },
     ocupacion:{
       type: dataTypes.STRING(255),
     },
@@ -46,6 +42,11 @@ module.exports = (sequelize, dataTypes) => {
     users.hasOne(models.article,{
       as: "article",
       foreignKey: "author_id"
+    })
+
+    users.belongsTo(models.galery,{
+      as: "picture",
+      foreignKey: "imgprofile_id"
     })
   }
   return users;

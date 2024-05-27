@@ -1,10 +1,10 @@
 # Blog para la experiancia del usuario
 
 ## Temas pendientes
-- Poner restricciones para que se elija un usuario cabecera
-- agregar, quitar tag
-- asociarlo a los articulos
-- mostrarlo a los tag
+- ~~Poner restricciones para que se elija un usuario cabecera~~
+- ~~agregar, quitar tag~~
+- ~~asociarlo a los articulos~~
+- ~~mostrarlo a los tag~~
 
 ## Buscar
 - Como machear contenido multimedia

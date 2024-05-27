@@ -1,3 +1,4 @@
+
 const db = require('../../../database/models');
 const articles = {
   postCreate : (req, res) => {
@@ -20,7 +21,7 @@ const articles = {
         title: "Nuevo post",
         description: "Crea increibles entradas"
       }
-        res.render('newPost', { user});
+        res.render('newPost', { user });
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",

@@ -20,12 +20,30 @@ module.exports = (sequelize, dataTypes) => {
     },
     mediatype:{
       type: dataTypes.STRING(300),
+    },
+    imgprofile_id:{
+      type: dataTypes.INTEGER,
     }
   };
   let config = {
     tableName: "galery",
     timestamps: false
   }
-  const article = sequelize.define(alias, cols, config);
-  return article;
+  const galery = sequelize.define(alias, cols, config);
+
+  galery.associate = function(models) {
+    galery.belongsToMany(models.article,{
+      as: "article",
+      through: "articulomedia",
+      foreignKey: "media_id",
+      otherKey: "article_id",
+      timestamps: false
+    })
+
+    galery.belongsTo(models.users,{
+      as: "user",
+      foreignKey: "imgprofile_id"
+    })
+  }
+  return galery;
 }
