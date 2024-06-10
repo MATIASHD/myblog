@@ -32,6 +32,7 @@ module.exports = (sequelize, dataTypes) => {
     perfil_activo:{
       type: dataTypes.INTEGER,
     }
+
   }
   let config = {
     tableName: "users",
@@ -44,8 +45,8 @@ module.exports = (sequelize, dataTypes) => {
       foreignKey: "author_id"
     })
 
-    users.belongsTo(models.galery,{
-      as: "picture",
+    users.hasOne(models.galery,{
+      as: "perfil_picture",
       foreignKey: "imgprofile_id"
     })
   }

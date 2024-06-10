@@ -3,7 +3,7 @@ const main = {
   getMain : async (req, res) => {
     try {
       const article = await db.article.findAll({include: ["tags", "media"]})
-      const user = await db.users.findAll()
+      const user = await db.users.findAll({include: ["perfil_picture"]})
       res.locals.cabecera = {
         title: "Bienvenidos",
         description: "Todo el contenido de tecnologia está en esta web"

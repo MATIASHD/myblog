@@ -24,6 +24,6 @@ module.exports = (sequelize, dataTypes) => {
     articulomedia.belongsTo(models.article,{
       foreignKey: "article_id"
     })
-}
+  }
   return articulomedia;
 }

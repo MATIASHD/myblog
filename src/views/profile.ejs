@@ -4,17 +4,18 @@
             <h1 class="text-center">Perfil</h1>
         </div>
     </div>
+    <% console.log(user); %>
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 mx-auto d-block">
             <div class="card border-0 mt-4 ">
                 <figure class="mx-auto">
-                    <% if (user.userimg.startsWith("http://") || user.userimg.startsWith("https://")) { %>
-                    <img src="<%= article.img %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+                    <% if (user.perfil_picture.media.startsWith("http://") || user.perfil_picture.media.startsWith("https://")) { %>
+                    <img src="<%= user.perfil_picture.media %>" class="figure-img rounded shadow-sm img-fluid" alt="<%= user.perfil_picture.alt %>">
                     <% } else {%>
-                    <img src="/assets/upload/<%= user.userimg %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+                    <img src="/assets/upload/<%= user.perfil_picture.media %>" class="figure-img rounded shadow-sm img-fluid" alt="<%= user.perfil_picture.alt %>">
                     <% } %>
                     <figcaption>
-                        <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+                        <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small><%= user.perfil_picture.figcaption %></small></p>
                     </figcaption>
                 </figure>
             </div>

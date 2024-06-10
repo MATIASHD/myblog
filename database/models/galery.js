@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.STRING(300),
     },
     imgprofile_id:{
-      type: dataTypes.INTEGER,
+      type: dataTypes.INTEGER
     }
   };
   let config = {
@@ -41,7 +41,7 @@ module.exports = (sequelize, dataTypes) => {
     })
 
     galery.belongsTo(models.users,{
-      as: "user",
+      as: "perfil_picture",
       foreignKey: "imgprofile_id"
     })
   }

@@ -48,7 +48,7 @@ const usersController = {
   },
   getProfile : async (req, res) => {
     try {
-      const profile = await db.users.findByPk(req.params.id);
+      const profile = await db.users.findByPk(req.params.id,{include: ["perfil_picture"]});
       res.locals.cabecera = {
         title: profile.username + " "+ profile.lastname,
         description: "Bienvenido " + profile.username + " "+ profile.lastname
