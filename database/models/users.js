@@ -32,7 +32,6 @@ module.exports = (sequelize, dataTypes) => {
     perfil_activo:{
       type: dataTypes.INTEGER,
     }
-
   }
   let config = {
     tableName: "users",

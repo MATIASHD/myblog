@@ -18,7 +18,6 @@
         <li class="select-item"><a class="nav-link select-share text-body-secondary" href="https://www.instagram.com/heymatiasarevalo/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
         <li class="select-item"><a class="nav-link select-share text-body-secondary" href=""><i class="fa-regular fa-envelope"></i></a></li>
         <li class="select-item"><a class="nav-link select-share text-body-secondary" href="https://www.linkedin.com/shareArticle?mini=true&url=URL_DEL_ARTICULO&title=<%= article.title %>&summary=RESUMEN_DEL_ARTICULO&source=matiasarevalo.com" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
-
       </ul>
     </div>
   </div>
@@ -27,12 +26,12 @@
       <div class="card border-0 mt-4 ">
         <figure class="mx-auto">
           <% if (article.media[0].media.startsWith("http://") || article.media[0].media.startsWith("https://")) { %>
-          <img src="<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+          <img src="<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="<%= article.media[0].alt %>">
           <% } else {%>
-          <img src="../assets/upload/<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="">
+          <img src="../assets/upload/<%= article.media[0].media %>" class="figure-img rounded shadow-sm img-fluid" alt="<%= article.media[0].alt %>">
           <% } %>
           <figcaption>
-            <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+            <p class="text-body-tertiary roboto-font fs-6 fw-normal"><small><%= article.media[0].figcaption %></small></p>
           </figcaption>
         </figure>
       </div>
@@ -42,16 +41,15 @@
   <div class="row">
     <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
       <div class="row">
-      <div class="col-1">
-        <%= article.author.media %>
-        <figure class="mx-auto">
-          <% //if (article.author.perfil.media.startsWith("http://") || article.author.perfil.media.startsWith("https://")) { %>
-          <img src="<%= article.author.userimg %>" style="max-width: 62px;" class="img-fluid rounded-circle m-0" alt="">
-          <% //} else {%>
-          <img src="../assets/upload/<%= article %>" style="max-width: 62px;" class="img-fluid rounded-circle m-0" alt="">
-          <% //} %>
+      <div class="col-2 d-flex justify-content-end">
+        <figure class="m-0">
+          <% if (article.author.perfil_picture.media.startsWith("http://") || article.author.perfil_picture.media.startsWith("https://")) { %>
+          <img src="<%= article.author.perfil_picture.media %>" style="width: 65px; height: 65px;" class="img-fluid object-fit-cover rounded-circle m-0" alt="<%= article.author.perfil_picture.alt %>">
+          <% } else {%>
+          <img src="../assets/upload/<%= article.author.perfil_picture.media %>" style="width: 65px; height: 65px;" class="img-fluid object-fit-cover rounded-circle m-0" alt="<%= article.author.perfil_picture.alt %>">
+          <% } %>
           <figcaption>
-            <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small>Implica asumir la responsabilidad y el ownership de tu</small></p>
+            <p class="text-body-tertiary d-none roboto-font fs-6 fw-normal"><small><%= article.author.perfil_picture.figconfig %></small></p>
           </figcaption>
         </figure>
       </div>

@@ -41,7 +41,7 @@ module.exports = (sequelize, dataTypes) => {
     })
 
     galery.belongsTo(models.users,{
-      as: "perfil_picture",
+      as: "author",
       foreignKey: "imgprofile_id"
     })
   }

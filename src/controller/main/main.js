@@ -19,7 +19,19 @@ const main = {
   },
   getArticle : async (req, res) => {
     try {
-      let article = await db.article.findByPk(req.params.id,{include: ["author", "tags", "media"]})
+      let article = await db.article.findByPk(req.params.id,
+        {
+          include: [
+            {
+              model: db.users,
+              as: "author",
+              include: [
+                {
+                  model: db.galery,
+                  as: "perfil_picture"
+                }
+              ]
+            }, "tags", "media"]})
       res.locals.cabecera = {
         title: article.title,
         description: article.estract
