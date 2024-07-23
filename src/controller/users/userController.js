@@ -1,3 +1,4 @@
+
 const db = require('../../../database/models');
 const bcryptjs = require('bcryptjs');
 const usersController = {
@@ -80,12 +81,14 @@ const usersController = {
   },
   getEditUser : async (req, res) => {
     try {
-      const profile = await db.users.findByPk(req.params.id);
+      const profile = await db.users.findByPk(req.params.id, {include: ["perfil_picture"]});
+      const multimedia = await db.galery.findAll();
+      const perfil = ['activo', 'inactivo']
       res.locals.cabecera = {
         title: profile.username + " "+ profile.lastname,
         description: "Bienvenido " + profile.name + " "+ profile.lastname
       }
-      res.render('edituser', { profile });
+      res.render('edituser', { profile, multimedia, perfil});
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -94,14 +97,19 @@ const usersController = {
       res.render('error', { error: "No se encontró el usuario", code: e })
     }
   },
-  putUpdateUser  : async (req, res) => {
+  putUpdateUser : async (req, res) => {
     try {
-      const user = await db.users.findByPk(req.params.id)
+      console.log(req.body.perfil);
+      let numberProfile = await db.galery.findOne({where: {media: req.body.perfil}})
+      console.log(req.body.name + " " + req.body.surname);
       await db.users.update({
         username: req.body.name,
         lastname: req.body.surname,
-        email:req.body.email,
-        userimg: req.file ? req.file.filename : user.userimg
+        email: req.body.email,
+        ocupacion: req.body.ocupacion,
+        bio: req.body.bio,
+        perfil_activo: req.body.perfil,
+        imgprofile_id: numberProfile
       },{
         where: {
           id: req.params.id
@@ -117,15 +125,40 @@ const usersController = {
     }
   },
   deleteUser : async (req, res) => {
+    const t = await db.sequelize.transaction();
     try {
-      await db.users.destroy({ where: { id: req.params.id } })
+      // Buscar el author
+      const autor = await db.users.findByPk(req.params.id,{
+        include: ["perfil_picture","author"],
+        transaction: t
+      });
+
+      if (!autor) {
+        throw new Error('Autor no encontrado');
+      }
+      await db.article.update({author_id: 0 }, {
+        where: { author_id },
+        transaction: t
+      })
+
+      await db.galery.update({imgprofile_id: null }, {
+        where: { imgprofile_id },
+        transaction: t
+      })
+      await db.users.destroy({
+        where: { id: req.paramas.id },
+        t
+      })
+
+      await transacion.commit();
       res.redirect('/dashboard/users');
     } catch (e) {
+      await t.rollback();
       res.locals.cabecera = {
         title: "Hubo un error",
         description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e})
     }
   },
   getLogin : async (req, res) => {
@@ -140,7 +173,7 @@ const usersController = {
         title: "Hubo un error",
         description: "Tuvimos un problema con su petición"
       }
-      res.render('error', { error: "No se encontró este articulo", code: e, locals })
+      res.render('error', { error: "No se encontró este articulo", code: e})
     }
   },
   postLogin : async (req, res) => {
@@ -165,7 +198,6 @@ const usersController = {
           } else {
             return res.render('login', { errors: { email: { msg: "Las credenciales son invalidas" }}})
           }
-
       }
     } catch(e) {
       res.locals.cabecera = {
@@ -174,12 +206,6 @@ const usersController = {
       }
       res.render('error', { error: "hubo un problema al iniciar sesión contacte al soporte técnico", code: e})
     }
-  },
-  getResetPassword: async (req, res) => {
-    res.render('resetpassword');
-  },
-  putResetPassword: async (req, res) => {
-    res.render('resetpassword');
   },
   getLogout : async (req, res) => {
     try {

@@ -20,10 +20,10 @@ const perfil = {
     try {
       await db.users.sequelize.transaction(async (t) => {
         await db.users.update(
-          { perfil_activo : 0}, { where: {}}
+          { perfil_activo : inactivo}, { where: {}}
         );
         await db.users.update(
-          { perfil_activo : 1 }, { where: { id: req.body.autor }}
+          { perfil_activo : activo }, { where: { id: req.body.autor }}
         );
       })
       res.locals.cabecera = {

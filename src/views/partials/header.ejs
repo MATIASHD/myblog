@@ -4,7 +4,7 @@
     <a class="navbar-brand" href="/dashboard"><i class="fa-solid fa-bolt"></i></a>
     <ul class="navbar-nav col-1">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
           <%= locals.userLogged.username %>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -16,7 +16,6 @@
           <li><a class="dropdown-item" href="/dashboard/user/logout">Cerrar sesion</a></li>
         </ul>
       </li>
-      <li class="nav-item">
     </ul>
     <% } else {%>
       <a class="navbar-brand" href="/"><i class="fa-solid fa-bolt"></i></a>

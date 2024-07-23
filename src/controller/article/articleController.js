@@ -1,18 +1,33 @@
 
 const db = require('../../../database/models');
 const articles = {
-  postCreate : (req, res) => {
-    db.article.create({
-      title: req.body.title,
-      subtitle: req.body.subtitle,
-      content: req.body.post,
-      estract: req.body.estract,
-      author_id: req.body.author,
-      draft: req.body.draft,
-      img: req.file.filename,
-      created_at: new Date()
-    })
-    res.redirect('/dashboard/posts');
+  postCreate : async (req, res) => {
+    try {
+     /* db.galery.create({
+        media: req.file.filename,
+        alt: "actaulizar",
+        figcaption: "actualizar",
+        mediatype: "actualizar"
+      })
+      let imgid = await db.galery.findOne({ where: { media: req.file.filename }})*/
+      db.article.create({
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        content: req.body.post,
+        estract: req.body.estract,
+        author_id: req.body.author,
+        draft: req.body.draft,
+        img: req.file.filename,
+        created_at: new Date()
+      })
+      res.redirect('/dashboard/posts');
+    } catch (e) {
+      res.locals.cabecera = {
+        title: "Hubo un error",
+        description: "Tuvimos un problema con su petición"
+      }
+      res.render('error', { error: "No se encontró este articulo", code: e })
+    }
   },
   getCreate: async (req, res) => {
     try {

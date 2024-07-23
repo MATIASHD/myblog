@@ -31,6 +31,9 @@ module.exports = (sequelize, dataTypes) => {
     },
     perfil_activo:{
       type: dataTypes.INTEGER,
+    },
+    imgprofile_id:{
+      type: dataTypes.INTEGER
     }
   }
   let config = {
@@ -40,7 +43,7 @@ module.exports = (sequelize, dataTypes) => {
   const users = sequelize.define(alias, cols, config);
   users.associate = function(models){
     users.hasOne(models.article,{
-      as: "article",
+      as: "author",
       foreignKey: "author_id"
     })
 

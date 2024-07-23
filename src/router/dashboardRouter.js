@@ -9,8 +9,7 @@ const { getCreateUser,
         putUpdateUser,
         deleteUser,
         getEditUser,
-        getResetPassword,
-        putResetPassword } = require('../controller/users/userController');
+        putSelectGalery } = require('../controller/users/userController');
 const { getCreate,
         postCreate,
         getRead,
@@ -45,10 +44,8 @@ router.get('/dashboard/user/register/', userLogged, authMiddleware, getCreateUse
 router.post('/dashboard/user/register/', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
 router.get('/dashboard/user/profile/:id', userLogged, authMiddleware, getProfile); //READ USER
 router.get('/dashboard/user/update/:id', userLogged, authMiddleware, getEditUser); //EDIT USER
-router.put('/dashboard/user/update/:id', userLogged, authMiddleware, uploadImg.single('image'), putUpdateUser);
+router.put('/dashboard/user/update/:id', userLogged, authMiddleware, putUpdateUser);
 router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUser); //DELETE USER
-router.get('/dashboard/user/resetpassword/', userLogged, authMiddleware, getResetPassword );
-router.put('/dashboard/user/resetpassword/', userLogged, authMiddleware, putResetPassword);
 router.get('/dashboard/user/logout/', userLogged, authMiddleware, getLogout);
 //post
 router.get('/dashboard/posts/', authMiddleware, getAllRead); //POSTS LIST
@@ -60,9 +57,7 @@ router.put('/dashboard/post/update/:id', authMiddleware, uploadImg.single('image
 router.delete('/dashboard/post/delete/:id', authMiddleware, postDel); //DELETE POST
 //GALERY
 router.get('/dashboard/galery/',authMiddleware, allmedia); //GALERY
-router.get('/dashboard/galery/create',authMiddleware, createMedia); //CREATE
-router.post('/dashboard/galery/create',authMiddleware, uploadImg.single('image'), postCreateMedia); //CREATE
-router.get('/dashboard/galery/read/:id',authMiddleware, readMedia); //READ
+router.post('/dashboard/galery/upload/',authMiddleware, uploadImg.single('image'), postCreateMedia); //CREATE
 router.get('/dashboard/galery/update/:id',authMiddleware, updateMedia); //UPDATE
 router.put('/dashboard/galery/update/:id',authMiddleware, uploadImg.single('image'), putupdateMedia); //UPDATE
 router.delete('/dashboard/galery/delete/:id',authMiddleware, deleteMedia); //DELETE

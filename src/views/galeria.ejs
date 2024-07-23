@@ -4,6 +4,40 @@
       <h1 class="text-center">Galeria</h1>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-ms-12 col-md-12 col-lg-8 mb-4 mx-auto">
+      <form action="/dashboard/galery/upload/" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <input class="form-control" name="image" type="file" id="formFile">
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-lg-4">
+            <div class="mb-3">
+              <label for="alt" class="form-label">Alt:</label>
+              <input type="text" class="form-control" id="alt" name="alt" aria-describedby="alt">
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="mb-3">
+              <label for="figcaption" class="form-label">Figcaption</label>
+              <input type="text" class="form-control" id="figcaption" name="figcaption" aria-describedby="figcaption">
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="mb-3">
+              <label for="mediatype" class="form-label">Media type</label>
+              <input type="text" class="form-control" id="mediatype" name="mediatype" aria-describedby="mediatype">
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Subir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="row">
     <% for (let i = 0; i < galeria.length; i++) { %>
       <div class="col-ms-12 col-md-6 col-lg-4 mb-4">
@@ -20,8 +54,8 @@
                     <p>
                       <div class="row">
                         <div class="d-grid gap-2 d-md-flex mt-2 justify-content-md-end">
-                        <form method="get" enctype="multipart/form-data">
-                          <button class="btn btn-primary" href="/dashboard/galery/update/<%= galeria[i].id %>" role="button">Editar</button>
+                        <form action="/dashboard/galery/update/<%= galeria[i].id %>" method="get">
+                          <button type="submit" class="btn btn-primary"  role="button">Editar</button>
                         </form>
                         <form action="/dashboard/galery/delete/<%= galeria[i].id %>?_method=DELETE" method="POST">
                           <button class="btn btn-outline-danger" type="submit">Borrar</button>

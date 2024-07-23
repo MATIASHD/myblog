@@ -42,6 +42,17 @@ CREATE TABLE IF NOT EXISTS article (
     FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
+DELIMITER $$
+CREATE TRIGGER before_article_delete
+BEFORE DELETE ON article
+FOR EACH ROW
+BEGIN
+	DELETE FROM articulomedia WHERE article_id = OLD.id;
+  DELETE FROM articulotags WHERE article_id = OLD.id;
+  DELETE FROM comentarios WHERE article_id = OLD.id;
+END$$
+DELIMITER ;
+
 INSERT INTO article(title, subtitle, content, estract, author_id, draft, img ) VALUES
 ('You’re Wasting Your Time Posting Daily on LinkedIn', 'Blind consistency vs intentional branding on LinkedIn','<div class="row">
             <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">

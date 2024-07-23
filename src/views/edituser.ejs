@@ -15,8 +15,30 @@
         <input type="email" name="email" value="<%= profile.email %>" class="form-control" id="email" aria-describedby="emailHelp">
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label">Imagen</label>
-        <input class="form-control" name="image" accept="image/*" type="file" id="image">
+        <label for="ocupacion" class="form-label">Ocupación</label>
+        <input type="text" name="ocupacion" value="<%= profile.ocupacion %>" class="form-control" id="surname" aria-describedby="surname">
+      </div>
+      <div class="mb-3">
+        <label for="bio" class="form-label">bio</label>
+        <textarea class="form-control" name="bio" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px"><%= profile.bio %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="galleryImage" class="form-label">Estado del perfil</label>
+        <div class="form-floating">
+          <select class="form-select" name="perfil" id="floatingSelectGrid">
+            <% for (let i = 0; i < perfil.length; i++) { %>
+              <option value="<%= perfil[i] %>"><%= perfil[i] %></option>
+            <% } %>
+          </select>
+          <label for="floatingSelectGrid">Estado del usuario</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="profileImage" class="form-label">Imagen de perfil</label>
+        <div class="input-group">
+          <input type="text" value="<%= profile.perfil_picture.media %>" name="profileImage" id="profileImage" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" data-toggle="modal" data-target="#exampleModal">Seleccionar</button>
+        </div>
       </div>
       <div class="mb-3">
         <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -24,3 +46,45 @@
     </form>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Galery</h1>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <!--Seleccion de imagen de la galeria -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="galleryImage" class="form-label">Galery</label>
+                <select class="form-select" id="imagenes" name="imagenes" size="3" aria-label="Size 3 select example">
+                  <option value="0">Open this select menu</option>
+                  <% for (let i = 0; i < multimedia.length; i++) { %>
+                    <option value="<%= multimedia[i].id %>"><%= multimedia[i].media %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <button type="submit" id="selectImage" class="btn btn-primary" name="image" data-dismiss="modal">foto</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('selectImage').addEventListener('click',function() {
+  let seleccionado = document.getElementById('imagenes');
+  let selecciono = seleccionado.options[seleccionado.selectedIndex].text;
+  document.getElementById('profileImage').value = selecciono;
+})
+</script>

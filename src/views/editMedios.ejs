@@ -25,17 +25,17 @@
           <form action="/dashboard/galery/update/<%= media.id %>?_method=PUT" method="post" id="loginForm">
             <div class="mb-3">
               <label for="alt" class="form-label">Descripción alternativa</label>
-              <input type="text" class="form-control" value="<%= media.alt %>" id="alt" aria-describedby="alt">
+              <input type="text" name="alt" class="form-control" value="<%= media.alt %>" id="alt" aria-describedby="alt">
             </div>
             <div class="mb-3">
               <label for="figcaption" class="form-label">Figure caption</label>
-              <input type="text" class="form-control" value="<%= media.figcaption %>" id="figcaption" aria-describedby="figcaption">
+              <input type="text" name="figcaption" class="form-control" value="<%= media.figcaption %>" id="figcaption" aria-describedby="figcaption">
             </div>
             <div class="mb-3">
               <label for="mediatype" class="form-label">Formato</label>
-              <input type="text" class="form-control" value="<%= media.mediatype %>" id="mediatype" aria-describedby="mediatype">
+              <input type="text" name="mediatype" class="form-control" value="<%= media.mediatype %>" id="mediatype" aria-describedby="mediatype">
             </div>
-            <a type="submit" class="btn btn-primary">Actualizar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
           </form>
         </div>
       </div>

@@ -11,7 +11,7 @@
                     <button type="submit" class="btn btn-primary btn-lg">Agregar usuario</button>
                 </form>
             </div>
-        </div>             
+        </div>
         <!--form-->
         <div class="row">
             <div class="col-md-12">
@@ -21,6 +21,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -30,21 +31,24 @@
                             <td><%= user.username %></td>
                             <td><%= user.lastname %></td>
                             <td><%= user.email %></td>
+                            <td><% if (user.perfil_activo == 1) { %>
+                              <span class="badge text-bg-primary">Activo</span>
+                            <% } else { %>
+                              <span class="badge text-bg-secondary">Deshabilitado</span>
+                            <% } %></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <form action="/dashboard/user/profile/<%= user.id %>" method="get">
                                         <button class="btn btn-primary me-md-2" type="submit">Perfil</button>
                                     </form>
-                                    <!--<form action="" method="get">
-                                        <button class="btn btn-danger" type="button">Borrar</button>
-                                    </form>-->
+
                                 </div>
                             </td>
                         </tr>
-                    <% }) %>                          
+                    <% }) %>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>          
+    </div>
 </div>

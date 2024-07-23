@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-ms-12 col-md-11 col-lg-8 mx-auto  mb-4">
-
       <% for (let i = 0; i < user.length; i++) { %>
         <% if (user[i].perfil_activo == 1) { %>
           <div class="row">
-            <div class="col-3">
+            <div class="col-sm-12 mb-3 col-md-3">
                 <div class="text-center">
                     <img src="../assets/upload/<%= user[i].perfil_picture.media %>" style="width: 150px; height: 150px;" class="img-fluid object-fit-cover rounded-circle" alt="<%= user[i].perfil_picture.alt %>">
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-sm-12 col-md-9">
                 <h1 class="fw-bold mb-1"><%= user[i].username %> <%= user[i].lastname %></h1>
                 <h3 class="fw-light mb-2"><%= user[i].ocupacion %></h3>
                 <p class="fw-normal fst-normal lh-sm"><%= user[i].bio %></p>
@@ -51,7 +50,7 @@
             </div>
           </div>
           <div class="col-12">
-            <a href="/article/<%= article[i].id %>"><h5><%= article[i].title %></h5></a>
+            <a class="" href="/article/<%= article[i].id %>"><h5><%= article[i].title %></h5></a>
           </div>
         </div>
       </div>

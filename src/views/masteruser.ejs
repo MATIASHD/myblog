@@ -5,18 +5,15 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-11 col-lg-7 mx-auto">
-
         <form action="/dashboard/perfil/" method="post" >
           <div class="mb-3">
             <div class="form-floating">
               <select class="form-select" name="autor" id="floatingSelect" aria-label="Floating label select example">
               <% for (let i = 0; i < autor.length; i++) { %>
                 <% if (autor[i].perfil_activo == 1) { %>
-                  <% console.log(autor[i].id); %>
                 <option value="<%= autor[i].id %>" selected><%= autor[i].username %> <%= autor[i].lastname %></option>
                 <% } else { %>
-                  <% console.log(autor[i].id); %>
-                <option value="<%= autor[i].id %>"><%= autor[i].username %> <%= autor[i].lastname %></option>
+                <option value="<%= autor[i].id %>" (<%= autor[i].perfil_activo %> == 1 ? Disabled : "") ><%= autor[i].username %> <%= autor[i].lastname %></option>
                 <% } %>
               <% } %>
               </select>

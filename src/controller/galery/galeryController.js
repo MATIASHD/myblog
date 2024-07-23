@@ -18,21 +18,6 @@ const galeryController = {
       res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
     }
   },
-  createMedia : async (req, res) => {
-    try {
-      res.locals.cabecera = {
-        title: "Subir soporte",
-        description: "Sube tus mejores creaciones aquí"
-      }
-      res.render('mediaupload', {locals});
-    } catch (e) {
-      res.locals.cabecera = {
-        title: "Hubo un error",
-        description: "Tuvimos un problema con su petición"
-      }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
-    }
-  },
   postCreateMedia : async (req, res) => {
     try {
       db.galery.create({
@@ -42,22 +27,6 @@ const galeryController = {
         mediatype: req.body.mediatype
       })
       res.redirect('/dashboard/galery');
-    } catch (e) {
-      res.locals.cabecera = {
-        title: "Hubo un error",
-        description: "Tuvimos un problema con su petición"
-      }
-      res.render('error', {error: "Hubo un problema al intentar acceder a este recurso", code: e})
-    }
-  },
-  readMedia : async (req, res) => {
-    try {
-      let media = await db.galery.findByPk(req.params.id)
-      res.locals.cabecera = {
-        title: "Vista de archivo multimedia",
-        description: "Crea vea todo su contenido"
-      }
-      res.render('mediaView', { media });
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
@@ -88,12 +57,12 @@ const galeryController = {
         alt: req.body.alt,
         figcaption: req.body.figcaption,
         mediatype: req.body.mediatype
-      }, {
+      },{
         where: {
           id: req.params.id
         }
       })
-      res.redirect('/dashboard/view/' + req.params.id);
+      res.redirect('/dashboard/galery/');
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",
