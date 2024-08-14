@@ -48,11 +48,17 @@ const articles = {
   getRead : async (req, res) => {
     try {
       let article = await db.article.findByPk(req.params.id,{include: ["author"]})
-      res.locals.cabecera = {
+      res.status(200).json({
+        status: 'OK',
+        date: now,
+        total: article.lenght,
+        data: article
+      })
+      /*res.locals.cabecera = {
         title: article.title,
         description: "Crea increibles entradas"
       }
-      res.render('news', { article });
+      res.render('news', { article });*/
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",

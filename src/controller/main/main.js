@@ -1,4 +1,7 @@
-const db = require('../../../database/models')
+const db = require('../../../database/models');
+const Op = db.Sequelize.Op;
+
+const now = new Date();
 const main = {
   getMain : async (req, res) => {
     try {
@@ -32,11 +35,17 @@ const main = {
                 }
               ]
             }, "tags", "media"]})
-      res.locals.cabecera = {
+     /* res.locals.cabecera = {
         title: article.title,
         description: article.estract
-      }
-      res.render('news', { article });
+      }*/
+      res.status(200).json({
+        status: 'OK',
+        date: now,
+        total: article.length,
+        data: article
+      })
+      //res.render('news', { article });
     } catch (e) {
       res.locals.cabecera = {
         title: "Hubo un error",

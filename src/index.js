@@ -8,6 +8,7 @@ const bodyParse = require('body-parser')
 const session = require('express-session');
 const cookies = require('cookie-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 //Router
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 const app = express();
@@ -25,6 +26,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+//cors
+app.use(cors());
 //Cookie
 app.use(cookies());
 //Middle de aplicación

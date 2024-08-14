@@ -42,7 +42,7 @@ router.get('/dashboard/',userLogged, authMiddleware, dashboard); //DASHBOARD
 router.get('/dashboard/users/', userLogged, authMiddleware, getAllUsers); //USERS LIST
 router.get('/dashboard/user/register/', userLogged, authMiddleware, getCreateUser); // CREATE USER
 router.post('/dashboard/user/register/', userLogged, authMiddleware, uploadImg.single('image'), postCreateUser);
-router.get('/dashboard/user/profile/:id', userLogged, authMiddleware, getProfile); //READ USER
+router.get('/dashboard/user/profile/:id', getProfile); //READ USER
 router.get('/dashboard/user/update/:id', userLogged, authMiddleware, getEditUser); //EDIT USER
 router.put('/dashboard/user/update/:id', userLogged, authMiddleware, putUpdateUser);
 router.delete('/dashboard/user/delete/:id', userLogged, authMiddleware, deleteUser); //DELETE USER
